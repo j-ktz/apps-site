@@ -13,7 +13,7 @@
 <meta name="apple-itunes-app" content="app-id=6762062161">
 <link rel="icon" href="img/icon.png">
 <style>
-:root{--bg:#06121c;--bg2:#0a1c2b;--card:#0e2335;--line:#17344b;--fg:#E7F1F7;--muted:#9bb3c4;--cyan:#22d3ee;--teal:#2ee6b6;--violet:#a78bfa;--amber:#fbbf24;--red:#fb7185;
+:root{--bg:#070d18;--bg2:#0a1c2b;--card:#0e2335;--line:#17344b;--fg:#E7F1F7;--muted:#9bb3c4;--cyan:#22d3ee;--teal:#2ee6b6;--violet:#a78bfa;--amber:#fbbf24;--red:#fb7185;
 --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",system-ui,sans-serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;color-scheme:dark}
@@ -40,21 +40,60 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--teal),var(--cyan)
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .tags span{border:1px solid var(--line);background:rgba(14,35,53,.7);color:#bcd0dd;font-weight:600;font-size:.88rem;padding:6px 12px;border-radius:99px}
 
-/* co2 estimator */
-.co2{background:linear-gradient(180deg,rgba(14,35,53,.92),rgba(10,28,43,.92));border:1px solid var(--line);border-radius:26px;padding:22px 22px 20px;box-shadow:0 40px 70px -34px rgba(0,0,0,.8);backdrop-filter:blur(8px)}
-.co2 h2{font-size:.82rem;letter-spacing:.06em;color:var(--muted);margin:0 0 6px;font-weight:700}
-.big{font-weight:850;font-size:clamp(3.4rem,8vw,4.6rem);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.big small{font-size:.38em;font-weight:700;color:var(--muted);letter-spacing:0;margin-left:6px}
-.zone{display:inline-block;margin:8px 0 14px;padding:4px 12px;border-radius:99px;font-weight:800;font-size:.88rem;transition:background .25s,color .25s}
-.scale{position:relative;height:12px;border-radius:99px;background:linear-gradient(90deg,#3b82f6 0 20%,#22d3ee 20% 40%,#2ee6b6 40% 60%,#fbbf24 60% 80%,#fb7185 80%);margin:6px 0 4px}
-.scale i{position:absolute;top:-5px;width:6px;height:22px;border-radius:4px;background:#fff;box-shadow:0 0 0 3px rgba(6,18,28,.9);left:0;transition:left .25s}
-.ticks{display:flex;justify-content:space-between;color:var(--muted);font-size:.74rem;margin:0 0 14px}
-.ctrl{display:grid;gap:12px}
-.ctrl label{display:flex;justify-content:space-between;font-weight:700;font-size:.92rem}
-.ctrl label span{color:var(--cyan);font-variant-numeric:tabular-nums}
-input[type=range]{width:100%;accent-color:var(--cyan);height:28px;margin:0}
-.note{color:var(--muted);font-size:.8rem;margin:10px 0 0}
-
+/* the app, recreated */
+.wm{display:inline-flex;flex-direction:column;line-height:1;text-decoration:none}
+.wm b{font-weight:800;letter-spacing:-.01em;font-size:1.5rem;color:#fff}
+.wm b span{color:#6fd5f2}
+.wm small{font-size:.58rem;letter-spacing:.42em;color:#4ade80;font-weight:700;margin-top:4px;padding-left:2px}
+.phone{position:relative;width:min(100%,392px);margin:0 auto;border-radius:46px;background:#0b0f16;padding:10px;box-shadow:0 0 0 2px #26303c,0 50px 90px -30px rgba(0,0,0,.9),0 0 90px -20px rgba(46,230,182,.25)}
+.island{position:absolute;left:50%;top:18px;width:86px;height:25px;transform:translateX(-50%);background:#000;border-radius:99px;z-index:3}
+.screen{background:#0a1020;border-radius:37px;overflow:hidden;min-height:620px;display:flex;flex-direction:column}
+.status{display:flex;justify-content:space-between;padding:14px 26px 8px;font-size:.78rem;font-weight:700;color:#fff}
+.appbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px 12px;border-bottom:1px solid #16213a}
+.appbar .wm b{font-size:1.38rem}
+.date{display:flex;align-items:center;gap:7px;font:700 .85rem ui-monospace,SFMono-Regular,Menlo,monospace;color:#f1f5f9}
+.date svg,.gear{width:17px;height:17px;stroke:#94a3b8;fill:none;stroke-width:1.8}
+.gear{margin-left:12px}
+.tabbar{display:grid;grid-template-columns:repeat(8,1fr);border-bottom:1px solid #16213a;background:#0a1020}
+.tab{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:11px 0 12px;position:relative;color:#7c8aa0;font-size:.5rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.tab svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tab:hover{color:#cbd5e1}
+.tab.on{color:#cbd5e1}
+.tab.on svg{stroke:var(--ic,#5eead4)}
+.tab.on:after{content:"";position:absolute;left:8%;right:8%;bottom:-1px;height:5px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 6' preserveAspectRatio='none'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3 V6 H0Z' fill='%2358d4f0'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.tab:focus-visible{outline:2px solid #58d4f0;outline-offset:-2px}
+.tankrow{display:flex;align-items:center;gap:14px;padding:12px 16px;border-bottom:1px solid #16213a;background:#0b1224}
+.tankrow span{font-size:.74rem;letter-spacing:.1em;font-weight:700;color:#8a99ae}
+.sel{flex:1;display:flex;justify-content:space-between;align-items:center;background:#131b30;border:1.5px solid #243252;border-radius:12px;padding:9px 14px;font-weight:700;color:#e2e8f0;font-size:.95rem}
+.sel:after{content:"";border:6px solid transparent;border-top:7px solid #cbd5e1;margin-top:6px}
+.panel{padding:16px 14px 18px;flex:1;background:radial-gradient(90% 40% at 100% 90%,rgba(46,230,182,.1),transparent 70%)}
+.card{background:linear-gradient(180deg,#0d1a24,#0b141e);border:1.5px solid #1e4b49;border-radius:26px;padding:18px 18px 16px;margin-bottom:12px;position:relative}
+.card h3{display:flex;align-items:center;gap:9px;margin:0 0 12px;font-size:.78rem;letter-spacing:.14em;color:#8ea3b8;font-weight:800;text-transform:uppercase}
+.card h3 svg{width:17px;height:17px;stroke:#8ea3b8;fill:none;stroke-width:1.8;stroke-linecap:round}
+.card h3 .chev{margin-left:auto;stroke:#8ea3b8}
+.calc{color:#8ea3b8;font-size:.82rem;line-height:1.45;margin:0 0 6px}.calc b{color:#cbd5e1}
+.num{display:flex;align-items:baseline;gap:8px}
+.num strong{font-weight:800;font-size:3.7rem;line-height:1;letter-spacing:-.03em;color:#4fd1b5;font-variant-numeric:tabular-nums}
+.num span{color:#8ea3b8;font-size:1.1rem;font-weight:600}
+.chip{display:inline-block;margin:8px 0 14px;padding:3px 13px;border:1.5px solid;border-radius:10px;font-weight:800;font-size:.9rem;transition:all .25s}
+.bubble{position:absolute;right:26px;top:96px;width:26px;height:26px;border-radius:50%;border:2px solid rgba(94,234,212,.7);background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.6),rgba(94,234,212,.25) 60%);box-shadow:0 0 22px rgba(94,234,212,.35);animation:bob 4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.scale{position:relative;height:9px;border-radius:99px;background:linear-gradient(90deg,#3b82f6 0 20%,#38bdf8 20% 40%,#34d399 40% 60%,#facc15 60% 80%,#f87171 80%);margin:16px 0 6px}
+.scale i{position:absolute;top:-7px;width:5px;height:23px;border-radius:3px;background:#e2e8f0;box-shadow:0 0 0 3px #0b141e;left:0;transition:left .25s}
+.ticks{display:flex;justify-content:space-between;color:#7c8aa0;font-size:.62rem;font-weight:700}
+.zlab{display:flex;justify-content:space-between;color:#7c8aa0;font-size:.58rem;margin-top:2px;gap:2px}.zlab span{flex:1;text-align:center;line-height:1.2}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:#0d1626;border:1.5px solid #1c2c48;border-radius:16px;padding:10px 12px 10px;text-align:center}
+.tile label{display:block;font-size:.66rem;letter-spacing:.14em;font-weight:800;color:#8ea3b8}
+.tile output{display:block;font:800 1.9rem ui-monospace,SFMono-Regular,Menlo,monospace;color:#e2e8f0;margin:2px 0}
+.tile small{display:block;font-weight:800;font-size:.72rem;margin-bottom:4px;transition:color .2s}
+.tile input[type=range]{width:100%;accent-color:#5eead4;margin:0;height:24px}
+.ok{color:#4ade80}.warn{color:#fbbf24}
+.mini{height:10px;border-radius:99px;background:#0f1a2e;position:relative;margin:10px 0 6px;overflow:hidden}.mini i{position:absolute;left:0;top:0;bottom:0;width:28%;background:#4ade80;border-radius:99px}
+.rowl{display:flex;justify-content:space-between;font:600 .74rem ui-monospace,Menlo,monospace;color:#8ea3b8}
+.desc{color:#cbd5e1;margin:0 0 8px;font-size:.98rem}
+.pill{display:inline-block;background:#15352f;color:#4ade80;font-weight:800;font-size:.82rem;border-radius:10px;padding:4px 12px}
+.demoNote{color:var(--muted);font-size:.8rem;text-align:center;margin:12px 0 0}
 section{padding:88px 0 8px}
 h2.h{font-weight:850;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1;letter-spacing:-.035em;margin:0 0 14px;max-width:14em}
 .sub{color:var(--muted);font-size:1.15rem;max-width:32em;margin:0}
@@ -80,7 +119,7 @@ footer a:hover{color:var(--fg)}
  .grid{grid-template-columns:1fr 1fr}.grid div,.grid div:not(:nth-child(3n+1)){padding:20px 16px 20px 0;border-left:0}.grid div:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}
  .nav a.l{display:none}.priv{padding:26px}
 }
-@media(max-width:520px){.grid{grid-template-columns:1fr}.grid div:nth-child(even){padding-left:0;border-left:0}}
+@media(max-width:520px){.date{font-size:.68rem;white-space:nowrap;gap:5px}.appbar{padding:12px 14px}.appbar .wm b{font-size:1.2rem}.gear{margin-left:6px}.grid{grid-template-columns:1fr}.grid div:nth-child(even){padding-left:0;border-left:0}}
 @media(prefers-reduced-motion:reduce){.bubbles{display:none}.scale i,.btn,.zone{transition:none}}
 </style>
 </head>
@@ -89,7 +128,7 @@ footer a:hover{color:var(--fg)}
   <div class="bubbles" aria-hidden="true" id="bubbles"></div>
   <div class="wrap">
     <nav class="nav">
-      <a class="brand" href="./"><img src="img/icon.png" alt="" width="38" height="38">TankLog</a>
+      <a class="brand" href="./"><img src="img/icon.png" alt="" width="38" height="38"><span class="wm"><b>TANK<span>LOG</span></b><small>AQUASCAPE</small></span></a>
       <div><a class="l" href="#track">What it tracks</a><a class="l" href="support.html">Support</a><a class="l" href="privacy.html">Privacy</a></div>
     </nav>
     <div class="heroGrid">
@@ -100,19 +139,49 @@ footer a:hover{color:var(--fg)}
         <span class="fine">iPhone and iPad. Free. Your data stays on your device.</span>
         <div class="tags"><span>No account</span><span>No ads</span><span>No analytics</span><span>Works without signal</span></div>
       </div>
-      <div class="co2" id="co2" aria-label="CO₂ estimator">
-        <h2>TRY IT: CO₂ FROM PH AND KH</h2>
-        <div class="big"><span id="ppm">14</span><small>ppm</small></div>
-        <span class="zone" id="zone">Low</span>
-        <div class="scale" aria-hidden="true"><i id="mark"></i></div>
-        <div class="ticks" aria-hidden="true"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50+</span></div>
-        <div class="ctrl">
-          <label for="ph">pH <span id="phv">6.8</span></label>
-          <input id="ph" type="range" min="6.0" max="8.0" step="0.1" value="6.8">
-          <label for="kh">KH (dKH) <span id="khv">3</span></label>
-          <input id="kh" type="range" min="1" max="12" step="1" value="3">
+      <div>
+        <div class="phone" aria-label="Interactive demo of the TankLog app">
+          <div class="island" aria-hidden="true"></div>
+          <div class="screen">
+            <div class="status" aria-hidden="true"><span id="clock">9:41</span><span>5G ▮▮▮</span></div>
+            <div class="appbar">
+              <span class="wm" aria-label="TankLog Aquascape"><b>TANK<span>LOG</span></b><small>AQUASCAPE</small></span>
+              <span class="date"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg><span id="dt">Monday, July 27</span><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.600 5.600l2.100 2.100M16.300 16.300l2.100 2.100M5.600 18.400l2.100-2.100M16.300 7.700l2.100-2.100"/></svg></span>
+            </div>
+            <div class="tabbar" role="tablist" aria-label="App sections"><button class="tab on" type="button" role="tab" aria-selected="true" data-tab="TANK" style="--ic:#5eead4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="7.5"/><path d="M8.5 13c1.6-2.2 4.4-2.2 6 0-1.6 2.2-4.4 2.2-6 0z"/><path d="M9 5.5c1-1.4 5-1.4 6 0"/></svg>TANK</button><button class="tab" type="button" role="tab" aria-selected="false" data-tab="TEST" style="--ic:#a78bfa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.5l5 5-9.7 9.7a3.5 3.5 0 01-5-5z"/><path d="M13 6l5 5"/></svg>TEST</button><button class="tab" type="button" role="tab" aria-selected="false" data-tab="CHANGE" style="--ic:#38bdf8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c3.2 4 5.5 6.8 5.5 9.8a5.5 5.5 0 01-11 0c0-3 2.3-5.800 5.5-9.800z"/></svg>CHANGE</button><button class="tab" type="button" role="tab" aria-selected="false" data-tab="CLEAN" style="--ic:#cbd5e1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3.5h4v5l3.500 2.500v3l-1.500 6h-8l-1.500-6v-3L10 8.500z"/><path d="M8.500 15.500h7"/></svg>CLEAN</button><button class="tab" type="button" role="tab" aria-selected="false" data-tab="DOSE" style="--ic:#f9a8d4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.500 3.500l3 3-3.500 3.500-3-3z"/><path d="M14 9l-9 9-1.500 3 3-1.500 9-9"/></svg>DOSE</button><button class="tab" type="button" role="tab" aria-selected="false" data-tab="FEED" style="--ic:#fbbf24"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.500" width="14" height="15" rx="3" transform="rotate(35 12 12)"/><path d="M9 9.500l5 5"/></svg>FEED</button><button class="tab" type="button" role="tab" aria-selected="false" data-tab="ANIMALS" style="--ic:#fb923c"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12c0-4 5-6.500 9-5 3 1 5 3.500 5 6.500 0 3-2.500 5-5.500 4.500"/><path d="M9 10.500c2 .5 3.500 2 3.500 4"/><path d="M5 13.500l-1.500 3"/></svg>ANIMALS</button><button class="tab" type="button" role="tab" aria-selected="false" data-tab="PLANTS" style="--ic:#4ade80"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.500V11"/><path d="M12 11C12 7 9.500 5 5 5c0 4 2 6 7 6z"/><path d="M12 14c0-3.500 2-5.500 7-5.500 0 3.500-2 5.500-7 5.500z"/></svg>PLANTS</button></div>
+            <div class="tankrow"><span>TANK</span><div class="sel">Aquascape</div></div>
+            <div class="panel" id="panel">
+              <div id="p-TANK" class="pane">
+                <div class="card">
+                  <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h11a2.500 2.500 0 10-2.500-2.500M3 14h15a2.500 2.500 0 11-2.500 2.500M3 19h8"/></svg>CO₂ LEVEL<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></h3>
+                  <p class="calc">Last calculated: <b>Today</b><br>from the pH and KH below</p>
+                  <div class="num"><strong id="ppm">14</strong><span>ppm</span></div>
+                  <span class="chip" id="zone">Low</span><span class="bubble" aria-hidden="true"></span>
+                  <div class="scale" aria-hidden="true"><i id="mark"></i></div>
+                  <div class="ticks" aria-hidden="true"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50+</span></div>
+                </div>
+              </div>
+              <div id="p-TEST" class="pane" hidden>
+                <div class="card">
+                  <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.500 3.500l5 5-9.700 9.700a3.500 3.500 0 01-5-5z"/></svg>LOG WATER TEST</h3>
+                  <div class="tiles">
+                    <div class="tile"><label for="ph">PH</label><output id="phv">6.8</output><small id="phs" class="ok">Ideal 6.5-7.5</small><input id="ph" type="range" min="6.0" max="8.0" step="0.1" value="6.8"></div>
+                    <div class="tile"><label for="kh">KH</label><output id="khv">3</output><small id="khs" class="ok">Ideal 2-6</small><input id="kh" type="range" min="1" max="12" step="1" value="3"></div>
+                  </div>
+                </div>
+              </div>
+              <div id="p-OTHER" class="pane" hidden>
+                <div class="card">
+                  <h3 id="otherT">CARE SCHEDULE</h3>
+                  <p class="desc" id="otherD"></p>
+                  <div class="mini" aria-hidden="true"><i></i></div>
+                  <div class="rowl"><span>Last: Today</span><span id="otherDue">Due: soon</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="note">The same estimate TankLog shows after each water test. Treat it as a guide, not a lab reading.</p>
+        <p class="demoNote">Tap the tabs. Slide pH and KH on the Test tab. Same estimate as the app.</p>
       </div>
     </div>
   </div>
@@ -167,22 +236,33 @@ footer a:hover{color:var(--fg)}
 
 <footer>
   <a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="cloud-sync-terms.html">Cloud Sync terms</a>
-  <p>© 2026 Chris Dominguez · <a href="mailto:tanklog.support@gmail.com" style="margin:0">tanklog.support@gmail.com</a></p>
+  <p>© 2026 TankLog: Aquascape · <a href="mailto:tanklog.support@gmail.com" style="margin:0">tanklog.support@gmail.com</a></p>
 </footer>
 
 <script>
 (function(){
   var $=function(i){return document.getElementById(i)};
-  var zones=[[10,'Very low','#3b82f6','#06121c'],[20,'Low','#22d3ee','#04202a'],[30,'Ideal','#2ee6b6','#04202a'],[40,'High','#fbbf24','#2a1a00'],[1e9,'At risk for livestock','#fb7185','#2a0710']];
+  var zones=[[10,'Very low','#60a5fa'],[20,'Low','#4fd1b5'],[30,'Ideal','#34d399'],[40,'High growth zone','#facc15'],[1e9,'At risk for livestock','#f87171']];
   function update(){
     var ph=parseFloat($('ph').value),kh=parseFloat($('kh').value);
     var ppm=Math.round(3*kh*Math.pow(10,7-ph));
     $('phv').textContent=ph.toFixed(1);$('khv').textContent=kh;$('ppm').textContent=ppm;
-    var z=zones.find(function(z){return ppm<z[0]});
-    var el=$('zone');el.textContent=z[1];el.style.background=z[2];el.style.color=z[3];
+    var z=zones.find(function(z){return ppm<z[0]}),c=$('zone');c.textContent=z[1];c.style.color=z[2];c.style.borderColor=z[2];c.style.background='transparent';
+    $('ppm').style.color=z[2];
     $('mark').style.left='calc('+Math.min(ppm/50,1)*100+'% - 3px)';
+    var pok=ph>=6.5&&ph<=7.5,kok=kh>=2&&kh<=6;
+    $('phs').textContent=pok?'Ideal 6.5-7.5':'Outside 6.5-7.5';$('phs').className=pok?'ok':'warn';
+    $('khs').textContent=kok?'Ideal 2-6':'Outside 2-6';$('khs').className=kok?'ok':'warn';
   }
   $('ph').addEventListener('input',update);$('kh').addEventListener('input',update);update();
+  var other={CHANGE:['WATER CHANGE','Log water changes with volume and percentage.','Due: in 6 days'],CLEAN:['CLEANING','Filter maintenance, substrate work and glass cleaning, each with its own schedule and history.','Due: in 12 days'],DOSE:['DOSING','Every fertilizer, mineral and treatment, with product, amount and date.','Due: tomorrow'],FEED:['FEEDING','Log feedings with species tags and set feeding schedules.','Due: today'],ANIMALS:['ANIMALS','Fish and invertebrates, with dates added and notes.','Added: your records'],PLANTS:['PLANTS','Plants with dates added and notes.','Added: your records']};
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(x){var on=x===t;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)});
+    var k=t.dataset.tab;['TANK','TEST','OTHER'].forEach(function(p){$('p-'+p).hidden=p!==(k==='TANK'||k==='TEST'?k:'OTHER')});
+    if(other[k]){$('otherT').textContent=other[k][0];$('otherD').textContent=other[k][1];$('otherDue').textContent=other[k][2]}
+  })});
+  try{var d=new Date();$('dt').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});$('clock').textContent='9:41'}catch(e){}
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
     var b=$('bubbles');
     for(var i=0;i<14;i++){var e=document.createElement('i'),s=6+Math.random()*16;
