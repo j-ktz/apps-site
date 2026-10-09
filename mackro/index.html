@@ -187,7 +187,7 @@ footer a:hover{color:#FBF5EA}
               <div class="bar"><b>Fat <em><span id="fv">0</span> / 65g</em></b><i><u id="fb" style="background:var(--fat)"></u></i></div>
             </div>
           </div>
-          <div class="say" aria-live="polite"><img id="mackImg" src="img/mack-logging.png" alt="" width="62" height="62"><div><b id="sayMain">Mack's ready when you are.</b><small id="saySub">Tap a food below.</small></div></div>
+          <div class="say" aria-live="polite"><img id="mackImg" src="img/3d/mack-logging.webp" alt="" width="62" height="62"><div><b id="sayMain">Mack's ready when you are.</b><small id="saySub">Tap a food below.</small></div></div>
           <div class="foods" role="group" aria-label="Foods to log">
             <button class="food" type="button" data-c="220" data-p="20" data-k="24" data-f="4">Greek yogurt bowl<span>220</span></button>
             <button class="food" type="button" data-c="302" data-p="16" data-k="25" data-f="15">Eggs on toast<span>302</span></button>
@@ -283,17 +283,17 @@ footer a:hover{color:#FBF5EA}
   var T={c:2000,p:150,k:200,f:65},S={c:0,p:0,k:0,f:0},n=0,CIRC=326.7;
   var $=function(i){return document.getElementById(i)},mack=$('mackImg'),main=$('sayMain'),sub=$('saySub');
   var lines={start:['Nice start.','Mack is taking notes.','mack-thinking'],protein:['Protein is on track.','Keep that up.','mack-celebrating'],
-    room:['Plenty of room in the stash.','Eat something good.','mack-idea'],close:['Now we are cooking.','Look at those bars go.','mack-success'],
-    over:['Cheat day? Mack checked.','You are allowed.','mack-winking']};
+    room:['Plenty of room in the stash.','Eat something good.','mack-logging'],close:['Now we are cooking.','Look at those bars go.','mack-success'],
+    over:['Cheat day? Mack checked.','You are allowed.','mack-cheatday']};
   function render(){
     $('cal').textContent=S.c.toLocaleString();
     $('pr').style.strokeDashoffset=CIRC*(1-Math.min(S.c/T.c,1));
     [['p','pv','pb'],['k','cv','cb'],['f','fv','fb']].forEach(function(a){$(a[1]).textContent=S[a[0]];$(a[2]).style.width=Math.min(S[a[0]]/T[a[0]],1)*100+'%'});
   }
   function say(){
-    if(!S.c){main.textContent="Mack's ready when you are.";sub.textContent='Tap a food below.';mack.src='img/mack-logging.png';return}
+    if(!S.c){main.textContent="Mack's ready when you are.";sub.textContent='Tap a food below.';mack.src='img/3d/mack-logging.webp';return}
     var l=S.c>T.c?lines.over:S.p>=T.p*.9?lines.protein:S.c>T.c*.6?lines.close:n===1?lines.start:lines.room;
-    main.textContent=l[0];sub.textContent=l[1];mack.src='img/'+l[2]+'.png';
+    main.textContent=l[0];sub.textContent=l[1];mack.src='img/3d/'+l[2]+'.webp';
     mack.classList.add('hop');setTimeout(function(){mack.classList.remove('hop')},320);
   }
   document.querySelectorAll('.food').forEach(function(b){b.addEventListener('click',function(){

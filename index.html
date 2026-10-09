@@ -142,7 +142,7 @@ footer a:hover{color:#fff}
       <div class="w mackW">
         <div class="rng"><svg viewBox="0 0 120 120"><circle class="t" cx="60" cy="60" r="50" fill="none" stroke-width="14"/><circle class="p" id="mkP" cx="60" cy="60" r="50" fill="none" stroke-width="14" stroke-linecap="round" stroke-dasharray="314.2" stroke-dashoffset="314.2"/></svg><div class="n"><span id="mkN">0</span><small>of 2,000 cal</small></div></div>
         <div><p class="msg" id="mkMsg">Mack's ready.</p><button class="wbtn add" type="button" id="mkAdd">+ Log <span id="mkFood">eggs on toast</span></button></div>
-        <img class="mk" id="mkImg" src="/mackro/img/mack-winking.png" alt="" width="120" height="122">
+        <img class="mk" id="mkImg" src="/mackro/img/3d/mack-logging.webp" alt="" width="120" height="122">
       </div>
       <a class="label" href="/mackro/"><img src="/mackro/img/icon.png" alt="">Mackro <span class="tag">Live</span></a>
     </section>
@@ -207,10 +207,10 @@ footer a:hover{color:#fff}
   })});
   /* Mackro: log a meal */
   var foods=[['eggs on toast',302],['chicken and rice',548],['a protein shake',160],['a burrito bowl',740]],fi=0,cal=0;
-  var says=['Nice start.','Plenty of room in the stash.','Now we are cooking.','Cheat day? Mack checked.'],poses=['mack-thinking','mack-idea','mack-success','mack-celebrating'];
+  var says=['Nice start.','Plenty of room in the stash.','Now we are cooking.','Cheat day? Mack checked.'],poses=['mack-thinking','mack-logging','mack-success','mack-cheatday'];
   $('mkAdd').addEventListener('click',function(){
-    if(cal>2000){cal=0;fi=0;$('mkMsg').textContent="Mack's ready.";$('mkImg').src='/mackro/img/mack-winking.png'}
-    else{cal+=foods[fi][1];var s=Math.min(fi,3);$('mkMsg').textContent=cal>2000?says[3]:says[s];$('mkImg').src='/mackro/img/'+(cal>2000?poses[3]:poses[s])+'.png';fi=(fi+1)%foods.length}
+    if(cal>2000){cal=0;fi=0;$('mkMsg').textContent="Mack's ready.";$('mkImg').src='/mackro/img/3d/mack-logging.webp'}
+    else{cal+=foods[fi][1];var s=Math.min(fi,3);$('mkMsg').textContent=cal>2000?says[3]:says[s];$('mkImg').src='/mackro/img/3d/'+(cal>2000?poses[3]:poses[s])+'.webp';fi=(fi+1)%foods.length}
     $('mkN').textContent=cal.toLocaleString();$('mkP').style.strokeDashoffset=314.2*(1-Math.min(cal/2000,1));
     $('mkFood').textContent=cal>2000?'start over':foods[fi][0];
     var m=$('mkImg');m.classList.add('hop');setTimeout(function(){m.classList.remove('hop')},300);
