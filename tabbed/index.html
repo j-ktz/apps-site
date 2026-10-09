@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B1220">
 <title>Tabbed: know the answer, know where it lives</title>
 <meta name="description" content="Offline journeyman electrician exam prep. Every answer cites the code section, with lookup drills, step-by-step calcs and timed exams. Pay once, no subscription.">
 <link rel="canonical" href="https://apps.johnkatez.com/tabbed/">
@@ -38,7 +39,7 @@ h1{font-weight:850;font-size:clamp(2.8rem,6.2vw,5.4rem);line-height:.96;letter-s
 h1 span{display:block}
 .lede{font-size:1.22rem;color:#dcebff;max-width:27em;margin:0 0 28px}
 .soon{display:inline-block;background:var(--yellow);color:#14181F;font-weight:800;padding:15px 24px;border-radius:14px}
-.fine{color:#bcd6fb;font-size:.92rem;margin-left:14px}
+.fine{font-size:.92rem}
 .hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background:linear-gradient(90deg,var(--yellow) 0 25%,var(--orange) 25% 50%,var(--green) 50% 75%,var(--red) 75%)}
 
 /* live drill */
@@ -133,6 +134,23 @@ footer a{margin:0 12px;text-decoration:none;font-weight:700}
   .exam .dev,.clock .dev{justify-self:center}
 }
 @media(prefers-reduced-motion:reduce){.reveal.on{animation:none}.tabs a,.opt,.dBar i{transition:none}}
+
+/* ---- v3 after-hours hero ---- */
+.hero{background:radial-gradient(70% 70% at 70% 30%,#14306b 0,#0B1220 70%);}
+.bp{position:absolute;inset:0;background-image:linear-gradient(rgba(90,150,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(90,150,255,.09) 1px,transparent 1px),linear-gradient(rgba(90,150,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(90,150,255,.05) 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px;-webkit-mask-image:radial-gradient(80% 80% at 60% 40%,#000 30%,transparent 100%);mask-image:radial-gradient(80% 80% at 60% 40%,#000 30%,transparent 100%)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1 span:last-child{color:#9cc6ff}
+.lede{color:#b9c9e6}
+.fine{display:block;margin:14px 0 0;color:#8ea3c7}
+.deck{position:relative;padding:150px 0 20px}
+.book{position:absolute;right:-60px;top:0;width:300px;height:390px;background:#ECE6D6;border-radius:10px 18px 18px 10px;border-left:30px solid #0064D2;transform:rotate(7deg);box-shadow:0 40px 60px -20px rgba(0,0,0,.6),inset -6px 0 0 #d9d1bd;z-index:0}
+.book .bolt{position:absolute;width:96px;left:50%;top:21%;transform:translate(-50%,-50%)}
+.book .tb{position:absolute;right:-26px;width:30px;height:48px;border-radius:0 8px 8px 0;animation:tabOut .7s cubic-bezier(.3,1.5,.4,1) both}
+.tb.y{top:40px;background:#FFC400;animation-delay:.3s}.tb.o{top:100px;background:#FF7A1A;animation-delay:.42s}.tb.g{top:160px;background:#28CD78;animation-delay:.54s}.tb.r{top:220px;background:#FF4F4F;animation-delay:.66s}
+@keyframes tabOut{from{transform:translateX(-30px);opacity:0}}
+.drill{z-index:1;transform:rotate(1.5deg)}
+@media(max-width:900px){.deck{padding:118px 0 0 0}.book{right:-14px;width:220px;height:290px;border-left-width:22px}.book .bolt{width:66px;top:20%}.book .tb{right:-22px;width:24px;height:34px}.tb.y{top:24px}.tb.o{top:64px}.tb.g{top:104px}.tb.r{top:144px}.drill{transform:none}}
+@media(prefers-reduced-motion:reduce){.book .tb{animation:none}}
 </style>
 </head>
 <body>
@@ -141,6 +159,7 @@ footer a{margin:0 12px;text-decoration:none;font-weight:700}
 </nav>
 
 <header class="hero">
+  <div class="bp" aria-hidden="true"></div>
   <div class="wrap">
     <div class="nav">
       <a class="brand" href="./"><img src="img/icon.png" alt="" width="36" height="36">Tabbed</a>
@@ -150,9 +169,15 @@ footer a{margin:0 12px;text-decoration:none;font-weight:700}
       <div>
         <h1><span>Know the answer.</span><span>Know where it lives.</span></h1>
         <p class="lede">Journeyman electrician exam prep where every explanation cites the code section. Drill the lookups, work the calcs, sit the timed exam. All offline.</p>
-        <span class="soon">Coming soon to the App Store</span><span class="fine">iPhone, pay once</span>
+        <span class="soon">Coming soon to the App Store</span>
+        <p class="fine">iPhone. Pay once, no subscription.</p>
       </div>
-      <div class="drill" id="drill">
+      <div class="deck">
+        <div class="book" aria-hidden="true">
+          <span class="tb y"></span><span class="tb o"></span><span class="tb g"></span><span class="tb r"></span>
+          <svg class="bolt" viewBox="0 0 64 96"><path d="M40 2 6 54h22l-6 40 36-56H34z" fill="#FFC400" stroke="#0064D2" stroke-width="5" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="drill" id="drill">
         <div class="dTop"><span>Lookup drill, question 3 of 10</span><span class="dTimer" id="timer">0:00</span></div>
         <div class="dBar"><i id="bar"></i></div>
         <p class="dQ">A 120/240 V service drop crosses a house driveway. What's the minimum clearance above the driveway?</p>
@@ -169,6 +194,7 @@ footer a{margin:0 12px;text-decoration:none;font-weight:700}
           <button class="again" type="button" id="again">Try another look</button>
         </div>
         <p class="dNote">A sample question. Tabbed's bank cites the section for every answer.</p>
+      </div>
       </div>
     </div>
   </div>
