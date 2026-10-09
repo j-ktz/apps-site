@@ -3,134 +3,234 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stashday: sinking funds, one paycheck at a time</title>
-<meta name="description" content="Stashday tells you exactly how much to set aside each paycheck so every irregular bill is covered when it arrives.">
+<title>Stashday: every bill covered, one paycheck at a time</title>
+<meta name="description" content="Stashday tells you exactly how much to set aside each payday so car registration, holidays, insurance and the vet never catch you short.">
 <link rel="canonical" href="https://apps.johnkatez.com/stashday/">
 <meta property="og:title" content="Stashday: every bill covered, one paycheck at a time">
-<meta property="og:description" content="One number each payday. Car registration, holidays, insurance and the vet, all covered.">
+<meta property="og:description" content="One number each payday. Everything else is covered.">
 <meta property="og:image" content="https://apps.johnkatez.com/stashday/hero.jpg">
 <link rel="icon" href="img/icon.png">
 <style>
-:root{--green:#16805F;--bright:#34C79A;--ink:#1C1C1E;--muted:#5F6368;--paper:#FBFAF6;--card:#FFFFFF;--wash:#F2F6F4;--line:#E3E8E5;--coral:#F2683C;--sun:#F6B93B}
-@media(prefers-color-scheme:dark){:root{--green:#34C79A;--bright:#34C79A;--ink:#F2F2F7;--muted:#A1A1A6;--paper:#111312;--card:#1A1F1D;--wash:#1A1F1D;--line:#2a312e}}
+:root{
+  --paper:#FBF8F3; --ink:#12201A; --muted:#5d6a63; --line:#E6E0D3;
+  --forest:#0D2B22; --green:#16805F; --mint:#34C79A;
+  --display:ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+  --num:ui-rounded,"SF Pro Rounded",system-ui,sans-serif;
+}
+@media(prefers-color-scheme:dark){:root{--paper:#0E1512;--ink:#EEF3EF;--muted:#9BABA2;--line:#243029;--green:#34C79A}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--green)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-nav.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:800;font-size:1.15rem;text-decoration:none}
-.brand img{width:34px;height:34px;border-radius:9px}
-nav.top .links a{margin-left:22px;color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem}
-.hero{position:relative;border-radius:32px;overflow:hidden;background:#F7F4EE url(hero.jpg) right center/cover no-repeat;min-height:520px;display:flex;align-items:center}
-.hero .copy{padding:56px 48px;max-width:560px}
-.hero h1{font:800 clamp(2.4rem,5.4vw,3.9rem)/1.02 ui-rounded,-apple-system,sans-serif;letter-spacing:-.035em;margin:0 0 16px;color:#17201C}
-.hero h1 em{font-style:normal;color:#16805F}
-.hero p{font-size:1.2rem;color:#4b5551;margin:0 0 26px}
-.btn{display:inline-block;background:#16805F;color:#fff;font-weight:800;text-decoration:none;padding:15px 24px;border-radius:16px}
-.soon{display:inline-block;background:#E4F2EC;color:#16805F;font-weight:800;padding:15px 22px;border-radius:16px}
-.fine{color:#6a736f;font-size:.88rem;margin-top:12px}
-section{padding:64px 0 8px}
-h2{font:800 clamp(1.8rem,4vw,2.6rem)/1.1 ui-rounded,-apple-system,sans-serif;letter-spacing:-.03em;margin:0 0 10px}
-.sub{color:var(--muted);font-size:1.12rem;max-width:36em;margin:0 0 30px}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
-.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}
-.step:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font:800 1rem ui-rounded,sans-serif;margin-bottom:12px}
-@media(prefers-color-scheme:dark){.step:before{color:#0c1210}}
-.step p{margin:0;font-size:.98rem;color:var(--muted)}
-.rail{display:flex;gap:18px;overflow-x:auto;padding:6px 4px 24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-.rail figure{margin:0;flex:0 0 auto;scroll-snap-align:start;width:250px}
-.phone{border-radius:34px;border:6px solid #17201C;background:#17201C;overflow:hidden;line-height:0;box-shadow:0 24px 40px -22px rgba(22,128,95,.45)}
-.phone img{width:100%;height:auto;display:block}
-.rail figcaption{margin-top:12px;font-weight:700;text-align:center;font-size:.98rem}
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.plan{border-radius:26px;padding:28px;border:1px solid var(--line);background:var(--card)}
-.plan.pro{background:#16805F;color:#fff;border-color:#16805F}
-.plan.pro .tag{background:#fff;color:#16805F}
-.tag{display:inline-block;font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:99px;background:var(--wash);color:var(--green)}
-.plan h3{font:800 1.5rem ui-rounded,sans-serif;margin:14px 0 10px}
-.plan ul{margin:0;padding-left:20px}.plan li{margin:4px 0}
-.priv{background:var(--wash);border-radius:28px;padding:36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
-.priv h2{margin-bottom:6px}.priv p{margin:0;color:var(--muted)}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.chips span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-weight:700;font-size:.88rem}
-footer{margin-top:56px;border-top:1px solid var(--line);padding:26px 0 44px;color:var(--muted);font-size:.92rem;text-align:center}
-footer a{color:var(--muted);margin:0 10px;text-decoration:none;font-weight:600}
-@media(max-width:820px){
- .hero{background:#F7F4EE;display:block;min-height:0}
- .hero:after{content:"";display:block;aspect-ratio:1/1;background:url(hero.jpg) 82% 55%/auto 118% no-repeat}
- .hero .copy{padding:36px 24px 8px}
- .steps{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}.priv{grid-template-columns:1fr}
- nav.top .links a.opt{display:none}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;position:relative;z-index:3}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.2rem var(--display);letter-spacing:-.02em}
+.brand img{width:36px;height:36px;border-radius:10px}
+.nav a.l{margin-left:24px;text-decoration:none;font-weight:600;color:var(--muted);font-size:.95rem}
+.nav a.l:hover{color:var(--ink)}
+.soonBtn{display:inline-block;background:var(--ink);color:var(--paper);font:700 .98rem var(--display);padding:13px 22px;border-radius:99px}
+
+/* hero: the number is the hero */
+.hero{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:min(86vh,780px);padding:10px 0 40px}
+.hero .copy{position:relative;z-index:2}
+h1{font:800 clamp(2.9rem,6.4vw,5.6rem)/.95 var(--display);letter-spacing:-.045em;margin:0 0 6px;max-width:9em}
+.big{display:block;font:800 clamp(4.6rem,12vw,10.5rem)/.9 var(--num);letter-spacing:-.06em;font-variant-numeric:tabular-nums;color:var(--green);margin:6px 0 14px;white-space:nowrap}
+.cap{font-size:1.25rem;color:var(--muted);max-width:21em;margin:0 0 28px}
+.art{position:absolute;right:-8vw;top:50%;width:min(60vw,840px);transform:translateY(-50%);z-index:1}
+.art img{width:100%;height:auto;display:block;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 32%,#000 100%),linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 32%,#000 100%),linear-gradient(180deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-composite:intersect}
+@media(prefers-color-scheme:dark){.art img{border-radius:28px;-webkit-mask-image:none;mask-image:none;opacity:.96}}
+.fine{color:var(--muted);font-size:.92rem;margin-left:14px}
+
+/* the payday scene */
+.scene{position:relative;height:340vh;background:var(--forest);color:#EAF4EE}
+.sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center;max-width:1180px;margin:0 auto;padding:0 24px}
+.ledger{background:#F6F2E9;color:#12201A;border-radius:30px;padding:30px 30px 20px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);max-width:520px;width:100%;justify-self:center}
+.ledger h3{margin:0 0 4px;font:700 1rem var(--body);color:#5d6a63}
+.left{font:800 clamp(3rem,6vw,4.6rem)/1 var(--num);letter-spacing:-.05em;font-variant-numeric:tabular-nums;margin:0 0 18px;transition:color .4s}
+.left.done{color:#16805F}
+.row{display:flex;align-items:center;gap:14px;padding:15px 0;border-top:1.5px solid #E2DCCD;font-weight:700;font-size:1.08rem}
+.row .tick{flex:none;width:30px;height:30px;border-radius:50%;border:2.5px solid #BDB6A4;display:grid;place-items:center;transition:background .3s,border-color .3s,transform .4s cubic-bezier(.3,1.8,.4,1);order:-1}
+.row .tick svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .35s .1s}
+.row.on .tick{background:#16805F;border-color:#16805F;transform:scale(1.12)}
+.row.on .tick svg{stroke-dashoffset:0}
+.row .emo{font-size:1.4rem}
+.row .nm{flex:1;transition:opacity .3s;text-decoration:line-through;text-decoration-color:transparent}
+.row.on .nm{opacity:.5;text-decoration-color:currentColor}
+.row .amt{font-variant-numeric:tabular-nums;font-family:var(--num)}
+.say{position:relative;min-height:16em}
+.say .step{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s;pointer-events:none}
+.say .step.on{opacity:1;transform:none;pointer-events:auto}
+.say h2{font:800 clamp(2.4rem,5.2vw,4.4rem)/.98 var(--display);letter-spacing:-.045em;margin:0 0 16px}
+.say p{font-size:1.2rem;color:#B8CFC3;max-width:24em;margin:0}
+.dots{display:flex;gap:8px;position:absolute;left:0;bottom:0}
+.dots i{width:30px;height:5px;border-radius:9px;background:rgba(255,255,255,.18);transition:background .3s,width .3s}
+.dots i.on{background:var(--mint);width:54px}
+
+/* gallery */
+.sec{padding:120px 0}
+h2.h{font:800 clamp(2.3rem,5vw,4.2rem)/.98 var(--display);letter-spacing:-.045em;margin:0 0 16px;max-width:13em}
+.sub{font-size:1.2rem;color:var(--muted);max-width:30em;margin:0}
+.fan{position:relative;display:flex;justify-content:center;margin-top:60px;height:640px}
+.dev{position:absolute;width:270px;aspect-ratio:1320/2868;border-radius:46px;background:#0b0f0d;padding:9px;box-shadow:0 0 0 2px #26302b,0 50px 80px -30px rgba(10,40,28,.55)}
+.dev:before{content:"";position:absolute;left:50%;top:17px;width:78px;height:23px;transform:translateX(-50%);background:#000;border-radius:99px;z-index:2}
+.dev img{width:100%;height:100%;object-fit:cover;border-radius:38px;display:block}
+.fan .dev{top:0;transition:transform .5s cubic-bezier(.2,1.1,.3,1)}
+.fan .d1{transform:translateX(-340px) rotate(-8deg) translateY(40px)}
+.fan .d2{transform:translateX(-120px) rotate(-2deg);z-index:2}
+.fan .d3{transform:translateX(120px) rotate(2deg);z-index:3}
+.fan .d4{transform:translateX(340px) rotate(8deg) translateY(40px)}
+.fan .dev:hover{z-index:5}
+.fan .d1:hover{transform:translateX(-340px) rotate(-3deg) translateY(10px)}.fan .d2:hover{transform:translateX(-120px) translateY(-14px)}.fan .d3:hover{transform:translateX(120px) translateY(-14px)}.fan .d4:hover{transform:translateX(340px) rotate(3deg) translateY(10px)}
+.capline{display:flex;justify-content:center;margin-top:26px;color:var(--muted);font-weight:600;flex-wrap:wrap;column-gap:44px;row-gap:6px}
+
+/* price */
+.plans{display:grid;grid-template-columns:1fr 1fr;margin-top:46px;border-top:2px solid var(--ink)}
+.plan{padding:34px 36px 10px 0}
+.plan+.plan{padding:34px 0 10px 36px;border-left:1.5px solid var(--line)}
+.plan h3{font:800 clamp(2rem,4vw,3.2rem)/1 var(--num);letter-spacing:-.04em;margin:0 0 8px}
+.plan .what{font-weight:700;color:var(--green);margin:0 0 14px}
+.plan ul{margin:0;padding:0;list-style:none}
+.plan li{padding:9px 0;border-bottom:1.5px solid var(--line);font-weight:600}
+
+/* privacy */
+.priv{background:var(--forest);color:#EAF4EE;padding:120px 0}
+.priv h2{font:800 clamp(2.6rem,6.4vw,5.6rem)/.95 var(--display);letter-spacing:-.05em;margin:0 0 26px;max-width:11em}
+.nos{display:flex;flex-wrap:wrap;gap:12px 36px;font:700 1.25rem var(--display);color:#9CC8B6}
+.nos span:before{content:"No ";color:#EAF4EE}
+.priv .lnk{display:inline-block;margin-top:34px;font-weight:700;color:var(--mint)}
+footer{padding:44px 0 60px;text-align:center;color:var(--muted);font-size:.95rem}
+footer a{margin:0 12px;text-decoration:none;font-weight:700}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:0;padding-bottom:0}
+  .art{position:relative;right:auto;top:auto;transform:none;width:118%;margin:10px -9% 0}
+  .art img{-webkit-mask-image:radial-gradient(ellipse 72% 70% at 58% 52%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 58% 52%,#000 55%,transparent 100%);-webkit-mask-composite:source-over;mask-composite:add}
+  .fine{display:block;margin:14px 0 0}
+  .nav a.l{display:none}
+  .sticky{grid-template-columns:1fr;gap:18px;align-content:center;padding-top:14px}
+  .ledger{padding:18px 22px 10px;border-radius:24px}.left{font-size:clamp(2.6rem,12vw,3.4rem);margin-bottom:6px}.row{padding:11px 0}
+  .say{min-height:14.5em}.say h2{font-size:2.3rem}.say p{font-size:1.05rem}
+  .sec,.priv{padding:80px 0}
+  .fan{height:auto;display:flex;overflow-x:auto;gap:16px;justify-content:flex-start;padding:10px 24px 30px;scroll-snap-type:x mandatory;margin:44px -24px 0}
+  .fan .dev{position:relative;flex:none;width:230px;transform:none!important;scroll-snap-align:center}
+  .capline{display:none}.plans{grid-template-columns:1fr}.plan+.plan{border-left:0;border-top:1.5px solid var(--line);padding-left:0;margin-top:20px}
 }
-@media(max-width:520px){.steps{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){
+  .scene{height:auto}.sticky{position:static;height:auto;padding:80px 24px}
+  .say{min-height:0}.say .step{position:static;opacity:1;transform:none;margin-bottom:22px}.dots{display:none}
+  .row .tick,.row .tick svg,.left,.fan .dev{transition:none}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <nav class="top">
-    <a class="brand" href="./"><img src="img/icon.png" alt="" width="34" height="34">Stashday</a>
-    <div class="links"><a class="opt" href="#how">How it works</a><a class="opt" href="#plans">Pricing</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></div>
+  <nav class="nav">
+    <a class="brand" href="./"><img src="img/icon.png" alt="" width="36" height="36">Stashday</a>
+    <div><a class="l" href="#plans">Pricing</a><a class="l" href="support.html">Support</a><a class="l" href="privacy.html">Privacy</a> <span class="soonBtn" style="margin-left:18px">Coming soon</span></div>
   </nav>
 
-  <header class="hero" role="img" aria-label="Stashday on an iPhone beside rings for holidays, the car and the vet, a jar of coins and an envelope">
+  <header class="hero">
     <div class="copy">
-      <h1>Every bill covered, <em>one paycheck</em> at a time.</h1>
-      <p>Car registration, holidays, insurance, the vet. Stashday tells you exactly how much to set aside each payday so none of them catch you short.</p>
-      <span class="soon">Coming soon to the App Store</span>
-      <p class="fine">iPhone · no account needed</p>
+      <h1>Payday has one number.</h1>
+      <span class="big" id="big" aria-label="299 dollars and 36 cents">$299.36</span>
+      <p class="cap">That's all you set aside this payday. Car registration, holidays, insurance and the vet are covered.</p>
+      <span class="soonBtn">Coming soon to the App Store</span><span class="fine">iPhone, no account</span>
     </div>
+    <div class="art" aria-hidden="true"><img src="hero.jpg" alt="" width="1600" height="900"></div>
   </header>
-
-  <section id="how">
-    <h2>One number. That's the whole idea.</h2>
-    <p class="sub">Set it aside, tick each fund off, and when a bill finally arrives, tap Paid it. Stashday logs it and starts saving for the next one.</p>
-    <div class="steps">
-      <div class="step"><p>Tell it when you get paid: weekly, every two weeks, twice a month or monthly.</p></div>
-      <div class="step"><p>Add what's coming up, or start from ideas like car registration, property tax and holidays.</p></div>
-      <div class="step"><p>Each payday, check off each fund as you move the money.</p></div>
-      <div class="step"><p>When a bill is due, tap Paid it. Recurring bills roll forward on their own.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>See it in action.</h2>
-    <p class="sub">Big friendly numbers, one color per fund, light and dark.</p>
-    <div class="rail">
-      <figure><div class="phone"><img src="img/number.jpg" alt="Your number: the amount to set aside each paycheck" width="640" height="1391" loading="lazy"></div><figcaption>Your number</figcaption></figure>
-      <figure><div class="phone"><img src="img/checklist.jpg" alt="The payday checklist" width="640" height="1391" loading="lazy"></div><figcaption>The payday checklist</figcaption></figure>
-      <figure><div class="phone"><img src="img/fund.jpg" alt="A fund's detail screen" width="640" height="1391" loading="lazy"></div><figcaption>Every fund, on track</figcaption></figure>
-      <figure><div class="phone"><img src="img/share.jpg" alt="A shareable summary card" width="640" height="1391" loading="lazy"></div><figcaption>A summary you can share</figcaption></figure>
-      <figure><div class="phone"><img src="img/pro.jpg" alt="Stashday Pro" width="640" height="1391" loading="lazy"></div><figcaption>Stashday Pro</figcaption></figure>
-    </div>
-  </section>
-
-  <section id="plans">
-    <h2>Free, and Stashday Pro.</h2>
-    <p class="sub">The essentials are free for good.</p>
-    <div class="plans">
-      <div class="plan"><span class="tag">Free forever</span><h3>Start with three funds</h3>
-        <ul><li>3 funds</li><li>The payday checklist</li><li>Reminders</li><li>Siri</li><li>A shareable summary</li></ul></div>
-      <div class="plan pro"><span class="tag">Pro</span><h3>$14.99 a year, or $29.99 once</h3>
-        <ul><li>Unlimited funds</li><li>Home Screen and Lock Screen widgets with check-off</li><li>CSV export</li><li>7-day free trial on the yearly plan</li></ul></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="priv">
-      <div>
-        <h2 style="font-size:2rem">Private by design.</h2>
-        <p>Your funds live on your iPhone and in your own iCloud. We never see them.</p>
-        <div class="chips"><span>No accounts</span><span>No bank links</span><span>No ads</span><span>No analytics</span></div>
-      </div>
-      <a class="btn" href="privacy.html">Privacy policy</a>
-    </div>
-  </section>
-
-  <footer>
-    <p><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="/">All apps</a></p>
-    <p>© 2026 John Katez · <a href="mailto:support@johnkatez.com" style="margin:0">support@johnkatez.com</a></p>
-  </footer>
 </div>
+
+<section class="scene" id="scene" aria-label="How a payday works">
+  <div class="sticky">
+    <div class="ledger" role="img" aria-label="Payday checklist: three funds ticked off one at a time until the amount left reaches zero">
+      <h3>Left to set aside</h3>
+      <p class="left" id="left">$299.36</p>
+      <div class="row" data-v="13.64"><span class="emo">🚗</span><span class="nm">Car registration</span><span class="amt">$13.64</span><span class="tick"><svg viewBox="0 0 16 16"><path d="M2 8.5 6 12.5 14 3.5"/></svg></span></div>
+      <div class="row" data-v="200"><span class="emo">🎁</span><span class="nm">Holidays</span><span class="amt">$200.00</span><span class="tick"><svg viewBox="0 0 16 16"><path d="M2 8.5 6 12.5 14 3.5"/></svg></span></div>
+      <div class="row" data-v="85.72"><span class="emo">🛡️</span><span class="nm">Car insurance</span><span class="amt">$85.72</span><span class="tick"><svg viewBox="0 0 16 16"><path d="M2 8.5 6 12.5 14 3.5"/></svg></span></div>
+    </div>
+    <div class="say" id="say">
+      <div class="step on"><h2>It's payday.</h2><p>Tell Stashday how often you get paid and what's coming up. It works out each fund's share of this check.</p></div>
+      <div class="step"><h2>Move the money.</h2><p>Set each fund's amount aside, in your own bank, however you like. Stashday never touches it.</p></div>
+      <div class="step"><h2>Tick it off.</h2><p>Check each fund as you go. The number left to set aside counts down with you.</p></div>
+      <div class="step"><h2>Covered.</h2><p>Zero left. When a bill finally arrives, tap Paid it and Stashday starts saving for the next one.</p></div>
+      <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <h2 class="h">Every bill gets its own ring.</h2>
+    <p class="sub">Big friendly numbers, one color per fund, and a clear answer to "am I on track?"</p>
+    <div class="fan">
+      <div class="dev d1"><img src="img/number.jpg" alt="Your number: the amount to set aside" width="640" height="1391" loading="lazy"></div>
+      <div class="dev d2"><img src="img/checklist.jpg" alt="The payday checklist" width="640" height="1391" loading="lazy"></div>
+      <div class="dev d3"><img src="img/fund.jpg" alt="A fund's detail screen" width="640" height="1391" loading="lazy"></div>
+      <div class="dev d4"><img src="img/share.jpg" alt="A summary card you can share" width="640" height="1391" loading="lazy"></div>
+    </div>
+    <div class="capline"><span>Your number</span><span>The payday checklist</span><span>Every fund, on track</span><span>A summary to share</span></div>
+  </div>
+</section>
+
+<section class="sec" id="plans" style="padding-top:20px">
+  <div class="wrap">
+    <h2 class="h">Free for good. Pro when you outgrow it.</h2>
+    <div class="plans">
+      <div class="plan"><h3>Free</h3><p class="what">Everything you need to start</p>
+        <ul><li>3 funds</li><li>The payday checklist</li><li>Reminders and Siri</li><li>A shareable summary</li></ul></div>
+      <div class="plan"><h3>$14.99/yr</h3><p class="what">Or $29.99 once. 7-day free trial on the yearly plan.</p>
+        <ul><li>Unlimited funds</li><li>Home and Lock Screen widgets with check-off</li><li>CSV export</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="priv">
+  <div class="wrap">
+    <h2>Your money stays on your phone.</h2>
+    <div class="nos"><span>accounts</span><span>bank links</span><span>ads</span><span>analytics</span></div>
+    <a class="lnk" href="privacy.html">Read the privacy policy</a>
+  </div>
+</section>
+
+<footer class="wrap">
+  <a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="/">All apps</a>
+  <p>© 2026 John Katez · <a href="mailto:support@johnkatez.com" style="margin:0">support@johnkatez.com</a></p>
+</footer>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var money=function(v){return '$'+v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',')};
+  var T=299.36,big=document.getElementById('big');
+  var scene=document.getElementById('scene'),rows=[].slice.call(scene.querySelectorAll('.row')),
+      steps=[].slice.call(scene.querySelectorAll('.step')),dots=[].slice.call(scene.querySelectorAll('.dots i')),
+      left=document.getElementById('left');
+  if(reduce){left.textContent='$0.00';left.classList.add('done');rows.forEach(function(r){r.classList.add('on')});return;}
+  /* the hero number rolls up once on load */
+  big.textContent='$0.00';
+  var t0=null;
+  requestAnimationFrame(function f(ts){
+    if(!t0)t0=ts;var p=Math.min((ts-t0)/1500,1),e=p===1?1:1-Math.pow(2,-10*p);
+    big.textContent=money(T*e);if(p<1)requestAnimationFrame(f);
+  });
+  /* the payday scene follows scroll */
+  var cur=-1,queued=false;
+  function update(){
+    queued=false;
+    var r=scene.getBoundingClientRect(),h=scene.offsetHeight-innerHeight,p=Math.max(0,Math.min(1,-r.top/h));
+    var s=p<.2?0:p<.45?1:p<.72?2:3;
+    var n=p<.3?0:p>=.72?3:Math.min(3,1+Math.floor((p-.3)/.14));
+    var sum=0;
+    rows.forEach(function(row,i){var on=i<n;row.classList.toggle('on',on);if(on)sum+=+row.dataset.v});
+    left.textContent=money(Math.max(0,T-sum));left.classList.toggle('done',n===3);
+    if(s!==cur){cur=s;steps.forEach(function(x,i){x.classList.toggle('on',i===s)});dots.forEach(function(x,i){x.classList.toggle('on',i===s)})}
+  }
+  function req(){if(!queued){queued=true;requestAnimationFrame(update)}}
+  addEventListener('scroll',req,{passive:true});addEventListener('resize',req);update();
+})();
+</script>
 </body>
 </html>

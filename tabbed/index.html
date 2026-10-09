@@ -3,135 +3,288 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tabbed: Journeyman Electrician exam prep</title>
-<meta name="description" content="Offline exam prep for the journeyman electrician license test. Answers that cite the code section, timed drills, step-by-step calcs. Pay once, no subscription.">
+<title>Tabbed: know the answer, know where it lives</title>
+<meta name="description" content="Offline journeyman electrician exam prep. Every answer cites the code section, with lookup drills, step-by-step calcs and timed exams. Pay once, no subscription.">
 <link rel="canonical" href="https://apps.johnkatez.com/tabbed/">
-<meta property="og:title" content="Tabbed: Journeyman Electrician">
-<meta property="og:description" content="Study offline. Pay once. Every answer cites the code section.">
+<meta property="og:title" content="Tabbed: know the answer, know where it lives">
+<meta property="og:description" content="Journeyman electrician exam prep. Offline. Pay once.">
 <meta property="og:image" content="https://apps.johnkatez.com/tabbed/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/icon.png">
 <style>
-:root{--blue:#0064D2;--blueHi:#0A84FF;--g1:#1878EC;--g2:#0046A0;--yellow:#FFC400;--orange:#FF7A1A;--green:#28CD78;--red:#FF4F4F;--cream:#ECE6D6;--ink:#14181F;--off:#F6F4EE;--muted:#59616d;--card:#FFFFFF;--line:#DDD6C4}
-@media(prefers-color-scheme:dark){:root{--cream:#0B1220;--ink:#F2F4F8;--off:#111A2B;--muted:#9aa6b8;--card:#17233a;--line:#26334d;--blue:#0A84FF}}
+:root{
+  --blue:#0064D2; --g1:#1878EC; --g2:#0046A0; --yellow:#FFC400; --orange:#FF7A1A; --green:#28CD78; --red:#FF4F4F;
+  --page:#ECE6D6; --card:#F6F4EE; --ink:#14181F; --muted:#59616d; --rule:#D8D0BB; --navy:#0B1220;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media(prefers-color-scheme:dark){:root{--page:#0B1220;--card:#131D31;--ink:#EEF2F8;--muted:#9AA7BB;--rule:#243350}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--blue)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.6 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+
+/* hero */
 .hero{background:linear-gradient(180deg,var(--g1),var(--g2));color:#fff;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:linear-gradient(90deg,var(--yellow) 0 25%,var(--orange) 25% 50%,var(--green) 50% 75%,var(--red) 75%)}
-nav.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.15rem;text-decoration:none}
-.brand img{width:34px;height:34px;border-radius:9px}
-nav.top .links a{margin-left:22px;color:#e6f0ff;text-decoration:none;font-weight:600;font-size:.95rem}
-.heroGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:30px 0 80px}
-.kicker{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:6px 13px;border-radius:99px;font-weight:700;font-size:.82rem;letter-spacing:.04em}
-h1{font-size:clamp(2.4rem,5.6vw,4.1rem);line-height:1.02;letter-spacing:-.035em;margin:18px 0 16px;font-weight:850}
-h1 span{color:var(--yellow)}
-.lede{font-size:1.2rem;color:#dcebff;max-width:30em;margin:0 0 26px}
-.soon{display:inline-block;background:var(--yellow);color:#14181F;font-weight:800;padding:15px 24px;border-radius:15px}
-.fine{color:#bcd6fb;font-size:.9rem;margin-top:12px}
-.heroArt{display:flex;justify-content:center;position:relative}
-.heroArt .icon{position:absolute;width:150px;height:150px;border-radius:34px;left:-6px;top:-18px;box-shadow:0 20px 40px -10px rgba(0,20,70,.6);transform:rotate(-8deg);z-index:2}
-.phone{width:min(290px,66vw);border-radius:38px;border:7px solid #0b1220;background:#0b1220;overflow:hidden;line-height:0;box-shadow:0 34px 60px -22px rgba(0,15,60,.7)}
-.phone img{width:100%;height:auto;display:block}
-section{padding:64px 0 8px}
-h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;letter-spacing:-.03em;margin:0 0 10px;font-weight:850}
-.sub{color:var(--muted);font-size:1.12rem;max-width:36em;margin:0 0 30px}
-.feat{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:34px 0}
-.feat.flip .art{order:-1}
-.feat h3{font-size:1.7rem;letter-spacing:-.02em;margin:10px 0 8px}
-.feat p{color:var(--muted);margin:0}
-.tab{display:inline-block;width:46px;height:14px;border-radius:5px}
-.art{display:flex;justify-content:center}
-.art .phone{width:min(260px,60vw);box-shadow:0 26px 44px -22px rgba(0,40,110,.5)}
-.chip{display:inline-block;font:700 .88rem ui-monospace,SFMono-Regular,Menlo,monospace;background:#D6E6FB;color:#0b4fa8;border:1px solid #A9C9F2;border-radius:99px;padding:3px 11px;margin-top:12px}
-@media(prefers-color-scheme:dark){.chip{background:#12305a;color:#9cc6ff;border-color:#24508d}}
-.band{background:var(--blue);color:#fff;border-radius:34px;padding:44px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;position:relative;overflow:hidden}
-.band h2{color:#fff}
-.band ul{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
-.band li{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);border-radius:99px;padding:7px 14px;font-weight:700;font-size:.92rem}
-.band .price{font-size:2.6rem;font-weight:850;letter-spacing:-.03em}
-.band .price small{display:block;font-size:.95rem;font-weight:600;opacity:.85;letter-spacing:0}
-.disc{color:var(--muted);font-size:.85rem;max-width:760px;margin:36px auto 0;text-align:center}
-footer{margin-top:44px;border-top:1px solid var(--line);padding:26px 0 44px;color:var(--muted);font-size:.92rem;text-align:center}
-footer a{color:var(--muted);margin:0 10px;text-decoration:none;font-weight:600}
-@media(max-width:820px){
- .heroGrid,.feat,.band{grid-template-columns:1fr}.feat{gap:22px}.feat.flip .art{order:0}
- .heroArt{margin-top:20px}.heroArt .icon{width:110px;height:110px;left:0}.band{padding:32px 24px}
- nav.top .links a.opt{display:none}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850;font-size:1.2rem;letter-spacing:-.02em}
+.brand img{width:36px;height:36px;border-radius:10px}
+.nav a.l{margin-left:24px;color:#dcebff;text-decoration:none;font-weight:600;font-size:.95rem}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:28px 0 96px}
+h1{font-weight:850;font-size:clamp(2.8rem,6.2vw,5.4rem);line-height:.96;letter-spacing:-.045em;margin:0 0 20px}
+h1 span{display:block}
+.lede{font-size:1.22rem;color:#dcebff;max-width:27em;margin:0 0 28px}
+.soon{display:inline-block;background:var(--yellow);color:#14181F;font-weight:800;padding:15px 24px;border-radius:14px}
+.fine{color:#bcd6fb;font-size:.92rem;margin-left:14px}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background:linear-gradient(90deg,var(--yellow) 0 25%,var(--orange) 25% 50%,var(--green) 50% 75%,var(--red) 75%)}
+
+/* live drill */
+.drill{background:#fff;color:#14181F;border-radius:26px;padding:22px 22px 18px;box-shadow:0 40px 70px -30px rgba(0,25,80,.7);position:relative}
+.dTop{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.9rem;color:#59616d;margin-bottom:12px}
+.dTimer{font:800 1.5rem var(--mono);color:#14181F;font-variant-numeric:tabular-nums}
+.dBar{height:6px;border-radius:9px;background:#E5EAF1;margin-bottom:16px;overflow:hidden}
+.dBar i{display:block;height:100%;width:100%;background:var(--blue);transform-origin:left;transition:background .3s}
+.dQ{font-weight:700;font-size:1.12rem;line-height:1.4;margin:0 0 14px}
+.opts{display:grid;gap:9px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;background:#F1F4F8;border:2px solid transparent;border-radius:14px;padding:12px 14px;font-weight:700;transition:background .15s,border-color .15s,transform .1s}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:.85rem;color:#59616d}
+.opt:hover:not([disabled]){background:#E6EEF9;transform:translateX(3px)}
+.opt:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.opt.ok{background:#E3F6EA;border-color:#28A863}.opt.ok b{background:#28A863;color:#fff}
+.opt.no{background:#FDE9E9;border-color:#E14B4B}.opt.no b{background:#E14B4B;color:#fff}
+.reveal{display:none;margin-top:14px;padding-top:14px;border-top:1.5px solid #E5EAF1;font-size:.96rem}
+.reveal.on{display:block;animation:pop .35s cubic-bezier(.2,1.2,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}}
+.reveal strong{display:block;margin-bottom:4px}
+.chip{display:inline-block;font:700 .9rem var(--mono);background:#D6E6FB;color:#0b4fa8;border:1px solid #A9C9F2;border-radius:99px;padding:3px 12px;margin:2px 0 8px}
+.find{color:#59616d;margin:0 0 10px}.find b{color:#14181F}
+.again{all:unset;cursor:pointer;color:var(--blue);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.again:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:5px}
+.dNote{font-size:.78rem;color:#7a8594;margin:10px 0 0}
+
+/* fore-edge tabs */
+.tabs{position:fixed;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:20}
+.tabs a{writing-mode:vertical-rl;text-orientation:mixed;padding:14px 8px;font-weight:800;font-size:.85rem;color:#14181F;text-decoration:none;border-radius:10px 0 0 10px;transform:translateX(10px);transition:transform .25s cubic-bezier(.3,1.4,.4,1),padding .25s;box-shadow:-3px 3px 10px rgba(0,0,0,.18)}
+.tabs a:hover,.tabs a.on{transform:translateX(0);padding-right:12px}
+.t1{background:var(--yellow)}.t2{background:var(--orange)}.t3{background:var(--green)}.t4{background:var(--red);color:#fff!important}
+
+/* chapters */
+.ch{padding:110px 0 30px;position:relative}
+.chTag{display:inline-block;height:12px;width:64px;border-radius:5px;margin-bottom:18px}
+h2{font-weight:850;font-size:clamp(2.2rem,5vw,4rem);line-height:.98;letter-spacing:-.045em;margin:0 0 16px;max-width:12em}
+.sub{font-size:1.18rem;color:var(--muted);max-width:28em;margin:0}
+.dev{position:relative;width:290px;aspect-ratio:1320/2868;border-radius:46px;background:#090d14;padding:9px;box-shadow:0 0 0 2px #1f2b40,0 50px 80px -30px rgba(0,30,90,.55)}
+.dev:before{content:"";position:absolute;left:50%;top:17px;width:80px;height:24px;transform:translateX(-50%);background:#000;border-radius:99px;z-index:2}
+.dev img{width:100%;height:100%;object-fit:cover;border-radius:38px;display:block}
+
+/* chapter 1: annotated */
+.anno{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;margin-top:56px}
+.anno .col{position:relative;height:100%;min-height:600px}
+.call{position:absolute;display:flex;align-items:center;gap:0;font-weight:800;font-size:.98rem;max-width:230px}
+.call p{margin:0;line-height:1.3}
+.call small{display:block;font-weight:600;color:var(--muted);font-size:.86rem;margin-top:2px}
+.call:after{content:"";display:block;height:2px;background:var(--ink);flex:none}
+.cl{right:0;flex-direction:row;text-align:right}.cl:after{width:60px;margin-left:12px}
+.cr{left:0}.cr:before{content:"";display:block;width:60px;height:2px;background:var(--ink);margin-right:12px;flex:none}.cr:after{display:none}
+.call i{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.cl i{right:-5px}.cr i{left:-5px}
+
+/* chapter 2: the clock */
+.navy{background:var(--navy);color:#EEF2F8;margin-top:110px;padding:110px 0}
+.navy .sub{color:#9fb0c9}
+.clock{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.bigclock{font:850 clamp(5rem,15vw,12rem)/.85 var(--mono);letter-spacing:-.06em;color:var(--orange);font-variant-numeric:tabular-nums;margin:24px 0 8px}
+.navy .dev{box-shadow:0 0 0 2px #2a3a57,0 50px 80px -20px rgba(0,0,0,.7)}
+
+/* chapter 3: calcs */
+.calcgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;margin-top:50px}
+.work{background:var(--card);border-radius:24px;padding:28px 30px;font-family:var(--mono);font-size:1rem;line-height:1.9;box-shadow:0 30px 50px -30px rgba(0,30,90,.35)}
+.work .ln{display:flex;gap:14px;border-bottom:1.5px dashed var(--rule);padding:6px 0}
+.work .ln:last-child{border:0;font-weight:800;color:var(--green)}
+.work .k{flex:none;width:6.2em;color:var(--muted);font-family:var(--font);font-weight:700;font-size:.85rem;padding-top:.2em}
+
+/* chapter 4: exam */
+.exam{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center;margin-top:30px}
+.ex{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:360px;margin-top:26px}
+.ex span{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;font-weight:800;background:var(--card);border:2px solid var(--rule)}
+.ex .a{background:var(--blue);color:#fff;border-color:var(--blue)}.ex .f{box-shadow:inset 0 -5px 0 var(--orange)}.ex .c{outline:3px solid var(--ink);outline-offset:2px}
+
+/* price */
+.pay{background:var(--blue);color:#fff;padding:110px 0;margin-top:120px;position:relative}
+.pay:before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(90deg,var(--yellow) 0 25%,var(--orange) 25% 50%,var(--green) 50% 75%,var(--red) 75%)}
+.pay h2{font-size:clamp(2.6rem,6vw,5.2rem);max-width:10em}
+.nos{display:flex;flex-wrap:wrap;gap:10px 34px;font-weight:800;font-size:1.2rem;color:#cfe3ff;margin-top:22px}
+.pay .progress{margin-top:44px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.disc{color:var(--muted);font-size:.84rem;max-width:760px;margin:44px auto 0;text-align:center;padding:0 28px}
+footer{padding:36px 0 56px;text-align:center;color:var(--muted);font-size:.95rem}
+footer a{margin:0 12px;text-decoration:none;font-weight:700}
+
+@media(max-width:900px){
+  .hgrid,.clock,.calcgrid,.exam{grid-template-columns:1fr}.hgrid{padding-bottom:70px;gap:32px}
+  .nav a.l{display:none}.tabs{display:none}
+  .anno{grid-template-columns:1fr;gap:26px;justify-items:center}.anno .col{min-height:0;display:grid;gap:16px;width:100%}
+  .call{position:static;max-width:none;text-align:left;flex-direction:row}.call:after,.call:before,.call i{display:none}
+  .call{background:var(--card);border-radius:14px;padding:12px 16px}
+  .cl{order:0}.anno>.dev{order:-1}
+  .ch{padding-top:80px}.navy,.pay{padding:80px 0}.navy{margin-top:80px}.pay{margin-top:80px}
+  .exam .dev,.clock .dev{justify-self:center}
 }
+@media(prefers-reduced-motion:reduce){.reveal.on{animation:none}.tabs a,.opt,.dBar i{transition:none}}
 </style>
 </head>
 <body>
-<div class="hero">
+<nav class="tabs" aria-label="Sections">
+  <a class="t1" href="#answers">Answers</a><a class="t2" href="#find">Find it</a><a class="t3" href="#calcs">Calcs</a><a class="t4" href="#exam">Exam</a>
+</nav>
+
+<header class="hero">
   <div class="wrap">
-    <nav class="top">
-      <a class="brand" href="./"><img src="img/icon.png" alt="" width="34" height="34">Tabbed</a>
-      <div class="links"><a class="opt" href="#features">Features</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></div>
-    </nav>
-    <div class="heroGrid">
+    <div class="nav">
+      <a class="brand" href="./"><img src="img/icon.png" alt="" width="36" height="36">Tabbed</a>
+      <div><a class="l" href="support.html">Support</a><a class="l" href="privacy.html">Privacy</a></div>
+    </div>
+    <div class="hgrid">
       <div>
-        <span class="kicker">Journeyman Electrician exam prep</span>
-        <h1>Study like it's <span>test day.</span></h1>
-        <p class="lede">Practice questions that cite the code section, timed drills for finding it in your own book, and calcs worked one step at a time. All offline, in the truck or on your lunch break.</p>
-        <span class="soon">Coming soon to the App Store</span>
-        <p class="fine">iPhone · pay once · no subscription</p>
+        <h1><span>Know the answer.</span><span>Know where it lives.</span></h1>
+        <p class="lede">Journeyman electrician exam prep where every explanation cites the code section. Drill the lookups, work the calcs, sit the timed exam. All offline.</p>
+        <span class="soon">Coming soon to the App Store</span><span class="fine">iPhone, pay once</span>
       </div>
-      <div class="heroArt">
-        <img class="icon" src="img/icon.png" alt="Tabbed app icon: a cream code book with colored tabs and a lightning bolt" width="150" height="150">
-        <div class="phone"><img src="img/answer.jpg" alt="A practice question with the explanation and the code section it cites" width="640" height="1391"></div>
+      <div class="drill" id="drill">
+        <div class="dTop"><span>Lookup drill, question 3 of 10</span><span class="dTimer" id="timer">0:00</span></div>
+        <div class="dBar"><i id="bar"></i></div>
+        <p class="dQ">A 120/240 V service drop crosses a house driveway. What's the minimum clearance above the driveway?</p>
+        <div class="opts" id="opts">
+          <button class="opt" type="button" data-k="a"><b>A</b>18 ft</button>
+          <button class="opt" type="button" data-k="b"><b>B</b>15 ft</button>
+          <button class="opt" type="button" data-k="c"><b>C</b>12 ft</button>
+          <button class="opt" type="button" data-k="d"><b>D</b>10 ft</button>
+        </div>
+        <div class="reveal" id="reveal" aria-live="polite">
+          <strong id="verdict"></strong>
+          <span class="chip">230.24(B)(2)</span>
+          <p class="find"><b>Find it:</b> index under Clearances, overhead service conductors.</p>
+          <button class="again" type="button" id="again">Try another look</button>
+        </div>
+        <p class="dNote">A sample question. Tabbed's bank cites the section for every answer.</p>
       </div>
     </div>
   </div>
-</div>
+</header>
 
-<div class="wrap" id="features">
-  <section>
-    <h2>Built around how the exam works.</h2>
-    <p class="sub">From third-year apprentices to retesters: practice, drill, calculate, simulate, review.</p>
-
-    <div class="feat">
-      <div><span class="tab" style="background:var(--yellow)"></span><h3>Answers you can check.</h3><p>Every explanation cites the code section, so you learn where the answer lives instead of memorizing a letter.</p><span class="chip">230.24(B)(2)</span></div>
-      <div class="art"><div class="phone"><img src="img/answer.jpg" alt="Explanation citing a code section" width="640" height="1391" loading="lazy"></div></div>
-    </div>
-    <div class="feat flip">
-      <div><span class="tab" style="background:var(--orange)"></span><h3>Find it in the book, fast.</h3><p>Timed lookup drills for your own tabbed code book. The exam is open book, and speed in the index is half the battle.</p></div>
-      <div class="art"><div class="phone"><img src="img/lookup.jpg" alt="Timed lookup drill" width="640" height="1391" loading="lazy"></div></div>
-    </div>
-    <div class="feat">
-      <div><span class="tab" style="background:var(--green)"></span><h3>Calcs, one step at a time.</h3><p>Voltage drop, load calculations and more, with the full working shown every time. Answers come from tested code, never typed by hand.</p></div>
-      <div class="art"><div class="phone"><img src="img/calc.jpg" alt="Calculation with the full working" width="640" height="1391" loading="lazy"></div></div>
-    </div>
-    <div class="feat flip">
-      <div><span class="tab" style="background:var(--red)"></span><h3>Your exam, your format.</h3><p>Timed full-length practice in your state's format. Flag, review and submit, just like test day.</p></div>
-      <div class="art"><div class="phone"><img src="img/exam.jpg" alt="Timed practice exam with question navigator" width="640" height="1391" loading="lazy"></div></div>
-    </div>
-    <div class="feat">
-      <div><span class="tab" style="background:var(--yellow)"></span><h3>See your weak spots.</h3><p>A readiness estimate by topic points your next study session where it counts. It's an estimate based on your practice, not a prediction of your result.</p></div>
-      <div class="art"><div class="phone"><img src="img/progress.jpg" alt="Progress screen with readiness estimate by topic" width="640" height="1391" loading="lazy"></div></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="band">
-      <div>
-        <h2>Pay once. Study offline.</h2>
-        <p style="margin:0;color:#dcebff">One-time purchase for the code edition you're testing on. No subscription, no account.</p>
-        <ul><li>No account</li><li>No ads</li><li>No data collected</li><li>Works with no signal</li></ul>
+<section class="ch" id="answers">
+  <div class="wrap">
+    <span class="chTag" style="background:var(--yellow)"></span>
+    <h2>Answers you can check.</h2>
+    <p class="sub">Every explanation names the section it came from, so you learn where the answer lives instead of memorizing a letter.</p>
+    <div class="anno">
+      <div class="col">
+        <div class="call cl" style="top:11%"><div><p>Your answer, marked</p><small>Right or wrong, you see why</small></div><i></i></div>
+        <div class="call cl" style="top:61%"><div><p>Find it</p><small>Exactly where to look in your book</small></div><i></i></div>
       </div>
-      <div class="price">One-time<small>Exam Pass, per code edition</small></div>
+      <div class="dev"><img src="img/answer.jpg" alt="Practice question with the explanation, the code section it cites and a Find it hint" width="640" height="1391" loading="lazy"></div>
+      <div class="col">
+        <div class="call cr" style="top:50%"><i></i><div><p>The code section</p><small>Cited on every answer</small></div></div>
+        <div class="call cr" style="top:71%"><i></i><div><p>Report a problem</p><small>Flag a question from the answer screen</small></div></div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <p class="disc">Tabbed is an independent study aid. It is not affiliated with, endorsed by, or sponsored by NFPA, IBEW, NECA, PSI, Prometric, Pearson VUE, ICC, TDLR, or any state licensing board, and not reviewed or approved by NFPA. NEC® and National Electrical Code® are registered trademarks of the National Fire Protection Association, Quincy, MA. Passing your exam depends on your own preparation; no study tool can guarantee a result.</p>
+<section class="navy ch" id="find" style="padding-top:110px">
+  <div class="wrap clock">
+    <div>
+      <span class="chTag" style="background:var(--orange)"></span>
+      <h2>Find it in the book, fast.</h2>
+      <p class="sub">The exam is open book. Timed lookup drills train your own tabbed code book, so the index feels like muscle memory.</p>
+      <div class="bigclock" aria-hidden="true">0:41</div>
+      <p class="sub">That's how long you get. Beat it.</p>
+    </div>
+    <div style="display:flex;justify-content:center"><div class="dev"><img src="img/lookup.jpg" alt="A timed lookup drill with a countdown" width="640" height="1391" loading="lazy"></div></div>
+  </div>
+</section>
 
-  <footer>
-    <p><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="/">All apps</a></p>
-    <p>© 2026 John Katez · <a href="mailto:support@johnkatez.com" style="margin:0">support@johnkatez.com</a></p>
-  </footer>
-</div>
+<section class="ch" id="calcs">
+  <div class="wrap">
+    <span class="chTag" style="background:var(--green)"></span>
+    <h2>Calcs, one step at a time.</h2>
+    <p class="sub">The full working is shown on every problem. Answers come from tested code, never typed by hand.</p>
+    <div class="calcgrid">
+      <div class="work" aria-label="Worked voltage drop example">
+        <div class="ln"><span class="k">Given</span><span>3-phase, 127 A, 300 ft run</span></div>
+        <div class="ln"><span class="k">Formula</span><span>VD = 1.732 × K × I × L ÷ CM</span></div>
+        <div class="ln"><span class="k">Plug in</span><span>1.732 × 12.9 × 127 × 300 ÷ 83,690</span></div>
+        <div class="ln"><span class="k">Volts</span><span>VD ≈ 10.2 V</span></div>
+        <div class="ln"><span class="k">Percent</span><span>10.2 ÷ 480 ≈ 2.1%</span></div>
+      </div>
+      <div style="display:flex;justify-content:center"><div class="dev"><img src="img/calc.jpg" alt="A calculation question with the full working shown" width="640" height="1391" loading="lazy"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="exam">
+  <div class="wrap">
+    <span class="chTag" style="background:var(--red)"></span>
+    <h2>Your exam, your format.</h2>
+    <p class="sub">Timed full-length practice in your state's format. Flag what you're unsure about, review, then submit, just like test day.</p>
+    <div class="exam">
+      <div>
+        <div class="ex" aria-label="Question navigator with answered, flagged and current questions">
+          <span class="a">1</span><span class="a f">2</span><span class="a">3</span><span class="a">4</span><span class="a f">5</span><span class="a">6</span>
+          <span class="a">7</span><span class="c">8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+          <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+        </div>
+        <p class="sub" style="margin-top:26px;font-size:1rem">Blue is answered. The orange edge is flagged. The outline is where you are.</p>
+        <p class="sub" style="margin-top:30px">A readiness estimate by topic shows your weak spots. It's an estimate from your practice, not a prediction of your result.</p>
+      </div>
+      <div class="dev"><img src="img/exam.jpg" alt="Timed practice exam with a question navigator" width="640" height="1391" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="pay">
+  <div class="wrap">
+    <h2>Pay once. Study anywhere.</h2>
+    <div class="nos"><span>No account</span><span>No ads</span><span>No subscription</span><span>No data collected</span></div>
+    <div class="progress"><span class="soon">Coming soon to the App Store</span></div>
+  </div>
+</section>
+
+<p class="disc">Tabbed is an independent study aid. It is not affiliated with, endorsed by, or sponsored by NFPA, IBEW, NECA, PSI, Prometric, Pearson VUE, ICC, TDLR, or any state licensing board, and not reviewed or approved by NFPA. NEC® and National Electrical Code® are registered trademarks of the National Fire Protection Association, Quincy, MA. Passing your exam depends on your own preparation; no study tool can guarantee a result.</p>
+<footer>
+  <a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="/">All apps</a>
+  <p>© 2026 John Katez · <a href="mailto:support@johnkatez.com" style="margin:0">support@johnkatez.com</a></p>
+</footer>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)},opts=$('opts'),reveal=$('reveal'),verdict=$('verdict'),timer=$('timer'),bar=$('bar');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,t=0,done=false,iv;
+  function fmt(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
+  function run(){clearInterval(iv);t=0;timer.textContent='0:00';bar.style.transition='none';bar.style.transform='scaleX(1)';
+    if(!reduce){void bar.offsetWidth;bar.style.transition='transform 41s linear';bar.style.transform='scaleX(0)';}
+    iv=setInterval(function(){if(!done){t++;timer.textContent=fmt(t);if(t>=41)clearInterval(iv)}},1000);}
+  function reset(){done=false;reveal.classList.remove('on');[].forEach.call(opts.children,function(b){b.disabled=false;b.classList.remove('ok','no')});run();}
+  opts.addEventListener('click',function(e){
+    var b=e.target.closest('.opt');if(!b||done)return;done=true;clearInterval(iv);
+    var good=b.dataset.k==='c',ok=opts.querySelector('[data-k="c"]');
+    [].forEach.call(opts.children,function(x){x.disabled=true});
+    ok.classList.add('ok');if(!good)b.classList.add('no');
+    bar.style.transition='none';
+    verdict.textContent=good?'Correct. Twelve feet over a driveway, in '+fmt(t)+'.':"Not quite. It's 12 ft. 10 ft is the tempting pick, but that lower clearance doesn't apply over a driveway.";
+    reveal.classList.add('on');
+  });
+  $('again').addEventListener('click',reset);
+  run();
+  /* fore-edge tabs follow the chapter in view */
+  var links=[].slice.call(document.querySelectorAll('.tabs a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+    ['answers','find','calcs','exam'].forEach(function(id){io.observe($(id))});
+  }
+})();
+</script>
 </body>
 </html>
