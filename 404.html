@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Music Video Night</title>
+<meta name="description" content="That page doesn't exist. Head back to Music Video Night.">
+<meta name="theme-color" content="#FDF6EC">
+<meta name="apple-itunes-app" content="app-id=6811704618">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎬%3C/text%3E%3C/svg%3E">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; text-align: center;
+    background: #FDF6EC; color: #1B1033;
+    font: 17px/1.6 ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap { width: min(560px, 100% - 40px); padding: 48px 0; }
+  .logo { font-size: 48px; }
+  h1 {
+    font-size: clamp(32px, 8vw, 52px); font-weight: 900; letter-spacing: -.03em; line-height: 1.1; margin: 14px 0 12px;
+    background: linear-gradient(115deg, #FF3D8A 6%, #7B3DFF 55%, #29D9FF 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  p { color: #5B5470; margin: 0 auto 26px; max-width: 40ch; }
+  .btn {
+    display: inline-block; padding: 15px 26px; border-radius: 20px; font-weight: 800; font-size: 17px;
+    text-decoration: none; color: #1B1033;
+    background: linear-gradient(115deg, #FF67A3, #9867FF 55%, #58E1FF);
+    box-shadow: 0 18px 44px rgba(27,16,51,.16);
+  }
+  .links { margin-top: 24px; font-size: 15px; }
+  .links a { color: #7B3DFF; font-weight: 800; text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+  .links .sep { color: #5B5470; padding: 0 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo" aria-hidden="true">🎬🎶</div>
+  <h1>Nothing playing here</h1>
+  <p>That link doesn't go anywhere. The Night is probably happening somewhere else.</p>
+  <a class="btn" href="/mvn/">Back to Music Video Night</a>
+  <p class="links">
+    <a href="/mvn/join.html">Join a Night</a><span class="sep" aria-hidden="true">·</span>
+    <a href="/mvn/support.html">Support</a><span class="sep" aria-hidden="true">·</span>
+    <a href="/mvn/privacy.html">Privacy</a>
+  </p>
+</div>
+
+<script>
+/* Invite links the app shares look like  …/join/NELEF  — a path with no file
+   behind it, so GitHub Pages lands here. Bounce those straight to the join
+   page with the code attached. Everything else just sees the 404 above.
+   Runs entirely in the browser; nothing is stored or sent anywhere. */
+(function () {
+  "use strict";
+
+  var parts = location.pathname.split("/").filter(Boolean);
+  var i = parts.indexOf("join");
+  if (i === -1 || !parts[i + 1]) return;
+
+  var code = parts[i + 1].replace(/\.html?$/i, "").toUpperCase().replace(/[^A-Z]/g, "");
+  if (code.length !== 5) return;  // Night codes are always 5 letters
+
+  // Keep whatever base path the site is served under (project page or apex domain).
+  var base = "/" + parts.slice(0, i).join("/");
+  if (base !== "/") base += "/";
+  location.replace(base + "join.html?code=" + code);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join a Night — Music Video Night</title>
+<meta name="description" content="Someone invited you to a Music Video Night. Get the app, open it, tap Join with a Code and type the 5 letters in.">
+<meta name="theme-color" content="#FDF6EC">
+<!-- Smart App Banner. The static app-argument is the no-JavaScript fallback;
+     the script right below swaps in the invite link for this code, so the app
+     can be handed it when someone taps Open on the banner. -->
+<meta name="apple-itunes-app" id="smart-banner" content="app-id=6811704618, app-argument=https://apps.johnkatez.com/mvn/join.html">
+<script>
+/* Pull an invite code out of the URL.
+   Accepts, in order:  ?code=NELEF  ·  ?c=NELEF  ·  /join/NELEF  ·  #NELEF
+   Night codes are exactly 5 letters. Anything else is ignored and the page
+   falls back to the generic "type the code in yourself" state, which is what
+   renders without JavaScript too. Nothing is stored, sent or logged — this
+   runs entirely in your browser. The page script at the bottom reuses it. */
+(function () {
+  "use strict";
+
+  function clean(v) {
+    if (!v) return "";
+    var c = String(v).trim().toUpperCase().replace(/[^A-Z]/g, "");
+    return c.length === 5 ? c : "";
+  }
+
+  function fromUrl() {
+    var p = new URLSearchParams(location.search);
+    var code = clean(p.get("code")) || clean(p.get("c"));
+    if (code) return code;
+
+    // /join/NELEF  (or  /mvn/join/NELEF)
+    var parts = location.pathname.split("/").filter(Boolean);
+    var i = parts.indexOf("join");
+    if (i !== -1 && parts[i + 1]) {
+      code = clean(parts[i + 1].replace(/\.html?$/i, ""));
+      if (code) return code;
+    }
+    return clean(location.hash.slice(1));
+  }
+
+  var code = fromUrl();
+  window.mvnInviteCode = code;
+
+  // With a code, hand the app the canonical invite link (…/join/NELEF) —
+  // invite links that 404.html bounced here arrive as join.html?code=NELEF.
+  // Without one, hand it this page's URL.
+  var arg = location.href.split("#")[0];
+  if (code) {
+    var base = location.pathname.replace(/join(\.html?)?(\/.*)?$/i, "");
+    arg = location.origin + base + "join/" + code;
+  }
+  document.getElementById("smart-banner").setAttribute("content", "app-id=6811704618, app-argument=" + arg);
+})();
+</script>
+<link rel="canonical" href="https://apps.johnkatez.com/mvn/join.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎬%3C/text%3E%3C/svg%3E">
+
+<meta property="og:site_name" content="Music Video Night">
+<meta property="og:title" content="You're invited to a Music Video Night">
+<meta property="og:description" content="Get the app, open it, tap Join with a Code and type the 5 letters in.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://apps.johnkatez.com/mvn/join.html">
+<meta property="og:image" content="https://apps.johnkatez.com/mvn/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Music Video Night — three iPhones showing the theme picker, a video playing with live chat, and the winner screen.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="You're invited to a Music Video Night">
+<meta name="twitter:description" content="Get the app, open it, tap Join with a Code and type the 5 letters in.">
+<meta name="twitter:image" content="https://apps.johnkatez.com/mvn/img/og-cover.jpg">
+<meta name="twitter:image:alt" content="Music Video Night — three iPhones showing the theme picker, a video playing with live chat, and the winner screen.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Join a Music Video Night",
+  "description": "How to join a Night someone has invited you to.",
+  "totalTime": "PT2M",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Get the app", "url": "https://apps.apple.com/app/id6811704618", "text": "Install Music Video Night on your iPhone from the App Store. It is free and works on iOS 17 or later." },
+    { "@type": "HowToStep", "position": 2, "name": "Be in the same room", "text": "Nights run phone-to-phone over WiFi and Bluetooth, so you need to be in the same room as the host with Bluetooth switched on and Local Network permission allowed." },
+    { "@type": "HowToStep", "position": 3, "name": "Tap Join with a Code", "text": "Open the app and tap Join with a Code on the home screen." },
+    { "@type": "HowToStep", "position": 4, "name": "Type the 5-letter code", "text": "Enter the code the host shared with you, pick a name and an emoji avatar, and you are in." }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --ink: #1B1033;
+    --ink-2: #5B5470;
+    --cream: #FDF6EC;
+    --cream-2: #F6ECDE;
+    --card: #FFFFFF;
+    --pink: #FF67A3;
+    --purple: #9867FF;
+    --cyan: #58E1FF;
+    --sunny: #FFD167;
+    --coral: #FF8A67;
+    --mint: #7FEB7F;
+    --link: #7B3DFF;
+    --shadow: 0 10px 30px rgba(27,16,51,.08);
+    --shadow-lift: 0 18px 44px rgba(27,16,51,.16);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--cream); color: var(--ink);
+    font: 17px/1.6 ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; height: auto; }
+  h1, h2, h3 { line-height: 1.14; letter-spacing: -.018em; }
+  .wrap { width: min(680px, 100% - 40px); margin-inline: auto; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 8px; }
+
+  .top { position: relative; padding: 40px 0 8px; text-align: center; overflow: hidden; }
+  .top::before {
+    content: ""; position: absolute; width: 70vw; max-width: 460px; aspect-ratio: 1; border-radius: 50%;
+    background: var(--purple); opacity: .3; filter: blur(80px); top: -18%; left: 50%; transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .top > * { position: relative; }
+  .kicker {
+    display: inline-block; padding: 8px 18px; border-radius: 999px; background: var(--ink); color: var(--cream);
+    font-size: 12.5px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase;
+    text-decoration: none;
+  }
+  h1 {
+    font-size: clamp(34px, 8.5vw, 54px); font-weight: 900; letter-spacing: -.03em; margin: 18px 0 12px;
+    background: linear-gradient(115deg, #FF3D8A 6%, #7B3DFF 55%, #29D9FF 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sub { font-size: clamp(17px, 3vw, 20px); color: var(--ink-2); margin: 0 auto; max-width: 34ch; }
+
+  /* ---- the code ---- */
+  .codecard {
+    background: var(--card); border-radius: 30px; box-shadow: var(--shadow-lift);
+    padding: 26px 20px 24px; margin: 30px 0 0; text-align: center;
+    border: 3px solid var(--ink);
+  }
+  .codecard .label {
+    font-size: 12.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2);
+    margin: 0 0 14px;
+  }
+  /* Sized so a 5-letter code stays on one line down to a 320px-wide phone.
+     flex-wrap is only a safety net against overflow. */
+  .tiles { display: flex; justify-content: center; gap: clamp(5px, 1.5vw, 12px); flex-wrap: wrap; margin: 0; }
+  .tile {
+    display: grid; place-items: center;
+    width: clamp(38px, 12.5vw, 68px); aspect-ratio: 1; border-radius: clamp(10px, 3vw, 18px);
+    font-size: clamp(22px, 7vw, 38px); font-weight: 900; color: var(--ink); letter-spacing: 0;
+    box-shadow: 0 6px 14px rgba(27,16,51,.12);
+  }
+  .tile:nth-child(1) { background: var(--pink); }
+  .tile:nth-child(2) { background: var(--sunny); }
+  .tile:nth-child(3) { background: var(--cyan); }
+  .tile:nth-child(4) { background: var(--mint); }
+  .tile:nth-child(5) { background: var(--coral); }
+  .tile:nth-child(6) { background: var(--purple); }
+  .copybtn {
+    margin-top: 18px; padding: 11px 20px; border-radius: 16px; border: 2.5px solid rgba(27,16,51,.2);
+    background: transparent; color: var(--ink); font: inherit; font-weight: 800; font-size: 15px; cursor: pointer;
+  }
+  .copybtn:hover { border-color: var(--ink); }
+  .copybtn[hidden] { display: none; }
+
+  /* no-code fallback */
+  .nocode {
+    background: var(--card); border-radius: 30px; box-shadow: var(--shadow); padding: 24px;
+    margin: 30px 0 0; text-align: center;
+  }
+  .nocode p { margin: 0 0 10px; color: var(--ink-2); font-size: 16px; }
+  .nocode p:last-child { margin-bottom: 0; }
+  .nocode b { color: var(--ink); }
+
+  /* ---- steps ---- */
+  section { padding: 44px 0 0; }
+  h2 { font-size: clamp(24px, 5vw, 32px); margin: 0 0 18px; }
+  ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: s; }
+  ol.steps li {
+    background: var(--card); border-radius: 22px; box-shadow: var(--shadow); padding: 18px 20px 18px 60px;
+    position: relative;
+  }
+  ol.steps li::before {
+    counter-increment: s; content: counter(s);
+    position: absolute; left: 18px; top: 18px;
+    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+    font-size: 14px; font-weight: 900; color: var(--ink); background: var(--sunny);
+  }
+  ol.steps li:nth-child(2)::before { background: var(--cyan); }
+  ol.steps li:nth-child(3)::before { background: var(--pink); }
+  ol.steps li:nth-child(4)::before { background: var(--mint); }
+  ol.steps h3 { font-size: 18px; margin: 0 0 4px; }
+  ol.steps p { margin: 0; color: var(--ink-2); font-size: 15.5px; }
+
+  ol.steps a { color: var(--link); font-weight: 800; }
+
+  /* ---- get the app / open the app ---- */
+  .getapp { display: grid; gap: 14px; grid-template-columns: 1fr; margin: 18px 0 0; text-align: center; }
+  @media (min-width: 600px) { .getapp { grid-template-columns: 1fr 1fr; } }
+  .path {
+    background: var(--card); border-radius: 24px; box-shadow: var(--shadow); padding: 20px 18px;
+    display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0;
+  }
+  .path h2 { font-size: 19px; margin: 0; }
+  .path p { margin: 0; color: var(--ink-2); font-size: 15.5px; }
+  .path b { color: var(--ink); }
+  .path .code-inline { font-weight: 900; letter-spacing: .12em; }
+
+  /* Same chunky gradient button as 404.html's, so the site has one "do this" button. */
+  .openapp {
+    display: inline-block; padding: 14px 24px; border-radius: 20px; font-weight: 800; font-size: 17px;
+    text-decoration: none; color: var(--ink);
+    background: linear-gradient(115deg, var(--pink), var(--purple) 55%, var(--cyan));
+    box-shadow: var(--shadow-lift);
+  }
+  .openapp[hidden] { display: none; }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; margin-top: 28px; }
+  /* App Store badge — drawn to Apple's "Download on the App Store" badge
+     spec: black fill, thin #A6A6A6 keyline, white Apple logo, "Download on the"
+     over "App Store" in San Francisco, sentence case. Don't recolor it, change
+     the text case or add effects. Keep clear space of at least a quarter of
+     its height (56px tall → 14px) around it. Same badge as index.html. */
+  .appstore {
+    display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+    height: 56px; max-width: 100%; padding: 0 20px 0 14px; border-radius: 12px;
+    background: #000; color: #fff; border: 1px solid #A6A6A6;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1; white-space: nowrap;
+  }
+  .appstore svg { flex: none; }
+  .appstore .as-text { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+  .appstore .as-top { font-size: 12px; font-weight: 500; letter-spacing: .01em; }
+  .appstore .as-big { font-size: 24px; font-weight: 600; letter-spacing: -.02em; }
+
+  .trouble { margin-top: 34px; padding: 18px 20px; border-radius: 22px; background: var(--cream-2); font-size: 15.5px; color: var(--ink-2); }
+  .trouble b { color: var(--ink); }
+  .trouble a { color: var(--link); font-weight: 800; }
+
+  footer { background: var(--cream-2); padding: 34px 0; margin-top: 48px; }
+  footer p { margin: 0 0 8px; font-size: 14.5px; color: var(--ink-2); }
+  footer a { color: var(--link); font-weight: 800; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  footer .sep { padding: 0 6px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="kicker" href="index.html">Music Video Night</a>
+    <h1 id="headline">You're invited<br>to a Night</h1>
+    <p class="sub" id="subhead">Somebody in the room is hosting. Here's how you get in.</p>
+
+    <!-- Populated by the script below when a code is present in the URL.
+         Hidden by default so the page still reads correctly without one. -->
+    <div class="codecard" id="codecard" hidden>
+      <p class="label">Your code</p>
+      <p class="tiles" id="tiles" aria-hidden="true"></p>
+      <p class="sr-only" id="codetext" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap"></p>
+      <button class="copybtn" id="copybtn" type="button" hidden>Copy code</button>
+    </div>
+
+    <div class="nocode" id="nocode">
+      <p><b>No code in this link.</b> That's fine — you only need the five letters the host reads out loud.</p>
+      <p>Open the app, tap <b>Join with a Code</b> and type them in.</p>
+    </div>
+
+    <!-- Two ways in. "Open in the app" uses the app's musicvideonight:// URL
+         scheme and is hidden until the script at the bottom turns it on — see
+         OPEN_IN_APP there for why it starts switched off. In Safari, the Smart
+         App Banner's Open button also hands the app this invite. -->
+    <div class="getapp">
+      <div class="path">
+        <h2>Get Music Video Night</h2>
+        <a class="appstore" href="https://apps.apple.com/app/id6811704618" aria-label="Download Music Video Night on the App Store">
+          <svg width="26" height="32" viewBox="0 0 26 32" aria-hidden="true" focusable="false" fill="currentColor">
+            <path d="M21.2 17c0-3.3 2.7-4.9 2.8-5-1.5-2.2-3.9-2.5-4.7-2.6-2-.2-3.9 1.2-4.9 1.2-1 0-2.6-1.2-4.2-1.1-2.2.03-4.2 1.3-5.3 3.2-2.3 3.9-.6 9.7 1.6 12.9 1.1 1.6 2.4 3.3 4 3.2 1.6-.06 2.2-1 4.2-1 1.9 0 2.5 1 4.2 1 1.7-.03 2.8-1.6 3.9-3.1 1.2-1.8 1.7-3.5 1.8-3.6-.04-.02-3.4-1.3-3.4-5.1zM18 7.3c.9-1.1 1.5-2.6 1.3-4.1-1.3.05-2.9.86-3.8 1.9-.8.94-1.5 2.4-1.3 3.9 1.4.11 2.9-.72 3.8-1.7z"/>
+          </svg>
+          <span class="as-text" aria-hidden="true">
+            <span class="as-top">Download on the</span>
+            <span class="as-big">App Store</span>
+          </span>
+        </a>
+        <p>Free on the App Store. iPhone, iOS 17 or later.</p>
+      </div>
+      <div class="path">
+        <h2>Already have the app?</h2>
+        <p>Open <b>Music Video Night</b>, tap <b>Join with a Code</b> and type in <b id="codeinline">the host's 5 letters</b>.</p>
+        <a class="openapp" id="openapp" href="#" hidden>Open in the app</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <h2>Getting in, step by step</h2>
+      <ol class="steps">
+        <li>
+          <h3>Get the app</h3>
+          <p>Music Video Night is free to download from the <a href="https://apps.apple.com/app/id6811704618">App Store</a> and always free to join a Night with. iPhone, iOS 17 or later.</p>
+        </li>
+        <li>
+          <h3>Be in the same room as the host</h3>
+          <p>Nights run phone-to-phone over WiFi and Bluetooth — there's no server. Same room, Bluetooth on, and say yes when iOS asks to find devices on your local network.</p>
+        </li>
+        <li>
+          <h3>Tap <em>Join with a Code</em></h3>
+          <p>It's right there on the app's home screen. Not the Host button — that one's for whoever is running the Night.</p>
+        </li>
+        <li>
+          <h3>Type the 5 letters, pick a name</h3>
+          <p>Choose a display name and an emoji avatar and you're in the lobby. Then it's one music video each, on tonight's theme.</p>
+        </li>
+      </ol>
+
+      <div class="cta-row">
+        <a class="appstore" href="https://apps.apple.com/app/id6811704618" aria-label="Download Music Video Night on the App Store">
+          <svg width="26" height="32" viewBox="0 0 26 32" aria-hidden="true" focusable="false" fill="currentColor">
+            <path d="M21.2 17c0-3.3 2.7-4.9 2.8-5-1.5-2.2-3.9-2.5-4.7-2.6-2-.2-3.9 1.2-4.9 1.2-1 0-2.6-1.2-4.2-1.1-2.2.03-4.2 1.3-5.3 3.2-2.3 3.9-.6 9.7 1.6 12.9 1.1 1.6 2.4 3.3 4 3.2 1.6-.06 2.2-1 4.2-1 1.9 0 2.5 1 4.2 1 1.7-.03 2.8-1.6 3.9-3.1 1.2-1.8 1.7-3.5 1.8-3.6-.04-.02-3.4-1.3-3.4-5.1zM18 7.3c.9-1.1 1.5-2.6 1.3-4.1-1.3.05-2.9.86-3.8 1.9-.8.94-1.5 2.4-1.3 3.9 1.4.11 2.9-.72 3.8-1.7z"/>
+          </svg>
+          <span class="as-text" aria-hidden="true">
+            <span class="as-top">Download on the</span>
+            <span class="as-big">App Store</span>
+          </span>
+        </a>
+      </div>
+
+      <p class="trouble">
+        <b>Code not working?</b> Codes only last as long as the Night is open, and you have to be on the same WiFi
+        as the host with Bluetooth on. If iOS never asked for Local Network permission, turn it on in
+        Settings → Music Video Night → Local Network. More on the <a href="support.html">support page</a>.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>
+      <a href="index.html">Home</a><span class="sep" aria-hidden="true">·</span>
+      <a href="privacy.html">Privacy</a><span class="sep" aria-hidden="true">·</span>
+      <a href="support.html">Support</a>
+    </p>
+    <p>No analytics, no trackers and no cookies on this site.</p>
+  </div>
+</footer>
+
+<script>
+/* Show the invite code parsed in <head> (window.mvnInviteCode), if any. */
+(function () {
+  "use strict";
+
+  var code = window.mvnInviteCode;
+  if (!code) return;
+
+  var card = document.getElementById("codecard");
+  var tiles = document.getElementById("tiles");
+  var nocode = document.getElementById("nocode");
+  var copy = document.getElementById("copybtn");
+
+  // textContent only — nothing from the URL is ever parsed as HTML.
+  code.split("").forEach(function (ch) {
+    var span = document.createElement("span");
+    span.className = "tile";
+    span.textContent = ch;
+    tiles.appendChild(span);
+  });
+
+  document.getElementById("codetext").textContent = "Your code is " + code.split("").join(" ");
+  var inline = document.getElementById("codeinline");
+  inline.textContent = code;
+  inline.className = "code-inline";
+  document.getElementById("subhead").textContent =
+    "Somebody in the room is hosting. Open the app, tap Join with a Code, and type this in.";
+
+  card.hidden = false;
+  nocode.hidden = true;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    copy.hidden = false;
+    copy.addEventListener("click", function () {
+      navigator.clipboard.writeText(code).then(function () {
+        copy.textContent = "Copied";
+        setTimeout(function () { copy.textContent = "Copy code"; }, 2000);
+      }, function () {
+        copy.textContent = "Couldn't copy — type it in";
+      });
+    });
+  }
+
+  document.title = "Join Night " + code + " — Music Video Night";
+
+  /* "Open in the app" — musicvideonight://join/CODE lands on Join with the code
+     filled in. OFF until the App Store version of the app handles that scheme:
+     version 1.0 doesn't, and on an iPhone without a handler Safari answers the
+     tap with an "address is invalid" alert, which is worse than no button.
+     Flip to true once the update that registers the scheme is live. */
+  var OPEN_IN_APP = false;
+  // iPadOS reports itself as a Mac, hence the touch check. The app is
+  // iPhone-only, but an iPad can run it too.
+  var isIOS = /iPhone|iPod|iPad/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (OPEN_IN_APP && isIOS) {
+    var open = document.getElementById("openapp");
+    open.href = "musicvideonight://join/" + code;
+    open.hidden = false;
+  }
+})();
+</script>
+<footer data-brand-footer style="max-width:680px;margin:0 auto;padding:24px 16px 40px;text-align:center;font:14px -apple-system,sans-serif;opacity:.6">© 2026 John Katez · <a href="mailto:support@johnkatez.com" style="color:inherit">support@johnkatez.com</a> · <a href="/" style="color:inherit">All apps</a></footer>
+</body>
+</html>

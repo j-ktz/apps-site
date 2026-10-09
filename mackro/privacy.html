@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Mackro</title>
+  <meta name="description" content="Mackro's privacy policy: what stays on your device, what is sent for AI logging, analytics, and subscriptions, and your rights under GDPR and CCPA.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { color-scheme: dark; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #0a0a0a; color: #f0f0f0; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 680px; margin: 0 auto; padding: 60px 24px; }
+    a.back { color: #888; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-bottom: 40px; }
+    a.back:hover { color: #f0f0f0; }
+    h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .updated { color: #888; font-size: 0.9rem; margin-bottom: 40px; }
+    h2 { font-size: 1.1rem; font-weight: 600; margin: 36px 0 10px; color: #f0f0f0; }
+    p, li { color: #b0b0b0; margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    a { color: #f0f0f0; }
+    .cta { display: inline-block; margin-top: 32px; background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 12px 22px; font-size: 0.9rem; color: #f0f0f0; text-decoration: none; }
+    .cta:hover { background: #222; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <a class="back" href="index.html">← Mackro</a>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: October 8, 2026 (Mackro 2.x)</p>
+
+    <p>Mackro ("the App") is built to respect your privacy. This policy explains what data the App uses, what leaves your device, and who handles it. It's written in plain English on purpose.</p>
+
+    <h2>The short version</h2>
+    <ul>
+      <li>No accounts. Mackro never asks for your name, email, or password.</li>
+      <li>Your food log lives on your device and in your own iCloud. We can't see it.</li>
+      <li>If you use AI logging (Mackro Pro), the meal description or photo you submit is sent to Anthropic's Claude API to estimate macros.</li>
+      <li>We use anonymous product analytics (PostHog) to understand app usage, such as how often the upgrade screen is opened. It never includes your food, health, or weight data.</li>
+      <li>Subscriptions are handled by Apple, with RevenueCat checking subscription status.</li>
+      <li>No advertising, no ad tracking, no data sales.</li>
+    </ul>
+
+    <h2>Data stored on your device</h2>
+    <p>All food logs, custom foods, meal templates, macro goals, water and weight entries, and settings are stored locally on your device using Apple's SwiftData framework. If you have iCloud enabled, this data syncs across your devices via CloudKit in your private iCloud database. It's encrypted in transit and at rest, managed by Apple, and the developer has no access to it.</p>
+
+    <h2>Apple Health</h2>
+    <p>With your permission, the App can:</p>
+    <ul>
+      <li><strong>Read</strong> height, body weight, and water intake, to pre-fill the target calculator and weight tracker.</li>
+      <li><strong>Write</strong> calories, protein, carbohydrates, fat, water, and body weight (Mackro Pro "Health sync").</li>
+    </ul>
+    <p>Health data stays in the Health app on your device and is governed by Apple's privacy policies. Mackro never sends Health data to us, to Anthropic, or to any analytics or advertising service.</p>
+
+    <h2>AI logging (Mackro Pro)</h2>
+    <p>When you tap to estimate macros on the Describe or Photo tab, dictate a meal from Apple Watch, or use voice logging, the App sends exactly one of the following:</p>
+    <ul>
+      <li>the meal description text you typed or dictated, or</li>
+      <li>the photo you chose, resized to at most 1024 pixels and re-encoded as JPEG.</li>
+    </ul>
+    <p>The request goes to our proxy server (a Cloudflare Worker), which forwards it to Anthropic's Claude API and returns the estimate. The proxy:</p>
+    <ul>
+      <li>sees your IP address, which it uses only for rate limiting and does not store;</li>
+      <li>receives the anonymous subscription ID that RevenueCat assigned to your install, used only to confirm you have Mackro Pro;</li>
+      <li>does not store your meal text or photos.</li>
+    </ul>
+    <p>Anthropic processes the request under its commercial API terms. It doesn't use API data to train its models, and it keeps API data only for a limited period for trust and safety (see <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic's privacy policy</a>). AI logging is capped at 30 requests per day.</p>
+    <p>Voice is converted to text by Apple's Speech framework. Depending on your device and iOS settings, Apple may use its servers for transcription (see <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's privacy policy</a>). Only the resulting text, never audio, is sent for analysis.</p>
+
+    <h2>Subscriptions (RevenueCat)</h2>
+    <p>Purchases are made through Apple and are subject to Apple's terms. To know whether you have Mackro Pro, the App uses <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a>, which receives an anonymous app-user ID, your purchase and subscription history from Apple, and basic device and app information (such as OS version, app version, and country/storefront). It isn't linked to your name or email.</p>
+
+    <h2>Anonymous analytics (PostHog)</h2>
+    <p>Mackro uses <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer">PostHog</a> (EU cloud) for product analytics. It records:</p>
+    <ul>
+      <li>App opened and closed.</li>
+      <li>Paywall shown and dismissed, upgrade button tapped, trial started, restore tapped.</li>
+    </ul>
+    <p>Each event is tied to a random ID generated on your device, plus device model, OS version, app version, and approximate region derived from the IP address. It never includes your food log, meal descriptions, photos, Health data, or anything that identifies you by name. Analytics aren't used for advertising and aren't shared with data brokers. Session recording is off.</p>
+
+    <h2>Widgets, Control Center, Siri and Apple Watch</h2>
+    <p>Widgets and the Control Center control read today's totals from a shared container on your device and make no network calls of their own. Logging started from a widget, Siri, the Action Button, or Apple Watch follows the same AI-logging rules above.</p>
+
+    <h2>Notifications</h2>
+    <p>Meal reminders and streak nudges are local notifications scheduled on your device. No notification data leaves your device.</p>
+
+    <h2>Apple diagnostic data</h2>
+    <p>If you've turned on "Share With App Developers" in iOS Settings → Privacy &amp; Security → Analytics &amp; Improvements, Apple may share aggregated, anonymized crash and usage data with us via App Store Connect.</p>
+
+    <h2>Your rights (GDPR, CCPA, and similar laws)</h2>
+    <p>Your food log lives on your device and in your own iCloud account, not on our servers. You can:</p>
+    <ul>
+      <li><strong>Export</strong> your nutrition data via the Apple Health app at any time.</li>
+      <li><strong>Delete</strong> all local data: Mackro → Settings → "Reset all data".</li>
+      <li><strong>Delete iCloud-synced data</strong>: iOS Settings → [Your Name] → iCloud → Manage Storage → Mackro → Delete.</li>
+      <li><strong>Reset analytics and subscription IDs</strong> by deleting and reinstalling the App.</li>
+      <li><strong>Contact us</strong> about any privacy concern, including deleting analytics events, at <a href="mailto:support@johnkatez.com">support@johnkatez.com</a>.</li>
+    </ul>
+    <p>If you're in the EEA, UK, or California and want to formally exercise your rights under GDPR, UK GDPR, or the CCPA, email us at the address above and we will respond within the timeframes required by law.</p>
+
+    <h2>Children</h2>
+    <p>Mackro is rated 9+ and is not directed at children under 13. We do not knowingly collect data from children.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If we update this policy, the "Last updated" date at the top will change and we'll note material changes in the App's release notes.</p>
+
+    <h2>Contact</h2>
+    <p>Questions? Email <a href="mailto:support@johnkatez.com">support@johnkatez.com</a></p>
+
+    <a class="cta" href="https://apps.apple.com/app/id6771991453">Download Mackro on the App Store</a>
+  </main>
+<footer data-brand-footer style="max-width:680px;margin:0 auto;padding:24px 16px 40px;text-align:center;font:14px -apple-system,sans-serif;opacity:.6">© 2026 John Katez · <a href="mailto:support@johnkatez.com" style="color:inherit">support@johnkatez.com</a> · <a href="/" style="color:inherit">All apps</a></footer>
+</body>
+</html>

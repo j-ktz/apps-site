@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<!-- Source for og-cover.jpg (1200x630). Not served to anyone — it exists so the
+     share image can be regenerated without rebuilding it from scratch.
+
+     Re-render with headless Chrome, from this directory:
+
+       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+         --headless=new --disable-gpu --hide-scrollbars \
+         --force-device-scale-factor=1 --allow-file-access-from-files \
+         --window-size=1200,630 --virtual-time-budget=3000 \
+         --screenshot=og-raw.png "file://$PWD/og-cover.source.html"
+       magick og-raw.png -strip -quality 86 -sampling-factor 4:4:4 og-cover.jpg
+       rm og-raw.png
+-->
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    background: #FDF6EC;
+    font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
+    color: #1B1033;
+    position: relative;
+    overflow: hidden;
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; }
+  .b1 { width: 520px; height: 520px; background: #FF67A3; left: -160px; top: -190px; }
+  .b2 { width: 480px; height: 480px; background: #58E1FF; left: 250px; top: 340px; opacity: .45; }
+  .b3 { width: 560px; height: 560px; background: #9867FF; right: -120px; top: -120px; opacity: .4; }
+  .b4 { width: 420px; height: 420px; background: #FFD167; right: 180px; bottom: -220px; opacity: .45; }
+
+  .stage { position: relative; height: 100%; display: flex; align-items: center; padding: 0 40px 0 64px; }
+
+  .copy { width: 556px; flex: none; }
+  .eyebrow {
+    display: inline-block; padding: 9px 20px; border-radius: 999px;
+    background: #1B1033; color: #FDF6EC;
+    font-size: 19px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase;
+  }
+  h1 {
+    font-size: 90px; line-height: .93; font-weight: 900; letter-spacing: -.028em;
+    margin: 22px 0 20px;
+    background: linear-gradient(115deg, #FF3D8A 8%, #7B3DFF 52%, #29D9FF 96%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .tag { font-size: 30px; line-height: 1.3; font-weight: 700; color: #1B1033; max-width: 17ch; }
+  .chips { margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip {
+    padding: 11px 19px; border-radius: 999px; font-size: 20px; font-weight: 800; color: #1B1033;
+  }
+  .c1 { background: #FFD167; }
+  .c2 { background: #58E1FF; }
+  .c3 { background: #FF8A67; }
+
+  .phones { position: relative; flex: 1; height: 100%; }
+  .phone {
+    position: absolute; width: 230px; border-radius: 30px; overflow: hidden;
+    background: #fff; border: 4px solid #1B1033;
+    box-shadow: 0 26px 52px rgba(27,16,51,.30);
+  }
+  .phone img { display: block; width: 100%; }
+  .p1 { left: 2px;   top: 86px;  transform: rotate(-8deg);  z-index: 1; }
+  .p2 { left: 152px; top: 50px;  transform: rotate(-1deg);  z-index: 3; }
+  .p3 { left: 302px; top: 92px;  transform: rotate(7deg);   z-index: 2; }
+</style>
+</head>
+<body>
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="blob b3"></div><div class="blob b4"></div>
+  <div class="stage">
+    <div class="copy">
+      <span class="eyebrow">Party game for iPhone</span>
+      <h1>Music<br>Video Night</h1>
+      <p class="tag">Everyone picks a video. Everyone votes. One person wins the Night.</p>
+      <div class="chips">
+        <span class="chip c1">Free to join</span>
+        <span class="chip c2">No accounts</span>
+        <span class="chip c3">Plays on your TV</span>
+      </div>
+    </div>
+    <div class="phones">
+      <div class="phone p1"><img src="screen-themes.webp" alt=""></div>
+      <div class="phone p2"><img src="screen-playback.webp" alt=""></div>
+      <div class="phone p3"><img src="screen-results.webp" alt=""></div>
+    </div>
+  </div>
+</body>
+</html>
