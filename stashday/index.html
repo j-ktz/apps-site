@@ -1,53 +1,136 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stashday: sinking funds, one paycheck at a time</title>
-  <meta name="description" content="Stashday tells you exactly how much to set aside each paycheck so every irregular bill is covered when it arrives.">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stashday: sinking funds, one paycheck at a time</title>
+<meta name="description" content="Stashday tells you exactly how much to set aside each paycheck so every irregular bill is covered when it arrives.">
+<link rel="canonical" href="https://apps.johnkatez.com/stashday/">
+<meta property="og:title" content="Stashday: every bill covered, one paycheck at a time">
+<meta property="og:description" content="One number each payday. Car registration, holidays, insurance and the vet, all covered.">
+<meta property="og:image" content="https://apps.johnkatez.com/stashday/hero.jpg">
+<link rel="icon" href="img/icon.png">
+<style>
+:root{--green:#16805F;--bright:#34C79A;--ink:#1C1C1E;--muted:#5F6368;--paper:#FBFAF6;--card:#FFFFFF;--wash:#F2F6F4;--line:#E3E8E5;--coral:#F2683C;--sun:#F6B93B}
+@media(prefers-color-scheme:dark){:root{--green:#34C79A;--bright:#34C79A;--ink:#F2F2F7;--muted:#A1A1A6;--paper:#111312;--card:#1A1F1D;--wash:#1A1F1D;--line:#2a312e}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--green)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:800;font-size:1.15rem;text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:9px}
+nav.top .links a{margin-left:22px;color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem}
+.hero{position:relative;border-radius:32px;overflow:hidden;background:#F7F4EE url(hero.jpg) right center/cover no-repeat;min-height:520px;display:flex;align-items:center}
+.hero .copy{padding:56px 48px;max-width:560px}
+.hero h1{font:800 clamp(2.4rem,5.4vw,3.9rem)/1.02 ui-rounded,-apple-system,sans-serif;letter-spacing:-.035em;margin:0 0 16px;color:#17201C}
+.hero h1 em{font-style:normal;color:#16805F}
+.hero p{font-size:1.2rem;color:#4b5551;margin:0 0 26px}
+.btn{display:inline-block;background:#16805F;color:#fff;font-weight:800;text-decoration:none;padding:15px 24px;border-radius:16px}
+.soon{display:inline-block;background:#E4F2EC;color:#16805F;font-weight:800;padding:15px 22px;border-radius:16px}
+.fine{color:#6a736f;font-size:.88rem;margin-top:12px}
+section{padding:64px 0 8px}
+h2{font:800 clamp(1.8rem,4vw,2.6rem)/1.1 ui-rounded,-apple-system,sans-serif;letter-spacing:-.03em;margin:0 0 10px}
+.sub{color:var(--muted);font-size:1.12rem;max-width:36em;margin:0 0 30px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}
+.step:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font:800 1rem ui-rounded,sans-serif;margin-bottom:12px}
+@media(prefers-color-scheme:dark){.step:before{color:#0c1210}}
+.step p{margin:0;font-size:.98rem;color:var(--muted)}
+.rail{display:flex;gap:18px;overflow-x:auto;padding:6px 4px 24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.rail figure{margin:0;flex:0 0 auto;scroll-snap-align:start;width:250px}
+.phone{border-radius:34px;border:6px solid #17201C;background:#17201C;overflow:hidden;line-height:0;box-shadow:0 24px 40px -22px rgba(22,128,95,.45)}
+.phone img{width:100%;height:auto;display:block}
+.rail figcaption{margin-top:12px;font-weight:700;text-align:center;font-size:.98rem}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.plan{border-radius:26px;padding:28px;border:1px solid var(--line);background:var(--card)}
+.plan.pro{background:#16805F;color:#fff;border-color:#16805F}
+.plan.pro .tag{background:#fff;color:#16805F}
+.tag{display:inline-block;font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:99px;background:var(--wash);color:var(--green)}
+.plan h3{font:800 1.5rem ui-rounded,sans-serif;margin:14px 0 10px}
+.plan ul{margin:0;padding-left:20px}.plan li{margin:4px 0}
+.priv{background:var(--wash);border-radius:28px;padding:36px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+.priv h2{margin-bottom:6px}.priv p{margin:0;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chips span{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-weight:700;font-size:.88rem}
+footer{margin-top:56px;border-top:1px solid var(--line);padding:26px 0 44px;color:var(--muted);font-size:.92rem;text-align:center}
+footer a{color:var(--muted);margin:0 10px;text-decoration:none;font-weight:600}
+@media(max-width:820px){
+ .hero{background:#F7F4EE;display:block;min-height:0}
+ .hero:after{content:"";display:block;aspect-ratio:1/1;background:url(hero.jpg) 82% 55%/auto 118% no-repeat}
+ .hero .copy{padding:36px 24px 8px}
+ .steps{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}.priv{grid-template-columns:1fr}
+ nav.top .links a.opt{display:none}
+}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <header class="site">
-    <a href="index.html">Stashday</a>
-    <nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+<div class="wrap">
+  <nav class="top">
+    <a class="brand" href="./"><img src="img/icon.png" alt="" width="34" height="34">Stashday</a>
+    <div class="links"><a class="opt" href="#how">How it works</a><a class="opt" href="#plans">Pricing</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></div>
+  </nav>
+
+  <header class="hero" role="img" aria-label="Stashday on an iPhone beside rings for holidays, the car and the vet, a jar of coins and an envelope">
+    <div class="copy">
+      <h1>Every bill covered, <em>one paycheck</em> at a time.</h1>
+      <p>Car registration, holidays, insurance, the vet. Stashday tells you exactly how much to set aside each payday so none of them catch you short.</p>
+      <span class="soon">Coming soon to the App Store</span>
+      <p class="fine">iPhone · no account needed</p>
+    </div>
   </header>
-  <main>
-    <img class="hero" src="hero.jpg" width="1600" height="900" alt="Stashday on an iPhone, showing this paycheck's total and checklist, beside a jar of coins and rings for holidays, the car and the vet.">
-    <h1>Every bill covered, one paycheck at a time.</h1>
-    <p class="lede">Car registration, holidays, insurance, the vet. Stashday tells you exactly how much to set aside each payday so none of them catch you short.</p>
-    <p class="hero-number">$187</p>
-    <p>That's the one number to remember. Set it aside, tick each fund off, and when a bill finally arrives, tap Paid it. Stashday logs it and starts saving for the next one.</p>
 
-    <div class="card">
-      <h2>How it works</h2>
-      <ul>
-        <li>Tell it when you get paid: weekly, every two weeks, twice a month or monthly.</li>
-        <li>Add what's coming up, or start from ideas like car registration, property tax and holidays.</li>
-        <li>Each payday, check off each fund as you move the money.</li>
-        <li>When a bill is due, tap Paid it. Recurring bills roll forward on their own.</li>
-      </ul>
+  <section id="how">
+    <h2>One number. That's the whole idea.</h2>
+    <p class="sub">Set it aside, tick each fund off, and when a bill finally arrives, tap Paid it. Stashday logs it and starts saving for the next one.</p>
+    <div class="steps">
+      <div class="step"><p>Tell it when you get paid: weekly, every two weeks, twice a month or monthly.</p></div>
+      <div class="step"><p>Add what's coming up, or start from ideas like car registration, property tax and holidays.</p></div>
+      <div class="step"><p>Each payday, check off each fund as you move the money.</p></div>
+      <div class="step"><p>When a bill is due, tap Paid it. Recurring bills roll forward on their own.</p></div>
     </div>
+  </section>
 
-    <div class="card">
-      <h2>Free, and Stashday Pro</h2>
-      <ul>
-        <li><strong>Free forever:</strong> 3 funds, the payday checklist, reminders, Siri, and a shareable summary.</li>
-        <li><strong>Pro:</strong> unlimited funds, Home Screen and Lock Screen widgets with check-off, and CSV export. $14.99 a year with a 7-day free trial, or $29.99 once.</li>
-      </ul>
+  <section>
+    <h2>See it in action.</h2>
+    <p class="sub">Big friendly numbers, one color per fund, light and dark.</p>
+    <div class="rail">
+      <figure><div class="phone"><img src="img/number.jpg" alt="Your number: the amount to set aside each paycheck" width="640" height="1391" loading="lazy"></div><figcaption>Your number</figcaption></figure>
+      <figure><div class="phone"><img src="img/checklist.jpg" alt="The payday checklist" width="640" height="1391" loading="lazy"></div><figcaption>The payday checklist</figcaption></figure>
+      <figure><div class="phone"><img src="img/fund.jpg" alt="A fund's detail screen" width="640" height="1391" loading="lazy"></div><figcaption>Every fund, on track</figcaption></figure>
+      <figure><div class="phone"><img src="img/share.jpg" alt="A shareable summary card" width="640" height="1391" loading="lazy"></div><figcaption>A summary you can share</figcaption></figure>
+      <figure><div class="phone"><img src="img/pro.jpg" alt="Stashday Pro" width="640" height="1391" loading="lazy"></div><figcaption>Stashday Pro</figcaption></figure>
     </div>
+  </section>
 
-    <div class="card">
-      <h2>Private by design</h2>
-      <p>No accounts, no bank links, no ads, no analytics. Your funds live on your iPhone and in your own iCloud.</p>
+  <section id="plans">
+    <h2>Free, and Stashday Pro.</h2>
+    <p class="sub">The essentials are free for good.</p>
+    <div class="plans">
+      <div class="plan"><span class="tag">Free forever</span><h3>Start with three funds</h3>
+        <ul><li>3 funds</li><li>The payday checklist</li><li>Reminders</li><li>Siri</li><li>A shareable summary</li></ul></div>
+      <div class="plan pro"><span class="tag">Pro</span><h3>$14.99 a year, or $29.99 once</h3>
+        <ul><li>Unlimited funds</li><li>Home Screen and Lock Screen widgets with check-off</li><li>CSV export</li><li>7-day free trial on the yearly plan</li></ul></div>
     </div>
+  </section>
 
-    <a class="cta" href="https://apps.apple.com/app/stashday">Download on the App Store</a>
-  </main>
+  <section>
+    <div class="priv">
+      <div>
+        <h2 style="font-size:2rem">Private by design.</h2>
+        <p>Your funds live on your iPhone and in your own iCloud. We never see them.</p>
+        <div class="chips"><span>No accounts</span><span>No bank links</span><span>No ads</span><span>No analytics</span></div>
+      </div>
+      <a class="btn" href="privacy.html">Privacy policy</a>
+    </div>
+  </section>
+
   <footer>
-    <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a>
-    <p>© 2026 Stashday</p>
+    <p><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="/">All apps</a></p>
+    <p>© 2026 John Katez · <a href="mailto:support@johnkatez.com" style="margin:0">support@johnkatez.com</a></p>
   </footer>
-<footer data-brand-footer style="max-width:680px;margin:0 auto;padding:24px 16px 40px;text-align:center;font:14px -apple-system,sans-serif;opacity:.6">© 2026 John Katez · <a href="mailto:support@johnkatez.com" style="color:inherit">support@johnkatez.com</a> · <a href="/" style="color:inherit">All apps</a></footer>
+</div>
 </body>
 </html>
