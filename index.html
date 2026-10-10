@@ -12,9 +12,13 @@
 <meta property="og:image" content="https://apps.johnkatez.com/mvn/img/og-cover.jpg">
 <link rel="icon" href="/mackro/img/icon.png">
 <style>
+@font-face{font-family:"Manrope";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-latin-wght-normal.woff2) format("woff2-variations"),url(/fonts/manrope-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/dm-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/dm-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/dm-sans-latin-700-normal.woff2) format("woff2")}
 :root{
-  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",system-ui,sans-serif;
-  --round:ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold",system-ui,sans-serif;
+  --font:"DM Sans",system-ui,-apple-system,sans-serif;
+  --round:"Manrope",system-ui,-apple-system,sans-serif;
 }
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;background:#0C0B12;color:#F4F2FA;font:17px/1.5 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
@@ -25,18 +29,33 @@ a{color:inherit}
 header{padding:64px 0 30px}
 .me{display:inline-flex;align-items:center;gap:8px;color:#c9c4dd;text-decoration:none;font-weight:700;font-size:.95rem}
 .me:hover{color:#fff}
-h1{font:900 clamp(2.8rem,7vw,5.8rem)/.92 var(--round);letter-spacing:-.05em;margin:18px 0 16px}
+h1{font:800 clamp(2.8rem,7vw,5.8rem)/.92 var(--round);letter-spacing:-.05em;margin:18px 0 16px}
 .lede{font-size:1.2rem;color:#c9c4dd;max-width:30em;margin:0}
-.picker{display:flex;flex-wrap:wrap;gap:20px 26px;margin:18px 0 20px}
-.picker a{display:flex;flex-direction:column;align-items:center;gap:9px;width:96px;text-decoration:none;color:#e8e5f2;font-weight:700;font-size:.82rem;text-align:center;line-height:1.2}
-.picker img{width:84px;height:84px;border-radius:20px;display:block;box-shadow:0 14px 30px -12px rgba(0,0,0,.7)}
-.picker a:hover span{text-decoration:underline;text-underline-offset:3px}
-
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 22px -10px}
+.picker a{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;width:112px;padding:14px 8px 12px;border-radius:24px;text-decoration:none;color:#e8e5f2;font-weight:700;font-size:.84rem;text-align:center;line-height:1.2;border:1px solid transparent;transition:transform .35s cubic-bezier(.3,1.5,.4,1),background .3s,border-color .3s,box-shadow .3s,color .2s}
+.picker img{width:84px;height:84px;border-radius:20px;display:block;box-shadow:0 14px 30px -12px rgba(0,0,0,.7);transition:transform .4s cubic-bezier(.3,1.6,.4,1),box-shadow .3s}
+.picker span{position:relative;padding-bottom:6px}
+.picker span:after{content:"";position:absolute;left:50%;bottom:0;width:0;height:3px;border-radius:3px;background:var(--g);transform:translateX(-50%);transition:width .3s cubic-bezier(.3,1.4,.4,1)}
+.picker a:hover,.picker a:focus-visible{transform:translateY(-6px);color:#fff;background:linear-gradient(180deg,color-mix(in srgb,var(--g) 22%,transparent),rgba(255,255,255,.03));border-color:color-mix(in srgb,var(--g) 55%,transparent);box-shadow:0 22px 40px -22px var(--g)}
+.picker a:hover img,.picker a:focus-visible img{transform:rotate(-5deg) scale(1.08);box-shadow:0 0 44px -4px var(--g),0 18px 30px -14px rgba(0,0,0,.8)}
+.picker a:hover span:after,.picker a:focus-visible span:after{width:70%}
+.top{position:relative;overflow:hidden}
+.top header,.top .picker{position:relative;z-index:2}
+.fan{position:absolute;right:18px;top:34px;width:clamp(300px,42vw,500px);height:520px;z-index:1;pointer-events:none}
+.fan .ph{position:absolute;width:42%;border-radius:26px;overflow:hidden;background:#000;box-shadow:0 0 0 2px rgba(255,255,255,.16),0 40px 70px -26px rgba(0,0,0,.9);animation:drift 7s ease-in-out infinite}
+.fan .ph img{display:block;width:100%;height:auto}
+.fan .a{left:0;top:70px;--r:-9deg;transform:rotate(var(--r))}
+.fan .b{left:29%;top:6px;--r:0deg;z-index:2;animation-delay:-2.3s}
+.fan .c{right:0;top:92px;--r:9deg;animation-delay:-4.6s}
+.fan:before{content:"";position:absolute;inset:14% 6% 0;background:radial-gradient(closest-side,#7B3DFF,transparent);filter:blur(50px);opacity:.5}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-9px) rotate(var(--r))}}
+@media(max-width:900px){.fan{display:none}}
+@media(prefers-reduced-motion:reduce){.fan .ph{animation:none}.picker a,.picker img,.picker span:after{transition:none}}
 .show{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;padding:64px 0;border-top:1px solid rgba(255,255,255,.12);scroll-margin-top:12px}
 .show.flip .info{order:2}
 .head{display:flex;align-items:center;gap:16px}
 .head img{width:64px;height:64px;border-radius:15px;box-shadow:0 0 36px -6px var(--g)}
-h2{font:900 clamp(1.9rem,4vw,2.8rem)/1 var(--round);letter-spacing:-.04em;margin:0 0 6px}
+h2{font:800 clamp(1.9rem,4vw,2.8rem)/1 var(--round);letter-spacing:-.04em;margin:0 0 6px}
 .tag{display:inline-block;font-size:.74rem;font-weight:800;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,.12);color:#e8e5f2}
 .tag.live{background:var(--g);color:#14101f}
 .line{font-size:1.25rem;line-height:1.4;color:#e8e5f2;margin:22px 0 16px;max-width:28em}
@@ -46,7 +65,7 @@ h2{font:900 clamp(1.9rem,4vw,2.8rem)/1 var(--round);letter-spacing:-.04em;margin
 .go{display:inline-block;font-weight:800;text-decoration:none;color:#14101f;background:var(--g);padding:13px 24px;border-radius:99px}
 .go:hover{filter:brightness(1.1)}
 .go:after{content:" \2192"}
-.shots{display:flex;gap:18px;justify-content:center;position:relative}
+.shots{display:flex;gap:18px;justify-content:center;align-items:flex-start;position:relative}
 .shots:before{content:"";position:absolute;inset:8% 6%;background:var(--g);filter:blur(80px);opacity:.28;z-index:-1}
 .phone{flex:1 1 0;max-width:270px;border-radius:30px;overflow:hidden;background:#000;box-shadow:0 0 0 2px rgba(255,255,255,.14),0 34px 60px -26px rgba(0,0,0,.85)}
 .phone:nth-child(2){margin-top:44px}
@@ -56,7 +75,7 @@ footer a{font-weight:700;color:#d8d4ea;text-decoration:none}
 footer a:hover{color:#fff}
 @media(max-width:820px){
   header{padding-top:40px}
-  .picker{gap:18px 14px}.picker a{width:88px}.picker img{width:76px;height:76px}
+  .picker{gap:6px;margin-left:-6px}.picker a{width:96px;padding:10px 4px}.picker img{width:72px;height:72px}
   .show{grid-template-columns:minmax(0,1fr);gap:30px;padding:48px 0}
   .show.flip .info{order:0}
   .phone:nth-child(2){margin-top:28px}
@@ -66,6 +85,12 @@ footer a:hover{color:#fff}
 </head>
 <body>
 <div class="wrap">
+  <div class="top">
+  <div class="fan" aria-hidden="true">
+    <div class="ph a"><img src="/stashday/img/number.jpg" alt="" width="640" height="1390"></div>
+    <div class="ph b"><img src="/mackro/img/today.jpg" alt="" width="640" height="1390"></div>
+    <div class="ph c"><img src="/tabbed/img/answer.jpg" alt="" width="640" height="1391"></div>
+  </div>
   <header>
     <a class="me" href="https://johnkatez.com">John Katez</a>
     <h1>Apps I made<br>after hours.</h1>
@@ -73,8 +98,9 @@ footer a:hover{color:#fff}
   </header>
 
   <nav class="picker" aria-label="Jump to an app">
-    <a href="#mvn" data-tint="#9867FF"><img src="/mvn/img/icon.png" alt="" width="84" height="84"><span>Music Video Night</span></a><a href="#mackro" data-tint="#F5B82A"><img src="/mackro/img/icon.png" alt="" width="84" height="84"><span>Mackro</span></a><a href="#stashday" data-tint="#34C79A"><img src="/stashday/img/icon.png" alt="" width="84" height="84"><span>Stashday</span></a><a href="#tabbed" data-tint="#0A84FF"><img src="/tabbed/img/icon.png" alt="" width="84" height="84"><span>Tabbed</span></a><a href="#fantasyqueens" data-tint="#F8218A"><img src="/fantasyqueens/img/icon.png" alt="" width="84" height="84"><span>Fantasy Queens</span></a>
+    <a href="#mvn" style="--g:#9867FF"><img src="/mvn/img/icon.png" alt="" width="84" height="84"><span>Music Video Night</span></a><a href="#mackro" style="--g:#F5B82A"><img src="/mackro/img/icon.png" alt="" width="84" height="84"><span>Mackro</span></a><a href="#stashday" style="--g:#34C79A"><img src="/stashday/img/icon.png" alt="" width="84" height="84"><span>Stashday</span></a><a href="#tabbed" style="--g:#0A84FF"><img src="/tabbed/img/icon.png" alt="" width="84" height="84"><span>Tabbed</span></a><a href="#fantasyqueens" style="--g:#F8218A"><img src="/fantasyqueens/img/icon.png" alt="" width="84" height="84"><span>Fantasy Queens</span></a>
   </nav>
+  </div>
 
   <main>
     <section class="show" id="mvn" style="--g:#9867FF" aria-label="Music Video Night">
@@ -84,7 +110,7 @@ footer a:hover{color:#fff}
         <ul><li>Names stay hidden until the votes are in</li><li>Pick a theme, queue the videos, play them on the big screen</li><li>Results reveal who chose the winner</li></ul>
         <a class="go" href="/mvn/">See Music Video Night</a>
       </div>
-      <div class="shots"><div class="phone"><img src="/mvn/img/screen-voting.webp" alt="Blind voting screen with five music videos" width="540" height="1173" loading="lazy"></div><div class="phone"><img src="/mvn/img/screen-results.webp" alt="Results screen announcing the winner" width="540" height="1173" loading="lazy"></div></div>
+      <div class="shots"><div class="phone"><img src="/mvn/img/screen-themes.webp" alt="Host a Night screen with themes to pick from" width="540" height="1173" loading="lazy"></div></div>
     </section>
     <section class="show flip" id="mackro" style="--g:#F5B82A" aria-label="Mackro">
       <div class="info">
