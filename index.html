@@ -41,16 +41,18 @@ h1{font:800 clamp(2.8rem,7vw,5.8rem)/.92 var(--round);letter-spacing:-.05em;marg
 .picker a:hover span:after,.picker a:focus-visible span:after{width:70%}
 .top{position:relative;overflow:hidden}
 .top header,.top .picker{position:relative;z-index:2}
-.fan{position:absolute;right:18px;top:34px;width:clamp(300px,42vw,500px);height:520px;z-index:1;pointer-events:none}
-.fan .ph{position:absolute;width:42%;border-radius:26px;overflow:hidden;background:#000;box-shadow:0 0 0 2px rgba(255,255,255,.16),0 40px 70px -26px rgba(0,0,0,.9);animation:drift 7s ease-in-out infinite}
-.fan .ph img{display:block;width:100%;height:auto}
-.fan .a{left:0;top:70px;--r:-9deg;transform:rotate(var(--r))}
-.fan .b{left:29%;top:6px;--r:0deg;z-index:2;animation-delay:-2.3s}
-.fan .c{right:0;top:92px;--r:9deg;animation-delay:-4.6s}
-.fan:before{content:"";position:absolute;inset:14% 6% 0;background:radial-gradient(closest-side,#7B3DFF,transparent);filter:blur(50px);opacity:.5}
-@keyframes drift{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-9px) rotate(var(--r))}}
+.fan{position:absolute;right:34px;top:26px;width:clamp(210px,22vw,280px);z-index:1;pointer-events:none}
+.fan:before{content:"";position:absolute;inset:6% -14% -4%;background:radial-gradient(closest-side,#7B3DFF,transparent);filter:blur(46px);opacity:.55}
+.rig{position:relative;transform:rotate(-6deg);animation:drift 7s ease-in-out infinite}
+.pf{position:relative;aspect-ratio:640/1390;border-radius:34px;overflow:hidden;background:#000;box-shadow:0 0 0 2px rgba(255,255,255,.18),0 0 0 7px rgba(255,255,255,.05),0 46px 80px -28px rgba(0,0,0,.95)}
+.pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:slide 25s infinite both;animation-delay:calc(var(--i)*5s)}
+.cap{position:absolute;left:-46px;top:78px;transform:rotate(6deg);height:38px;width:200px;pointer-events:none;z-index:3}
+.cap span{position:absolute;left:0;top:0;display:flex;align-items:center;gap:8px;white-space:nowrap;padding:7px 14px 7px 8px;border-radius:99px;background:rgba(20,16,31,.92);box-shadow:0 0 0 1px color-mix(in srgb,var(--g) 60%,transparent),0 14px 30px -12px var(--g);font:700 .84rem var(--font);color:#fff;opacity:0;animation:slide 25s infinite both;animation-delay:calc(var(--i)*5s)}
+.cap img{width:22px;height:22px;border-radius:6px}
+@keyframes slide{0%{opacity:0}3%{opacity:1}20%{opacity:1}23%{opacity:0}100%{opacity:0}}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-9px) rotate(-6deg)}}
 @media(max-width:900px){.fan{display:none}}
-@media(prefers-reduced-motion:reduce){.fan .ph{animation:none}.picker a,.picker img,.picker span:after{transition:none}}
+@media(prefers-reduced-motion:reduce){.rig,.pf img,.cap span{animation:none}.pf img:first-child,.cap span:first-child{opacity:1}.picker a,.picker img,.picker span:after{transition:none}}
 .show{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;padding:64px 0;border-top:1px solid rgba(255,255,255,.12);scroll-margin-top:12px}
 .show.flip .info{order:2}
 .head{display:flex;align-items:center;gap:16px}
@@ -86,11 +88,7 @@ footer a:hover{color:#fff}
 <body>
 <div class="wrap">
   <div class="top">
-  <div class="fan" aria-hidden="true">
-    <div class="ph a"><img src="/stashday/img/number.jpg" alt="" width="640" height="1390"></div>
-    <div class="ph b"><img src="/mackro/img/today.jpg" alt="" width="640" height="1390"></div>
-    <div class="ph c"><img src="/tabbed/img/answer.jpg" alt="" width="640" height="1391"></div>
-  </div>
+  <div class="fan" aria-hidden="true"><div class="rig"><div class="pf"><img src="/mvn/img/screen-themes.webp" alt="" style="--i:0" width="640" height="1390"><img src="/mackro/img/today.jpg" alt="" style="--i:1" width="640" height="1390"><img src="/stashday/img/number.jpg" alt="" style="--i:2" width="640" height="1390"><img src="/tabbed/img/answer.jpg" alt="" style="--i:3" width="640" height="1390"><img src="/fantasyqueens/img/shot3.jpg" alt="" style="--i:4" width="640" height="1390"></div><div class="cap"><span style="--i:0;--g:#9867FF"><img src="/mvn/img/icon.png" alt="">Music Video Night</span><span style="--i:1;--g:#F5B82A"><img src="/mackro/img/icon.png" alt="">Mackro</span><span style="--i:2;--g:#34C79A"><img src="/stashday/img/icon.png" alt="">Stashday</span><span style="--i:3;--g:#0A84FF"><img src="/tabbed/img/icon.png" alt="">Tabbed</span><span style="--i:4;--g:#F8218A"><img src="/fantasyqueens/img/icon.png" alt="">Fantasy Queens</span></div></div></div>
   <header>
     <a class="me" href="https://johnkatez.com">John Katez</a>
     <h1>Apps I made<br>after hours.</h1>
