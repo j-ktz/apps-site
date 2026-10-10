@@ -101,6 +101,11 @@ h1{font:900 clamp(2.8rem,7vw,5.8rem)/.92 var(--round);letter-spacing:-.05em;marg
 .dock a{display:block;width:62px;height:62px;border-radius:15px;overflow:hidden;transition:transform .25s cubic-bezier(.3,1.6,.4,1)}
 .dock a:hover,.dock a:focus-visible{transform:translateY(-8px) scale(1.12)}
 .dock img{width:100%;height:100%;display:block}
+.picker{display:flex;flex-wrap:wrap;gap:22px 26px;margin:6px 0 34px}
+.picker a{display:flex;flex-direction:column;align-items:center;gap:9px;width:96px;text-decoration:none;color:#e8e5f2;font-weight:700;font-size:.82rem;text-align:center;line-height:1.2;transition:transform .25s cubic-bezier(.3,1.6,.4,1)}
+.picker img{width:84px;height:84px;border-radius:20px;display:block;box-shadow:0 14px 30px -12px rgba(0,0,0,.7)}
+.picker a:hover,.picker a:focus-visible{transform:translateY(-6px) scale(1.06)}
+@media(max-width:820px){.picker{gap:18px 14px}.picker a{width:88px}.picker img{width:76px;height:76px}}
 footer{padding:56px 0 60px;text-align:center;color:#9a94b3;font-size:.95rem}
 footer a{font-weight:700;color:#d8d4ea;text-decoration:none}
 footer a:hover{color:#fff}
@@ -120,8 +125,16 @@ footer a:hover{color:#fff}
   <header>
     <a class="me" href="https://johnkatez.com">John Katez</a>
     <h1>Apps I made<br>after hours.</h1>
-    <p class="lede">Four iPhone apps, built nights and weekends. Every widget below is playable. Tap the name to see the app.</p>
+    <p class="lede">Five iPhone apps, built nights and weekends. Tap an icon to open its page, or play with the widgets below.</p>
   </header>
+
+  <nav class="picker" aria-label="Open an app">
+    <a href="/mvn/" data-tint="#9867FF"><img src="/mvn/img/icon.png" alt="" width="84" height="84"><span>Music Video Night</span></a>
+    <a href="/mackro/" data-tint="#F5B82A"><img src="/mackro/img/icon.png" alt="" width="84" height="84"><span>Mackro</span></a>
+    <a href="/stashday/" data-tint="#34C79A"><img src="/stashday/img/icon.png" alt="" width="84" height="84"><span>Stashday</span></a>
+    <a href="/tabbed/" data-tint="#0A84FF"><img src="/tabbed/img/icon.png" alt="" width="84" height="84"><span>Tabbed</span></a>
+    <a href="/fantasyqueens/" data-tint="#F8218A"><img src="/fantasyqueens/img/icon.png" alt="" width="84" height="84"><span>Fantasy Queens</span></a>
+  </nav>
 
   <main class="screen">
     <section class="app mvn" data-tint="#9867FF" aria-label="Music Video Night">
@@ -181,6 +194,7 @@ footer a:hover{color:#fff}
     <a href="/mackro/" aria-label="Mackro" data-tint="#F5B82A"><img src="/mackro/img/icon.png" alt=""></a>
     <a href="/stashday/" aria-label="Stashday" data-tint="#34C79A"><img src="/stashday/img/icon.png" alt=""></a>
     <a href="/tabbed/" aria-label="Tabbed" data-tint="#0A84FF"><img src="/tabbed/img/icon.png" alt=""></a>
+    <a href="/fantasyqueens/" aria-label="Fantasy Queens" data-tint="#F8218A"><img src="/fantasyqueens/img/icon.png" alt=""></a>
   </nav>
 
   <footer>
