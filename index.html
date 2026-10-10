@@ -4,120 +4,64 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Apps by John Katez</title>
-<meta name="description" content="Four iPhone apps by John Katez: Music Video Night, Mackro, Stashday and Tabbed. Support and privacy for each one live here.">
+<meta name="description" content="Five iPhone apps by John Katez: Music Video Night, Mackro, Stashday, Tabbed and Fantasy Queens. Screenshots, support and privacy for each one live here.">
 <meta name="theme-color" content="#0C0B12">
 <link rel="canonical" href="https://apps.johnkatez.com/">
 <meta property="og:title" content="Apps by John Katez">
-<meta property="og:description" content="Music Video Night, Mackro, Stashday and Tabbed.">
+<meta property="og:description" content="Music Video Night, Mackro, Stashday, Tabbed and Fantasy Queens.">
 <meta property="og:image" content="https://apps.johnkatez.com/mvn/img/og-cover.jpg">
 <link rel="icon" href="/mackro/img/icon.png">
 <style>
 :root{
-  --tint:#7B3DFF;
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",system-ui,sans-serif;
   --round:ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold",system-ui,sans-serif;
-  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;background:#0C0B12;color:#F4F2FA;font:17px/1.5 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
-body:before{content:"";position:fixed;inset:-20%;background:radial-gradient(45% 40% at 30% 20%,var(--tint),transparent 70%),radial-gradient(35% 35% at 85% 75%,var(--tint),transparent 70%);opacity:.32;filter:blur(40px);transition:background .6s;z-index:-1;pointer-events:none}
+body:before{content:"";position:fixed;inset:-20%;background:radial-gradient(45% 40% at 30% 20%,#7B3DFF,transparent 70%),radial-gradient(35% 35% at 85% 75%,#7B3DFF,transparent 70%);opacity:.3;filter:blur(40px);z-index:-1;pointer-events:none}
 a{color:inherit}
 :focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:10px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-header{padding:64px 0 38px}
+header{padding:64px 0 30px}
 .me{display:inline-flex;align-items:center;gap:8px;color:#c9c4dd;text-decoration:none;font-weight:700;font-size:.95rem}
 .me:hover{color:#fff}
 h1{font:900 clamp(2.8rem,7vw,5.8rem)/.92 var(--round);letter-spacing:-.05em;margin:18px 0 16px}
 .lede{font-size:1.2rem;color:#c9c4dd;max-width:30em;margin:0}
-
-/* home screen */
-.screen{display:grid;grid-template-columns:repeat(4,1fr);grid-template-areas:"mvn mvn mack mack" "mvn mvn stash stash" "tab tab tab tab";gap:26px 22px;padding-bottom:30px}
-.app{display:flex;flex-direction:column;gap:9px}
-.app.mvn{grid-area:mvn}.app.mack{grid-area:mack}.app.stash{grid-area:stash}.app.tab{grid-area:tab}
-.w{position:relative;flex:1;border-radius:34px;padding:22px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.08);transition:transform .3s cubic-bezier(.3,1.4,.4,1)}
-.app:hover .w,.app:focus-within .w{transform:translateY(-4px) scale(1.01)}
-.label{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:600;font-size:.92rem;color:#e8e5f2}
-.label img{width:22px;height:22px;border-radius:6px}
-.label:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.tag{font-size:.7rem;font-weight:800;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.14)}
-.wh{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:.85rem;opacity:.8;margin-bottom:10px}
-.wbtn{all:unset;cursor:pointer;box-sizing:border-box}
-.wbtn:focus-visible{outline:3px solid currentColor;outline-offset:2px;border-radius:12px}
-
-/* MVN widget */
-.mvnW{background:linear-gradient(160deg,#2A1458,#1B1033 60%);color:#FDF6EC;display:flex;flex-direction:column}
-.mvnW:before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:#FF67A3;filter:blur(80px);opacity:.45;left:-90px;top:-90px}
-.mvnW > *{position:relative}
-.mvnW h3{font:900 clamp(1.6rem,3vw,2.3rem)/1 var(--round);letter-spacing:-.04em;margin:4px 0 6px}
-.mvnW p{margin:0 0 16px;color:#cfc4ee;font-size:.95rem}
-.vote{display:grid;gap:10px;margin-top:auto}
-.vo{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);border:2px solid transparent;border-radius:18px;padding:8px;transition:background .2s,border-color .2s,opacity .3s}
-.vo:hover{background:rgba(255,255,255,.14)}
-.vo img{width:96px;height:52px;border-radius:12px;object-fit:cover;flex:none}
-.vo b{display:block;font-size:1rem}.vo i{font-style:normal;color:#b9addc;font-size:.82rem}
-.vo em{margin-left:auto;font-style:normal;font-weight:800;font-size:.8rem;color:#FF67A3;opacity:0;transition:opacity .4s .1s;white-space:nowrap}
-.mvnW.done .vo{opacity:.5}.mvnW.done .vo em{opacity:1}.mvnW.done .vo.pick{opacity:1;border-color:#FF67A3}
-
-/* Mackro widget */
-.mackW{background:radial-gradient(120% 120% at 80% 0,#FFD45C,#F5B82A 60%);color:#1F1810;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
-.mackW .rng{position:relative;width:118px;height:118px}
-.mackW svg{width:100%;height:100%;transform:rotate(-90deg)}
-.mackW .t{stroke:rgba(31,24,16,.15)}.mackW .p{stroke:#1F1810;transition:stroke-dashoffset .6s cubic-bezier(.3,1.2,.4,1)}
-.mackW .n{position:absolute;inset:0;display:grid;place-content:center;text-align:center;font:900 1.6rem var(--round);line-height:1}
-.mackW .n small{font:800 .62rem var(--font);opacity:.7;margin-top:3px}
-.mackW .add{display:inline-flex;align-items:center;gap:8px;background:#1F1810;color:#FCE9A8;font:800 .92rem var(--round);padding:10px 16px;border-radius:99px;margin-top:8px}
-.mackW .msg{font:900 1.15rem/1.15 var(--round);margin:0}
-.mackW .mk{position:absolute;right:-6px;bottom:-14px;width:120px;transform:rotate(-6deg);transition:transform .3s cubic-bezier(.3,1.6,.4,1)}
-.mackW .mk.hop{transform:rotate(4deg) translateY(-10px) scale(1.06)}
-
-/* Stashday widget */
-.stashW{background:radial-gradient(120% 120% at 90% 10%,#1C5A45,#0D2B22 70%);color:#EAF4EE;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
-.stashW .lab{font-weight:700;color:#A9C9BB;font-size:.88rem}
-.stashW .amt{font:800 clamp(2.4rem,4.4vw,3.2rem)/1 var(--round);letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:#5BE0B0;margin:2px 0 10px}
-.stashW .paid{display:inline-block;white-space:nowrap;background:#EAF4EE;color:#0D2B22;font:800 .9rem var(--round);padding:9px 15px;border-radius:99px}
-.stashW .mini{display:flex;gap:8px}
-.stashW .mini span{position:relative;width:50px;height:50px;display:grid;place-items:center;font-size:1.3rem}
-.stashW .mini svg{position:absolute;inset:0;transform:rotate(-90deg)}
-.stashW .mini circle{fill:none;stroke-width:5}
-.stashW .mini .bg{stroke:rgba(255,255,255,.12)}
-.stashW .mini .fg{stroke-linecap:round;stroke-dasharray:132;transition:stroke-dashoffset .6s}
-
-/* Tabbed widget */
-.tabW{background:radial-gradient(70% 120% at 80% 0,#14306b,#0B1220 70%);color:#EEF2F8;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
-.tabW:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(90,150,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(90,150,255,.08) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
-.tabW > *{position:relative;z-index:1}
-.tabW .q{font-weight:800;font-size:1.15rem;margin:0 0 12px;max-width:30em}
-.tabW .ops{display:flex;flex-wrap:wrap;gap:8px}
-.tabW .op{background:rgba(255,255,255,.1);border:2px solid transparent;border-radius:12px;padding:8px 14px;font-weight:800}
-.tabW .op:hover{background:rgba(255,255,255,.18)}
-.tabW .op.ok{background:#1f7a49;border-color:#28CD78}.tabW .op.no{background:#7a1f2a;border-color:#FF4F4F}
-.tabW .clock{font:800 clamp(2.6rem,5vw,3.6rem)/1 var(--mono);color:#FF7A1A;font-variant-numeric:tabular-nums;text-align:right}
-.tabW .cite{display:inline-block;margin-top:12px;font:700 .9rem var(--mono);background:#D6E6FB;color:#0b4fa8;border-radius:99px;padding:3px 12px;visibility:hidden}
-.tabW .cite.on{visibility:visible}
-.tabW .stripe{position:absolute;left:0;right:0;bottom:0;height:8px;background:linear-gradient(90deg,#FFC400 0 25%,#FF7A1A 25% 50%,#28CD78 50% 75%,#FF4F4F 75%)}
-
-/* dock */
-.dock{display:flex;justify-content:center;gap:18px;margin:34px auto 0;padding:14px 18px;width:max-content;max-width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:30px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.dock a{display:block;width:62px;height:62px;border-radius:15px;overflow:hidden;transition:transform .25s cubic-bezier(.3,1.6,.4,1)}
-.dock a:hover,.dock a:focus-visible{transform:translateY(-8px) scale(1.12)}
-.dock img{width:100%;height:100%;display:block}
-.picker{display:flex;flex-wrap:wrap;gap:22px 26px;margin:6px 0 34px}
-.picker a{display:flex;flex-direction:column;align-items:center;gap:9px;width:96px;text-decoration:none;color:#e8e5f2;font-weight:700;font-size:.82rem;text-align:center;line-height:1.2;transition:transform .25s cubic-bezier(.3,1.6,.4,1)}
+.picker{display:flex;flex-wrap:wrap;gap:20px 26px;margin:18px 0 20px}
+.picker a{display:flex;flex-direction:column;align-items:center;gap:9px;width:96px;text-decoration:none;color:#e8e5f2;font-weight:700;font-size:.82rem;text-align:center;line-height:1.2}
 .picker img{width:84px;height:84px;border-radius:20px;display:block;box-shadow:0 14px 30px -12px rgba(0,0,0,.7)}
-.picker a:hover,.picker a:focus-visible{transform:translateY(-6px) scale(1.06)}
-@media(max-width:820px){.picker{gap:18px 14px}.picker a{width:88px}.picker img{width:76px;height:76px}}
-footer{padding:56px 0 60px;text-align:center;color:#9a94b3;font-size:.95rem}
+.picker a:hover span{text-decoration:underline;text-underline-offset:3px}
+
+.show{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;padding:64px 0;border-top:1px solid rgba(255,255,255,.12);scroll-margin-top:12px}
+.show.flip .info{order:2}
+.head{display:flex;align-items:center;gap:16px}
+.head img{width:64px;height:64px;border-radius:15px;box-shadow:0 0 36px -6px var(--g)}
+h2{font:900 clamp(1.9rem,4vw,2.8rem)/1 var(--round);letter-spacing:-.04em;margin:0 0 6px}
+.tag{display:inline-block;font-size:.74rem;font-weight:800;padding:3px 10px;border-radius:99px;background:rgba(255,255,255,.12);color:#e8e5f2}
+.tag.live{background:var(--g);color:#14101f}
+.line{font-size:1.25rem;line-height:1.4;color:#e8e5f2;margin:22px 0 16px;max-width:28em}
+.info ul{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:10px;max-width:30em}
+.info li{position:relative;padding-left:26px;color:#c9c4dd}
+.info li:before{content:"";position:absolute;left:0;top:.55em;width:12px;height:12px;border-radius:4px;background:var(--g)}
+.go{display:inline-block;font-weight:800;text-decoration:none;color:#14101f;background:var(--g);padding:13px 24px;border-radius:99px}
+.go:hover{filter:brightness(1.1)}
+.go:after{content:" \2192"}
+.shots{display:flex;gap:18px;justify-content:center;position:relative}
+.shots:before{content:"";position:absolute;inset:8% 6%;background:var(--g);filter:blur(80px);opacity:.28;z-index:-1}
+.phone{flex:1 1 0;max-width:270px;border-radius:30px;overflow:hidden;background:#000;box-shadow:0 0 0 2px rgba(255,255,255,.14),0 34px 60px -26px rgba(0,0,0,.85)}
+.phone:nth-child(2){margin-top:44px}
+.phone img{display:block;width:100%;height:auto}
+footer{padding:56px 0 60px;text-align:center;color:#9a94b3;font-size:.95rem;border-top:1px solid rgba(255,255,255,.12)}
 footer a{font-weight:700;color:#d8d4ea;text-decoration:none}
 footer a:hover{color:#fff}
-
 @media(max-width:820px){
-  .screen{grid-template-columns:1fr;grid-template-areas:"mvn" "mack" "stash" "tab"}
-  .tabW{grid-template-columns:1fr}.tabW .clock{text-align:left;order:-1}
-  .stashW{grid-template-columns:1fr}.stashW .mini{order:-1}
   header{padding-top:40px}
-  .dock{gap:12px}.dock a{width:54px;height:54px}
+  .picker{gap:18px 14px}.picker a{width:88px}.picker img{width:76px;height:76px}
+  .show{grid-template-columns:minmax(0,1fr);gap:30px;padding:48px 0}
+  .show.flip .info{order:0}
+  .phone:nth-child(2){margin-top:28px}
+  .shots{gap:12px}
 }
-@media(prefers-reduced-motion:reduce){.w,.dock a,.mackW .mk,.mackW .p{transition:none}}
 </style>
 </head>
 <body>
@@ -125,126 +69,65 @@ footer a:hover{color:#fff}
   <header>
     <a class="me" href="https://johnkatez.com">John Katez</a>
     <h1>Apps I made<br>after hours.</h1>
-    <p class="lede">Five iPhone apps, built nights and weekends. Tap an icon to open its page, or play with the widgets below.</p>
+    <p class="lede">Five iPhone apps, built nights and weekends. Tap one to jump to it, or open its page for the full story.</p>
   </header>
 
-  <nav class="picker" aria-label="Open an app">
-    <a href="/mvn/" data-tint="#9867FF"><img src="/mvn/img/icon.png" alt="" width="84" height="84"><span>Music Video Night</span></a>
-    <a href="/mackro/" data-tint="#F5B82A"><img src="/mackro/img/icon.png" alt="" width="84" height="84"><span>Mackro</span></a>
-    <a href="/stashday/" data-tint="#34C79A"><img src="/stashday/img/icon.png" alt="" width="84" height="84"><span>Stashday</span></a>
-    <a href="/tabbed/" data-tint="#0A84FF"><img src="/tabbed/img/icon.png" alt="" width="84" height="84"><span>Tabbed</span></a>
-    <a href="/fantasyqueens/" data-tint="#F8218A"><img src="/fantasyqueens/img/icon.png" alt="" width="84" height="84"><span>Fantasy Queens</span></a>
+  <nav class="picker" aria-label="Jump to an app">
+    <a href="#mvn" data-tint="#9867FF"><img src="/mvn/img/icon.png" alt="" width="84" height="84"><span>Music Video Night</span></a><a href="#mackro" data-tint="#F5B82A"><img src="/mackro/img/icon.png" alt="" width="84" height="84"><span>Mackro</span></a><a href="#stashday" data-tint="#34C79A"><img src="/stashday/img/icon.png" alt="" width="84" height="84"><span>Stashday</span></a><a href="#tabbed" data-tint="#0A84FF"><img src="/tabbed/img/icon.png" alt="" width="84" height="84"><span>Tabbed</span></a><a href="#fantasyqueens" data-tint="#F8218A"><img src="/fantasyqueens/img/icon.png" alt="" width="84" height="84"><span>Fantasy Queens</span></a>
   </nav>
 
-  <main class="screen">
-    <section class="app mvn" data-tint="#9867FF" aria-label="Music Video Night">
-      <div class="w mvnW" id="mvnW">
-        <div class="wh"><span>Guilty Pleasures</span><span id="mvnState">Blind vote</span></div>
-        <h3 id="mvnQ">Which video wins tonight?</h3>
-        <p id="mvnHint">No names shown. Pick one and see who chose it.</p>
-        <div class="vote">
-          <button class="wbtn vo" type="button" data-by="Priya"><img src="/mvn/img/v1.jpg" alt=""><span><b>Rooftop Rewind</b><i>DJ Kassette</i></span><em></em></button>
-          <button class="wbtn vo" type="button" data-by="Marcus"><img src="/mvn/img/v2.jpg" alt=""><span><b>Lasers On, Lights Off</b><i>Club Mirage</i></span><em></em></button>
-          <button class="wbtn vo" type="button" data-by="Dev"><img src="/mvn/img/v3.jpg" alt=""><span><b>Neon Heartbreak</b><i>The Velvet Hours</i></span><em></em></button>
-        </div>
+  <main>
+    <section class="show" id="mvn" style="--g:#9867FF" aria-label="Music Video Night">
+      <div class="info">
+        <div class="head"><img src="/mvn/img/icon.png" alt="" width="64" height="64"><div><h2>Music Video Night</h2><span class="tag live">Live</span></div></div>
+        <p class="line">A party game. Everyone picks a music video, everyone votes blind, one person wins the Night.</p>
+        <ul><li>Names stay hidden until the votes are in</li><li>Pick a theme, queue the videos, play them on the big screen</li><li>Results reveal who chose the winner</li></ul>
+        <a class="go" href="/mvn/">See Music Video Night</a>
       </div>
-      <a class="label" href="/mvn/"><img src="/mvn/img/icon.png" alt="">Music Video Night <span class="tag">Live</span></a>
+      <div class="shots"><div class="phone"><img src="/mvn/img/screen-voting.webp" alt="Blind voting screen with five music videos" width="540" height="1173" loading="lazy"></div><div class="phone"><img src="/mvn/img/screen-results.webp" alt="Results screen announcing the winner" width="540" height="1173" loading="lazy"></div></div>
     </section>
-
-    <section class="app mack" data-tint="#F5B82A" aria-label="Mackro">
-      <div class="w mackW">
-        <div class="rng"><svg viewBox="0 0 120 120"><circle class="t" cx="60" cy="60" r="50" fill="none" stroke-width="14"/><circle class="p" id="mkP" cx="60" cy="60" r="50" fill="none" stroke-width="14" stroke-linecap="round" stroke-dasharray="314.2" stroke-dashoffset="314.2"/></svg><div class="n"><span id="mkN">0</span><small>of 2,000 cal</small></div></div>
-        <div><p class="msg" id="mkMsg">Mack's ready.</p><button class="wbtn add" type="button" id="mkAdd">+ Log <span id="mkFood">eggs on toast</span></button></div>
-        <img class="mk" id="mkImg" src="/mackro/img/3d/mack-logging.webp" alt="" width="120" height="122">
+    <section class="show flip" id="mackro" style="--g:#F5B82A" aria-label="Mackro">
+      <div class="info">
+        <div class="head"><img src="/mackro/img/icon.png" alt="" width="64" height="64"><div><h2>Mackro</h2><span class="tag live">Live</span></div></div>
+        <p class="line">A macro tracker with a squirrel named Mack who keeps score and never judges.</p>
+        <ul><li>Log a meal by describing it or snapping a photo</li><li>Calories and macros at a glance, with a nudge from Mack</li><li>Trends over 7, 30 or 90 days, plus widgets</li></ul>
+        <a class="go" href="/mackro/">See Mackro</a>
       </div>
-      <a class="label" href="/mackro/"><img src="/mackro/img/icon.png" alt="">Mackro <span class="tag">Live</span></a>
+      <div class="shots"><div class="phone"><img src="/mackro/img/today.jpg" alt="Today screen with calories, macros and Mack" width="640" height="1390" loading="lazy"></div><div class="phone"><img src="/mackro/img/trends.jpg" alt="Trends screen with calorie bars and macro averages" width="640" height="1390" loading="lazy"></div></div>
     </section>
-
-    <section class="app stash" data-tint="#34C79A" aria-label="Stashday">
-      <div class="w stashW">
-        <div><div class="lab">Left to set aside this payday</div><div class="amt" id="stAmt">$299.36</div><button class="wbtn paid" type="button" id="stBtn">Tick off Car registration</button></div>
-        <div class="mini" aria-hidden="true">
-          <span>🚗<svg viewBox="0 0 50 50"><circle class="bg" cx="25" cy="25" r="21"/><circle class="fg" cx="25" cy="25" r="21" stroke="#F2683C" stroke-dashoffset="132"/></svg></span>
-          <span>🎁<svg viewBox="0 0 50 50"><circle class="bg" cx="25" cy="25" r="21"/><circle class="fg" cx="25" cy="25" r="21" stroke="#34C79A" stroke-dashoffset="132"/></svg></span>
-          <span>🛡️<svg viewBox="0 0 50 50"><circle class="bg" cx="25" cy="25" r="21"/><circle class="fg" cx="25" cy="25" r="21" stroke="#F6B93B" stroke-dashoffset="132"/></svg></span>
-        </div>
+    <section class="show" id="stashday" style="--g:#34C79A" aria-label="Stashday">
+      <div class="info">
+        <div class="head"><img src="/stashday/img/icon.png" alt="" width="64" height="64"><div><h2>Stashday</h2><span class="tag soon">Coming soon</span></div></div>
+        <p class="line">Tells you exactly what to set aside each payday so the irregular bills stop being a surprise.</p>
+        <ul><li>One number per paycheck that covers every bill</li><li>A ring for each fund, so you see what is on track</li><li>Tick off what you paid and set aside</li></ul>
+        <a class="go" href="/stashday/">See Stashday</a>
       </div>
-      <a class="label" href="/stashday/"><img src="/stashday/img/icon.png" alt="">Stashday <span class="tag">Soon</span></a>
+      <div class="shots"><div class="phone"><img src="/stashday/img/number.jpg" alt="Your number: the amount to set aside this payday" width="640" height="1390" loading="lazy"></div><div class="phone"><img src="/stashday/img/fund.jpg" alt="A single fund with progress ring and due date" width="640" height="1390" loading="lazy"></div></div>
     </section>
-
-    <section class="app tab" data-tint="#0A84FF" aria-label="Tabbed">
-      <div class="w tabW">
-        <div>
-          <div class="wh" style="margin-bottom:6px"><span>Lookup drill</span></div>
-          <p class="q">A 120/240 V service drop crosses a house driveway. Minimum clearance?</p>
-          <div class="ops" id="tbOps">
-            <button class="wbtn op" type="button" data-k="0">18 ft</button><button class="wbtn op" type="button" data-k="0">15 ft</button><button class="wbtn op" type="button" data-k="1">12 ft</button><button class="wbtn op" type="button" data-k="0">10 ft</button>
-          </div>
-          <span class="cite" id="tbCite">230.24(B)(2)</span>
-        </div>
-        <div class="clock" id="tbClock" aria-hidden="true">0:41</div>
-        <div class="stripe"></div>
+    <section class="show flip" id="tabbed" style="--g:#0A84FF" aria-label="Tabbed">
+      <div class="info">
+        <div class="head"><img src="/tabbed/img/icon.png" alt="" width="64" height="64"><div><h2>Tabbed</h2><span class="tag soon">Coming soon</span></div></div>
+        <p class="line">Exam prep for journeyman electricians. Every answer cites the code section.</p>
+        <ul><li>Practice questions with the explanation and the NEC reference</li><li>Timed lookup drills for finding the right article fast</li><li>Full timed practice exams with a question navigator</li></ul>
+        <a class="go" href="/tabbed/">See Tabbed</a>
       </div>
-      <a class="label" href="/tabbed/"><img src="/tabbed/img/icon.png" alt="">Tabbed <span class="tag">Soon</span></a>
+      <div class="shots"><div class="phone"><img src="/tabbed/img/answer.jpg" alt="A practice answer with explanation and code citation" width="640" height="1391" loading="lazy"></div><div class="phone"><img src="/tabbed/img/lookup.jpg" alt="A timed lookup drill with a countdown" width="640" height="1391" loading="lazy"></div></div>
+    </section>
+    <section class="show" id="fantasyqueens" style="--g:#F8218A" aria-label="Fantasy Queens">
+      <div class="info">
+        <div class="head"><img src="/fantasyqueens/img/icon.png" alt="" width="64" height="64"><div><h2>Fantasy Queens</h2><span class="tag soon">Coming soon</span></div></div>
+        <p class="line">Fantasy leagues for your Drag Race watch party. Pick your queens, vote on the rules, see who leads after every episode.</p>
+        <ul><li>Draft your queens with your watch-party group</li><li>Vote on the rules before the premiere</li><li>A leaderboard that updates after every episode</li></ul>
+        <a class="go" href="/fantasyqueens/">See Fantasy Queens</a>
+      </div>
+      <div class="shots"><div class="phone"><img src="/fantasyqueens/img/shot2.jpg" alt="Rules vote screen" width="660" height="1434" loading="lazy"></div><div class="phone"><img src="/fantasyqueens/img/shot3.jpg" alt="Leaderboard after an episode" width="660" height="1434" loading="lazy"></div></div>
     </section>
   </main>
-
-  <nav class="dock" aria-label="All apps">
-    <a href="/mvn/" aria-label="Music Video Night" data-tint="#9867FF"><img src="/mvn/img/icon.png" alt=""></a>
-    <a href="/mackro/" aria-label="Mackro" data-tint="#F5B82A"><img src="/mackro/img/icon.png" alt=""></a>
-    <a href="/stashday/" aria-label="Stashday" data-tint="#34C79A"><img src="/stashday/img/icon.png" alt=""></a>
-    <a href="/tabbed/" aria-label="Tabbed" data-tint="#0A84FF"><img src="/tabbed/img/icon.png" alt=""></a>
-    <a href="/fantasyqueens/" aria-label="Fantasy Queens" data-tint="#F8218A"><img src="/fantasyqueens/img/icon.png" alt=""></a>
-  </nav>
 
   <footer>
     <p>Questions about any app: <a href="mailto:support@johnkatez.com">support@johnkatez.com</a></p>
     <p>© 2026</p>
   </footer>
 </div>
-
-<script>
-(function(){
-  var root=document.documentElement,$=function(i){return document.getElementById(i)};
-  /* the backdrop takes the color of whatever app you're touching */
-  document.querySelectorAll('[data-tint]').forEach(function(el){
-    function on(){root.style.setProperty('--tint',el.dataset.tint)}
-    el.addEventListener('pointerenter',on);el.addEventListener('focusin',on);
-  });
-  /* Music Video Night: blind vote */
-  var mvn=$('mvnW');
-  mvn.querySelectorAll('.vo').forEach(function(b){b.addEventListener('click',function(){
-    if(mvn.classList.contains('done')){mvn.classList.remove('done');mvn.querySelectorAll('.vo').forEach(function(x){x.classList.remove('pick')});$('mvnQ').textContent='Which video wins tonight?';$('mvnHint').textContent='No names shown. Pick one and see who chose it.';$('mvnState').textContent='Blind vote';return}
-    mvn.classList.add('done');b.classList.add('pick');
-    mvn.querySelectorAll('.vo').forEach(function(x){x.querySelector('em').textContent=x.dataset.by});
-    $('mvnQ').textContent=b.dataset.by+' picked that one.';$('mvnHint').textContent='Nobody knew until now. Tap again to replay.';$('mvnState').textContent='Revealed';
-  })});
-  /* Mackro: log a meal */
-  var foods=[['eggs on toast',302],['chicken and rice',548],['a protein shake',160],['a burrito bowl',740]],fi=0,cal=0;
-  var says=['Nice start.','Plenty of room in the stash.','Now we are cooking.','Cheat day? Mack checked.'],poses=['mack-thinking','mack-logging','mack-success','mack-cheatday'];
-  $('mkAdd').addEventListener('click',function(){
-    if(cal>2000){cal=0;fi=0;$('mkMsg').textContent="Mack's ready.";$('mkImg').src='/mackro/img/3d/mack-logging.webp'}
-    else{cal+=foods[fi][1];var s=Math.min(fi,3);$('mkMsg').textContent=cal>2000?says[3]:says[s];$('mkImg').src='/mackro/img/3d/'+(cal>2000?poses[3]:poses[s])+'.webp';fi=(fi+1)%foods.length}
-    $('mkN').textContent=cal.toLocaleString();$('mkP').style.strokeDashoffset=314.2*(1-Math.min(cal/2000,1));
-    $('mkFood').textContent=cal>2000?'start over':foods[fi][0];
-    var m=$('mkImg');m.classList.add('hop');setTimeout(function(){m.classList.remove('hop')},300);
-  });
-  /* Stashday: tick funds off */
-  var funds=[['Car registration',13.64],['Holidays',200],['Car insurance',85.72]],k=0,left=299.36,rings=document.querySelectorAll('.stashW .fg');
-  $('stBtn').addEventListener('click',function(){
-    if(k>=funds.length){k=0;left=299.36;rings.forEach(function(r){r.style.strokeDashoffset=132});$('stAmt').textContent='$299.36';$('stBtn').textContent='Tick off '+funds[0][0];return}
-    left=Math.max(0,left-funds[k][1]);rings[k].style.strokeDashoffset=0;k++;
-    $('stAmt').textContent=left<0.005?'Covered':'$'+left.toFixed(2);
-    $('stBtn').textContent=k<funds.length?'Tick off '+funds[k][0]:'Next payday';
-  });
-  /* Tabbed: timed lookup */
-  var t=41,run=true,clock=$('tbClock');
-  setInterval(function(){if(run&&t>0){t--;clock.textContent='0:'+('0'+t).slice(-2)}},1000);
-  $('tbOps').querySelectorAll('.op').forEach(function(b){b.addEventListener('click',function(){
-    if(!run){run=true;t=41;clock.textContent='0:41';$('tbCite').classList.remove('on');$('tbOps').querySelectorAll('.op').forEach(function(x){x.classList.remove('ok','no')});return}
-    run=false;$('tbOps').querySelector('[data-k="1"]').classList.add('ok');if(b.dataset.k!=='1')b.classList.add('no');$('tbCite').classList.add('on');
-  })});
-})();
-</script>
 </body>
 </html>
