@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1B0B2E">
+  <meta name="robots" content="noindex">
+  <title>Join a house on Fantasy Queens</title>
+  <meta name="description" content="You've been invited to a house on Fantasy Queens. Open the app and enter the invite code.">
+  <link rel="icon" href="/fantasyqueens/img/icon.png">
+  <link rel="stylesheet" href="/fantasyqueens/style.css">
+  <style>
+    .code { font: 700 clamp(28px, 9vw, 44px)/1.2 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .06em;
+            padding: 18px 22px; border-radius: 16px; background: rgba(255,255,255,.08); display: inline-block; margin: 8px 0 20px; }
+    .btn { display: inline-block; padding: 14px 24px; border-radius: 16px; font-weight: 800; text-decoration: none;
+           background: #E72E88; color: #fff; margin: 4px 6px; }
+    .btn.alt { background: transparent; border: 2px solid #E72E88; }
+    #copied { min-height: 1.5em; opacity: .8; }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <a href="/fantasyqueens/"><img src="/fantasyqueens/img/icon.png" alt="">Fantasy Queens</a>
+    <nav><a href="/fantasyqueens/support.html">Support</a><a href="/fantasyqueens/privacy.html">Privacy</a></nav>
+  </header>
+  <main style="text-align:center">
+    <h1>You're invited to a house</h1>
+    <p class="lede" id="lede">Open Fantasy Queens and enter the invite code on the Join screen.</p>
+    <div class="code" id="code" aria-live="polite">&nbsp;</div>
+    <p>
+      <a class="btn" id="open" href="#">Open in the app</a>
+      <a class="btn alt" id="copy" href="#">Copy the code</a>
+    </p>
+    <p id="copied"></p>
+    <p style="opacity:.75">Don't have the app yet? Fantasy Queens is coming to the App Store. Keep this code and enter it when you're in.</p>
+  </main>
+  <script>
+    // The link is /join/TIARA-K7M. GitHub Pages serves unknown paths through 404.html, which forwards here with ?code=.
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var fromPath = location.pathname.replace(/^\/join\/?/, '').replace(/\/$/, '');
+      var raw = (params.get('code') || fromPath || '').toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 20);
+      var plain = raw.replace(/-/g, '');
+      var box = document.getElementById('code');
+      if (!plain) {
+        box.textContent = '';
+        box.style.display = 'none';
+        document.getElementById('open').style.display = 'none';
+        document.getElementById('copy').style.display = 'none';
+        document.getElementById('lede').textContent = 'Ask your House Mother for the invite link or code.';
+        return;
+      }
+      box.textContent = raw;
+      document.getElementById('open').href = 'fantasyqueens://join/' + plain;
+      document.getElementById('copy').addEventListener('click', function (event) {
+        event.preventDefault();
+        var done = function () { document.getElementById('copied').textContent = 'Copied ' + raw; };
+        if (navigator.clipboard) navigator.clipboard.writeText(raw).then(done); else done();
+      });
+    })();
+  </script>
+</body>
+</html>

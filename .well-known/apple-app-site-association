@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["4G2Q945UC4.com.johnkatez.fantasyqueens"],
+        "components": [
+          { "/": "/join/*", "comment": "Fantasy Queens house invite links" }
+        ]
+      }
+    ]
+  }
+}
