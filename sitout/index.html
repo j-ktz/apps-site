@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sitout: Pickleball Round Robin with Fair Rotations and Even Sit-Outs</title>
+<meta name="description" content="Run pickleball round robins and open play from one phone: fair sit-outs, rotating partners, fast scoring and standings. Players never pay or need the app.">
+<meta name="theme-color" content="#1A5BB5">
+<link rel="canonical" href="https://apps.johnkatez.com/sitout/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sitout">
+<meta property="og:title" content="Sitout: Pickleball Round Robin">
+<meta property="og:description" content="Fair rotations, even sit-outs. One organizer's phone runs the night. Players never pay.">
+<meta property="og:url" content="https://apps.johnkatez.com/sitout/">
+<meta property="og:image" content="https://apps.johnkatez.com/sitout/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sitout: a volt-yellow pickleball on a blue court">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/sitout/img/icon.png">
+<link rel="apple-touch-icon" href="/sitout/img/icon.png">
+<link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/sitout/style.css">
+<!--gen:jsonld-->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "Sitout: Pickleball Round Robin",
+   "alternateName": "Sitout",
+   "operatingSystem": "iOS",
+   "applicationCategory": "SportsApplication",
+   "description": "Run pickleball round robins and open play from one phone: fair sit-outs, rotating partners, fast scoring and standings. Players never pay or need the app.",
+   "url": "https://apps.johnkatez.com/sitout/",
+   "image": "https://apps.johnkatez.com/sitout/img/icon.png"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Do players need the app?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Only the organizer installs Sitout. Players never pay and never need an account. They see the rounds and standings on the organizer's phone, or on the share cards the organizer sends."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How does Sitout choose who sits out?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Whoever has sat out the fewest times sits next. On a tie, whoever sat longest ago sits, then roster order. Sit-outs never differ by more than one between any two players, and nobody is benched while someone with fewer sit-outs keeps playing."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can people arrive late or leave early?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Add a latecomer or mark someone as gone at any point in the night. Scores already entered stay put, and only the rounds still to come change. A latecomer starts level with the group's fewest sit-outs, so they aren't benched to catch up."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Sitout keep mixed doubles mixed?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "With the mixed-doubles rule on, it keeps teams one man and one woman whenever the players on court allow it. Fair sit-outs come first, so on a night with many more men than women (or the other way around), some teams will be two men or two women rather than benching someone out of turn."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How are standings ranked?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "By win rate, then point difference per game, then total points. Win rate keeps things fair when sit-outs leave some players with one game fewer than others."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What's free and what's in Sitout Pro?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Any single night is free, at any size, in either format, with standings and share cards. Sitout Pro adds saved seasons with standings across weeks, group history and DUPR CSV export, for $29.99 a year or $69.99 once for lifetime."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Sitout need an account or the internet?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It needs no account. Sitout has no server: players, scores and standings are stored on the organizer's iPhone and leave it only when the organizer shares a card or a CSV file."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does it work with an odd number of players?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Any number works. Four players fit on each court and everyone else sits out that round, chosen by the fair rule above. The guide on how many players you need has a table for 4 to 32 players on 1 to 8 courts."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<!--/gen:jsonld-->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hero on-court">
+  <div class="wrap">
+    <nav class="nav" aria-label="Sitout">
+      <a class="brand" href="/sitout/"><img src="/sitout/img/icon.png" alt="" width="34" height="34">Sitout</a>
+      <ul>
+        <li class="opt"><a href="#how">How it works</a></li>
+        <li><a href="/sitout/how-to/">Guides</a></li>
+        <li><a href="/sitout/support.html">Support</a></li>
+        <li class="opt"><a href="/sitout/privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Sitout: Pickleball Round Robin</p>
+        <h1>Fair rotations. <em>Even sit-outs.</em></h1>
+        <p class="lede">One organizer's phone runs league night or open play: who's on which court, who partners whom, who sits out, the scores and the standings. Players never pay, and they never need the app or an account.</p>
+        <div class="cta-row">
+          <span class="soon">Coming soon on the App Store</span>
+          <span class="fine">For iPhone and iPad. Any single night is free.</span>
+        </div>
+      </div>
+      <div class="art"><img src="/sitout/img/icon-720.jpg" alt="The Sitout app icon: a volt-yellow pickleball on a blue court with a white line" width="340" height="340"></div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="demo sec on-court" id="try" aria-labelledby="try-h">
+    <div class="wrap">
+      <p class="kicker">Try the sit-out rule</p>
+      <h2 id="try-h">Who sits out next?</h2>
+      <p class="sub">Pick a player count and a number of courts. This board uses the same rule Sitout uses to choose who sits out, round by round.</p>
+      <div class="board-card">
+        <div class="controls">
+          <div class="stepper" data-key="players" role="group" aria-labelledby="players-l">
+            <span class="lbl" id="players-l">Players</span>
+            <button type="button" class="dec" aria-label="One fewer player">&minus;</button>
+            <output id="players-v">9</output>
+            <button type="button" class="inc" aria-label="One more player">+</button>
+          </div>
+          <div class="stepper" data-key="courts" role="group" aria-labelledby="courts-l">
+            <span class="lbl" id="courts-l">Courts</span>
+            <button type="button" class="dec" aria-label="One fewer court">&minus;</button>
+            <output id="courts-v">2</output>
+            <button type="button" class="inc" aria-label="One more court">+</button>
+          </div>
+        </div>
+        <p class="readout" id="readout" aria-live="polite">9 players on 2 courts: 8 play and 1 sits out each round.</p>
+        <div class="board" id="board" aria-hidden="true"></div>
+        <div class="legend" aria-hidden="true"><span><i class="k-sit"></i>Sits out</span><span><i class="k-play"></i>Plays</span><span>Rows are rounds 1 to 12, columns are players P1, P2 and so on. The last row counts each player's sit-outs.</span></div>
+        <h3 class="sr-only">Who sits out, round by round</h3>
+        <ol class="sr-only" id="board-text"></ol>
+        <p class="check" id="check"></p>
+        <noscript><p class="check">The board needs JavaScript. The guide <a href="/sitout/how-to/how-many-players-for-a-round-robin.html">How many players for a round robin</a> has the same numbers as tables.</p></noscript>
+      </div>
+      <p class="rule-note">The rule: whoever has sat out the fewest times sits next. On a tie, whoever sat longest ago sits, then roster order. So sit-outs never differ by more than one between any two players, and nobody is benched while someone with fewer sit-outs keeps playing. This board shows sit-outs only; the app also rotates partners and opponents every round.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <p class="kicker">How a night works</p>
+      <h2 id="how-h">From the first serve to the final standings, on one phone.</h2>
+      <ol class="steps">
+        <li><h3>Add players and courts</h3><p>Type in names. That's all a player needs to be. Pick a format and the number of courts, and turn on the mixed-doubles rule if you want it.</p></li>
+        <li><h3>Play the rounds</h3><p>Sitout shows each court, who partners whom and who sits out. Enter scores fast between games. Latecomers join and early leavers go mid-night without losing a score, and a wrong tap can be undone.</p></li>
+        <li><h3>Share the standings</h3><p>End the night with standings for everyone. Share cards for the next round and the final standings are free, and players can see them without the app.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec tight" id="fair" aria-labelledby="fair-h">
+    <div class="wrap">
+      <p class="kicker">Why it's fair</p>
+      <h2 id="fair-h">Fairness you can check, not just trust.</h2>
+      <p class="sub">Every rotation follows rules you can read right here. They're the same rules the app runs.</p>
+      <div class="cards">
+        <div class="card"><h3>Sit-outs</h3><p>Sit-outs never differ by more than one between any two players. Nobody is benched while someone with fewer sit-outs keeps playing. Ties go to whoever sat longest ago, so sit-outs spread through the night instead of piling up at the end.</p></div>
+        <div class="card"><h3>Partners</h3><p>Sitout spreads partners so repeats are as rare as the math allows, then spreads opponents. With 8 players on 2 courts, everyone partners everyone else exactly once in 7 rounds. <a href="/sitout/how-to/how-does-a-pickleball-round-robin-work.html#example">See the rotation</a>.</p></div>
+        <div class="card"><h3>Late arrivals, early exits</h3><p>Someone who walks in at round 5 starts level with the group's fewest sit-outs, so they aren't benched to catch up. Someone who leaves early keeps every score already entered. Only the rounds still to come change.</p></div>
+        <div class="card"><h3>Mixed doubles</h3><p>Turn on the mixed-doubles rule and Sitout keeps teams one man and one woman whenever the players on court allow it. Fair sit-outs come first, so nobody sits out of turn just to make a team mixed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tight" id="screens" aria-labelledby="screens-h">
+    <div class="wrap">
+      <p class="kicker">Inside the app</p>
+      <h2 id="screens-h">A look inside.</h2>
+      <div class="shots">
+        <figure><img src="/sitout/img/live.jpg" alt="A live round: who sits out, then each court with its two teams and scores" width="640" height="1390" loading="lazy"><figcaption>A round: courts, partners and who sits out</figcaption></figure>
+        <figure><img src="/sitout/img/score.jpg" alt="The score pad: the losing team's score in one tap" width="640" height="1390" loading="lazy"><figcaption>Scores in two taps</figcaption></figure>
+        <figure><img src="/sitout/img/standings.jpg" alt="End-of-night standings ranked by win rate" width="640" height="1390" loading="lazy"><figcaption>End-of-night standings</figcaption></figure>
+        <figure><img src="/sitout/img/season.jpg" alt="A group's season standings across four nights" width="640" height="1390" loading="lazy"><figcaption>A season that adds up (Pro)</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tight" id="formats" aria-labelledby="formats-h">
+    <div class="wrap">
+      <p class="kicker">Formats</p>
+      <h2 id="formats-h">Two ways to play.</h2>
+      <div class="cards">
+        <div class="card"><span class="tag">Rotating partners</span><h3>A new partner every round, your own score.</h3><p>Everyone keeps an individual record: your team's result counts for you, whoever you played with. Add the mixed-doubles rule for a mixer.</p></div>
+        <div class="card"><span class="tag">Fixed partners</span><h3>Bring a partner, play every team.</h3><p>Teams stay together all night and standings are per team. Every team plays every other team once before any rematch when you have enough courts.</p></div>
+      </div>
+      <p class="sub" style="margin-top:26px">Standings rank by win rate, then point difference per game, then total points. Ranking by win rate means the player who drew one extra sit-out isn't punished for playing one fewer game.</p>
+    </div>
+  </section>
+
+  <section class="sec tight" id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap">
+      <p class="never">Players never pay.</p>
+      <h2 id="pricing-h">Any single night is free, at any size.</h2>
+      <p class="sub">Sitout Pro is for the organizer who runs the same group week after week.</p>
+      <div class="plans">
+        <div class="plan">
+          <h3>Free</h3>
+          <p class="price">$0</p>
+          <p class="what">Every night you run, any number of players and courts</p>
+          <ul>
+            <li>Both formats, with the mixed-doubles rule</li>
+            <li>Fair sit-outs and rotating partners</li>
+            <li>Fast scores, undo and end-of-night standings</li>
+            <li>Share cards for the next round and the standings</li>
+          </ul>
+        </div>
+        <div class="plan pro">
+          <h3>Sitout Pro</h3>
+          <p class="price">$29.99/year</p>
+          <p class="what">or $69.99 once for lifetime. For the organizer only.</p>
+          <ul>
+            <li>Saved seasons, with standings across weeks</li>
+            <li>Group history</li>
+            <li>DUPR CSV export</li>
+          </ul>
+          <p class="small" style="margin:16px 0 0">The yearly plan renews automatically until you cancel it in your Apple Account settings. Prices in US dollars.</p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:18px">DUPR is a trademark of its owner. Sitout is not affiliated with or endorsed by DUPR.</p>
+    </div>
+  </section>
+
+  <section class="sec band on-court" id="privacy" aria-labelledby="privacy-h">
+    <div class="wrap">
+      <h2 id="privacy-h">Everything stays on the organizer's phone.</h2>
+      <ul class="nos">
+        <li>No accounts</li><li>No server</li><li>No analytics</li><li>No ads</li>
+      </ul>
+      <p style="margin:24px 0 0"><a href="/sitout/privacy.html">Read the privacy policy</a></p>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <p class="kicker">Questions</p>
+      <h2 id="faq-h">Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>Do players need the app?</summary><p>No. Only the organizer installs Sitout. Players never pay and never need an account. They see the rounds and standings on the organizer's phone, or on the share cards the organizer sends.</p></details>
+        <details><summary>How does Sitout choose who sits out?</summary><p>Whoever has sat out the fewest times sits next. On a tie, whoever sat longest ago sits, then roster order. Sit-outs never differ by more than one between any two players, and nobody is benched while someone with fewer sit-outs keeps playing.</p></details>
+        <details><summary>Can people arrive late or leave early?</summary><p>Yes. Add a latecomer or mark someone as gone at any point in the night. Scores already entered stay put, and only the rounds still to come change. A latecomer starts level with the group's fewest sit-outs, so they aren't benched to catch up.</p></details>
+        <details><summary>Does Sitout keep mixed doubles mixed?</summary><p>With the mixed-doubles rule on, it keeps teams one man and one woman whenever the players on court allow it. Fair sit-outs come first, so on a night with many more men than women (or the other way around), some teams will be two men or two women rather than benching someone out of turn.</p></details>
+        <details><summary>How are standings ranked?</summary><p>By win rate, then point difference per game, then total points. Win rate keeps things fair when sit-outs leave some players with one game fewer than others.</p></details>
+        <details><summary>What's free and what's in Sitout Pro?</summary><p>Any single night is free, at any size, in either format, with standings and share cards. Sitout Pro adds saved seasons with standings across weeks, group history and DUPR CSV export, for $29.99 a year or $69.99 once for lifetime.</p></details>
+        <details><summary>Does Sitout need an account or the internet?</summary><p>It needs no account. Sitout has no server: players, scores and standings are stored on the organizer's iPhone and leave it only when the organizer shares a card or a CSV file.</p></details>
+        <details><summary>Does it work with an odd number of players?</summary><p>Yes. Any number works. Four players fit on each court and everyone else sits out that round, chosen by the fair rule above. The guide on how many players you need has a table for 4 to 32 players on 1 to 8 courts.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tight" id="guides" aria-labelledby="guides-h">
+    <div class="wrap">
+      <p class="kicker">Guides</p>
+      <h2 id="guides-h">Running a round robin? Start here.</h2>
+      <p class="sub">Every schedule in these guides was generated by Sitout's own rotation engine.</p>
+      <ul class="guides">
+        <li><a href="/sitout/how-to/pickleball-rotation-9-players.html"><b>Pickleball rotation for 9 players</b><span>Who sits out each round on 2 courts and on 1, plus 5 to 16 players.</span></a></li>
+        <li><a href="/sitout/how-to/how-does-a-pickleball-round-robin-work.html"><b>How does a pickleball round robin work?</b><span>Rotating vs fixed partners, sit-outs, scoring and a full 8-player example.</span></a></li>
+        <li><a href="/sitout/how-to/how-many-players-for-a-round-robin.html"><b>How many players for a round robin?</b><span>Who plays and who sits for 4 to 32 players on 1 to 8 courts.</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!--gen:footer-->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="brand-f"><img src="/sitout/img/icon.png" alt="" width="30" height="30">Sitout</p>
+        <p style="margin:0">Pickleball round robins with fair rotations and even sit-outs. Coming soon on the App Store.</p>
+      </div>
+      <nav aria-label="Sitout pages"><h2>Sitout</h2><ul>
+        <li><a href="/sitout/">Home</a></li>
+        <li><a href="/sitout/#try">Try the sit-out rule</a></li>
+        <li><a href="/sitout/support.html">Support</a></li>
+        <li><a href="/sitout/privacy.html">Privacy</a></li>
+      </ul></nav>
+      <nav aria-label="Guides"><h2>Guides</h2><ul>
+        <li><a href="/sitout/how-to/pickleball-rotation-9-players.html">Rotation for 9 players</a></li>
+        <li><a href="/sitout/how-to/how-does-a-pickleball-round-robin-work.html">How a round robin works</a></li>
+        <li><a href="/sitout/how-to/how-many-players-for-a-round-robin.html">How many players you need</a></li>
+        <li><a href="/sitout/how-to/">All guides</a></li>
+      </ul></nav>
+      <nav aria-label="More"><h2>More</h2><ul>
+        <li><a href="/">All apps</a></li>
+        <li><a href="mailto:support@johnkatez.com">Email support</a></li>
+      </ul></nav>
+    </div>
+    <p class="copy">&copy; 2026 Sitout &middot; <a href="mailto:support@johnkatez.com">support@johnkatez.com</a></p>
+  </div>
+</footer>
+<!--/gen:footer-->
+
+<script src="/sitout/demo.js" defer></script>
+</body>
+</html>
