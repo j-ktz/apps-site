@@ -1,0 +1,8 @@
+# apps.johnkatez.com
+# Search engines and AI search tools are welcome. Every page is public.
+User-agent: *
+Allow: /
+Disallow: /join/
+Disallow: /_src/
+
+Sitemap: https://apps.johnkatez.com/sitemap.xml
