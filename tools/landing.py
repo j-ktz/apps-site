@@ -56,6 +56,7 @@ def icon(name, size=20):
 
 APPS = {  # for "more apps" tiles
  "mvn": ("Music Video Night", "The party game where everyone picks a music video"),
+ "tanklog": ("TankLog: Aquascape", "A free, offline journal for planted tanks and shrimp"),
  "mackro": ("Mackro", "A macro tracker with a squirrel in it"),
  "stashday": ("Stashday", "One number to set aside each payday"),
  "tabbed": ("Tabbed", "Journeyman electrician exam prep"),
@@ -92,7 +93,7 @@ C["mackro"] = dict(
       ("What data does Mackro collect?", "Anonymous product analytics that never include your food, health or weight data. If you use AI logging, only the description or photo you submit is sent to estimate macros. No ads and no data sales. Details are in the privacy policy."),
       ("Is Mackro medical or diet advice?", "No. Targets are estimates from what you enter. For medical or diet guidance, talk to a doctor or a registered dietitian."),
       ("Who makes Mackro?", "John Katez, an independent developer who also makes Stashday, Statecount and other small iPhone apps.")],
- more=["stashday", "statecount", "sitout"],
+ more=["stashday", "statecount", "sitout", "tanklog"],
 )
 
 C["stashday"] = dict(
@@ -115,7 +116,7 @@ C["stashday"] = dict(
       ("Can I use it with YNAB or my budget app?", "Yes. Your budget app runs everything. Stashday does one job: the bills that don't come every month. Many people keep both."),
       ("Does Stashday collect my data?", "No. Your funds stay on your iPhone. The App Store privacy label is Data Not Collected."),
       ("Is this financial advice?", "No. Stashday does the arithmetic for the bills you enter. For advice about your situation, talk to a financial professional.")],
- more=["statecount", "mackro", "sitout"],
+ more=["statecount", "mackro", "sitout", "tanklog"],
 )
 
 C["tabbed"] = dict(
@@ -218,6 +219,29 @@ C["statecount"] = dict(
  more=["stashday", "mackro", "sitout"],
 )
 
+C["tanklog"] = dict(
+ name="TankLog: Aquascape", short="TankLog", category="UtilitiesApplication", sub="Aquarium journal", live=True, appid="6762062161", os="iOS",
+ title="TankLog: Aquarium Journal for Planted Tanks and Shrimp",
+ desc="A free, offline aquarium journal for planted tank and shrimp keepers. Water tests, CO₂, care schedules and dosing. No login, no ads. Your data stays on your device.",
+ og_title="TankLog: the tank journal for people who track everything",
+ anchor='<div class="end">',
+ vars="--lp-ink:var(--fg);--lp-muted:var(--muted);--lp-card:var(--card);--lp-line:var(--line);--lp-accent:var(--teal);--lp-accent-ink:#04202a;--lp-font:var(--font)",
+ who=[("Planted tank keepers", "Watch pH, KH and CO₂ together, and see when a number starts to drift."),
+      ("Shrimp keepers", "Log KH, GH, TDS and water changes for a neocaridina or caridina colony."),
+      ("Anyone who logs everything", "Water tests, dosing, feeding and cleaning in one place, with a history you can export.")],
+ faq=[("What is TankLog?", "A free aquarium journal for freshwater planted tank and shrimp keepers. You log water tests, care tasks, dosing, livestock, plants and equipment, and watch the trends."),
+      ("Is TankLog free?", "Yes. TankLog is free, with no ads and no subscription. An optional Cloud Sync, a one-time purchase, is planned for a coming update."),
+      ("Do I need an account?", "No. There's no login. Everything you enter is stored on your device."),
+      ("Does it work offline?", "Yes. TankLog works without a signal."),
+      ("Which water parameters can I log?", "pH, ammonia, nitrite, nitrate, KH, GH, phosphate, TDS and temperature, graded against your own target ranges."),
+      ("How does the CO₂ estimate work?", "TankLog works out dissolved CO₂ from your pH and KH and shows it as a color-coded zone. It's an estimate, so use it as a guide."),
+      ("How many tanks can I track?", "Up to three, each with its own parameters, schedules and history."),
+      ("Can I export my data?", "Yes. Export your full history as a file you control and import it on a new device. You can also delete your data any time."),
+      ("Does it run on iPad?", "Yes. TankLog runs on iPhone and iPad."),
+      ("Who makes TankLog?", "TankLog is built by an aquascaper, for aquascapers, and is published here alongside the other apps from John Katez.")],
+ more=["stashday", "mackro", "statecount"],
+)
+
 C["mvn"] = dict(
  name="Music Video Night", category="GameApplication", live=True, appid="6811704618", keep_jsonld=True,
  title="Music Video Night: The Music Video Party Game for iPhone",
@@ -233,14 +257,14 @@ C["mvn"] = dict(
 C[""] = dict(
  name="Apps by John Katez", hub=True,
  title="Apps by John Katez: Small, Fair iPhone Apps",
- desc="Eight iPhone apps by John Katez: Music Video Night, Mackro, Stashday, Tabbed, Tabbed Plumber, Fantasy Queens, Sitout and Statecount. Small apps, no ads.",
+ desc="Nine iPhone apps: Music Video Night, Mackro, TankLog, Stashday, Tabbed, Tabbed Plumber, Fantasy Queens, Sitout and Statecount. Small apps, no ads.",
  og_title="Apps by John Katez",
  og_image="https://apps.johnkatez.com/img/og-hub.jpg",
  anchor="<footer",
  vars="--lp-ink:#F2F2F7;--lp-muted:#A1A1A6;--lp-card:rgba(255,255,255,.06);--lp-line:rgba(255,255,255,.12);--lp-accent:#9867FF;--lp-accent-ink:#fff;--lp-font:var(--font);--lp-display:var(--round)",
- faq=[("Who makes these apps?", "John Katez, an independent iPhone developer. Each app does one job and has its own support and privacy page."),
+ faq=[("Who makes these apps?", "John Katez, an independent iPhone developer. TankLog was built by an aquascaper and is published here too. Each app does one job and has its own support and privacy page."),
       ("Do the apps have ads?", "No. None of the apps show ads."),
-      ("What data do the apps collect?", "Each app's privacy page says exactly. Stashday, Statecount, Sitout, Tabbed and Tabbed Plumber collect no data. Music Video Night has no accounts, analytics or servers. Mackro uses anonymous analytics and sends only what you submit for AI logging. Fantasy Queens collects only what a house needs to work."),
+      ("What data do the apps collect?", "Each app's privacy page says exactly. Stashday, Statecount, Sitout, Tabbed, Tabbed Plumber and TankLog collect no data. Music Video Night has no accounts, analytics or servers. Mackro uses anonymous analytics and sends only what you submit for AI logging. Fantasy Queens collects only what a house needs to work."),
       ("How much do they cost?", "Every app is free to download. Some offer an optional upgrade, one-time or yearly, with the price shown in the app before you buy."),
       ("Are the apps on Android?", "Not yet. They're made for iPhone, and some also run on iPad."),
       ("How do I get help?", "Email support@johnkatez.com, or open the Support page for the app you're using.")],
@@ -255,7 +279,7 @@ def jsonld(slug, c):
     url = f"{SITE}/{slug}/" if slug else f"{SITE}/"
     out = []
     if c.get("hub"):
-        items = [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}/", "name": APPS[s][0]} for i, s in enumerate(["mvn", "mackro", "stashday", "tabbed", "tabbed-plumber", "fantasyqueens", "sitout", "statecount"])]
+        items = [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}/", "name": APPS[s][0]} for i, s in enumerate(["mvn", "mackro", "tanklog", "stashday", "tabbed", "tabbed-plumber", "fantasyqueens", "sitout", "statecount"])]
         out.append({"@context": "https://schema.org", "@type": "WebSite", "name": "Apps by John Katez", "url": url, "publisher": PUBLISHER})
         out.append({"@context": "https://schema.org", "@type": "ItemList", "name": "iPhone apps by John Katez", "itemListElement": items})
         out.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
