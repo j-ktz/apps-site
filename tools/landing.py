@@ -59,6 +59,7 @@ APPS = {  # for "more apps" tiles
  "mackro": ("Mackro", "A macro tracker with a squirrel in it"),
  "stashday": ("Stashday", "One number to set aside each payday"),
  "tabbed": ("Tabbed", "Journeyman electrician exam prep"),
+ "tabbed-plumber": ("Tabbed Plumber", "Journeyman plumber exam prep"),
  "fantasyqueens": ("Fantasy Queens", "Fantasy houses for drag watch parties"),
  "sitout": ("Sitout", "Fair pickleball round robins"),
  "statecount": ("Statecount", "A private 183-day residency tracker"),
@@ -140,6 +141,28 @@ C["tabbed"] = dict(
  more=["stashday", "sitout", "statecount"],
 )
 
+C["tabbed-plumber"] = dict(
+ name="Tabbed: Journeyman Plumber", short="Tabbed Plumber", category="EducationalApplication", sub="Exam prep", live=False, os="iOS",
+ title="Tabbed: Journeyman Plumber Exam Prep for iPhone",
+ desc="Practice questions that cite the UPC or IPC section, timed lookup drills for your tabbed code book, step-by-step plumbing calcs and exams in your state's format. Pay once.",
+ og_title="Tabbed Plumber: know the answer, know where it lives",
+ anchor='<section class="pay">',
+ vars="--lp-ink:var(--ink);--lp-muted:var(--muted);--lp-card:var(--card);--lp-line:var(--rule);--lp-accent:var(--blue);--lp-accent-ink:#fff;--lp-font:var(--font);--lp-display:var(--font);--lp-paper:var(--page)",
+ trust=[("book", "Every answer cites the code section"), ("shield", "A separate blind check on every answer"), ("offline", "Works offline"), ("check", "Pay once, no subscription")],
+ who=[("Apprentices with a test date", "Plumbing apprentices getting ready for the journeyman exam, studying on breaks and at night."),
+      ("UPC and IPC states", "Choose the Uniform Plumbing Code or the International Plumbing Code, and the edition your board uses."),
+      ("Instructors", "Point your class at questions they can check against the book.")],
+ faq=[("Which codes does Tabbed Plumber cover?", "The Uniform Plumbing Code (2021) and the International Plumbing Code (2018), with fuel gas questions from the International Fuel Gas Code. Your licensing board tells you which code and edition your exam uses."),
+      ("Does it match my exam's format?", "You pick the exam you are taking, and practice exams run in that format: the ICC national exams, Kansas, Maryland, Montana, Nebraska, Washington and a UPC exam in the IAPMO format."),
+      ("How do you know the answers are right?", "Every answer cites the code section it comes from and passes a separate blind check before it ships. If you spot a problem, tap Report a problem under the explanation. Fixes ship in updates."),
+      ("Do I need my own code book?", "Yes. Most journeyman exams are open book, and Tabbed Plumber's lookup drills train you to find things fast in your own tabbed book. The app cites sections but doesn't reproduce code text or tables."),
+      ("Does it work offline?", "Yes. Everything works without a connection, on the job site or in the truck. Nothing leaves your phone."),
+      ("How much is it?", "Free to start: 10 questions a day with explanations, plus free calc practice. The Exam Pass is $24.99, a one-time purchase that unlocks everything for both codes. No subscription."),
+      ("Can it guarantee I pass?", "No study tool can. Passing depends on your own preparation. Tabbed Plumber shows a readiness estimate so you can see where to focus."),
+      ("Is it affiliated with IAPMO or ICC?", "No. Tabbed Plumber is an independent study aid, not affiliated with or approved by IAPMO, the International Code Council, PSI, Prometric, Pearson VUE or any licensing board.")],
+ more=["tabbed", "stashday", "sitout"],
+)
+
 C["fantasyqueens"] = dict(
  name="Fantasy Queens: Drag League", short="Fantasy Queens", category="GameApplication", sub="Fantasy league", live=False, os="iOS",
  title="Fantasy Queens: Drag Fantasy League for Watch Parties",
@@ -210,14 +233,14 @@ C["mvn"] = dict(
 C[""] = dict(
  name="Apps by John Katez", hub=True,
  title="Apps by John Katez: Small, Fair iPhone Apps",
- desc="Seven iPhone apps by John Katez: Music Video Night, Mackro, Stashday, Tabbed, Fantasy Queens, Sitout and Statecount. Small apps, no ads.",
+ desc="Eight iPhone apps by John Katez: Music Video Night, Mackro, Stashday, Tabbed, Tabbed Plumber, Fantasy Queens, Sitout and Statecount. Small apps, no ads.",
  og_title="Apps by John Katez",
  og_image="https://apps.johnkatez.com/img/og-hub.jpg",
  anchor="<footer",
  vars="--lp-ink:#F2F2F7;--lp-muted:#A1A1A6;--lp-card:rgba(255,255,255,.06);--lp-line:rgba(255,255,255,.12);--lp-accent:#9867FF;--lp-accent-ink:#fff;--lp-font:var(--font);--lp-display:var(--round)",
  faq=[("Who makes these apps?", "John Katez, an independent iPhone developer. Each app does one job and has its own support and privacy page."),
       ("Do the apps have ads?", "No. None of the apps show ads."),
-      ("What data do the apps collect?", "Each app's privacy page says exactly. Stashday, Statecount, Sitout and Tabbed collect no data. Music Video Night has no accounts, analytics or servers. Mackro uses anonymous analytics and sends only what you submit for AI logging. Fantasy Queens collects only what a house needs to work."),
+      ("What data do the apps collect?", "Each app's privacy page says exactly. Stashday, Statecount, Sitout, Tabbed and Tabbed Plumber collect no data. Music Video Night has no accounts, analytics or servers. Mackro uses anonymous analytics and sends only what you submit for AI logging. Fantasy Queens collects only what a house needs to work."),
       ("How much do they cost?", "Every app is free to download. Some offer an optional upgrade, one-time or yearly, with the price shown in the app before you buy."),
       ("Are the apps on Android?", "Not yet. They're made for iPhone, and some also run on iPad."),
       ("How do I get help?", "Email support@johnkatez.com, or open the Support page for the app you're using.")],
@@ -232,7 +255,7 @@ def jsonld(slug, c):
     url = f"{SITE}/{slug}/" if slug else f"{SITE}/"
     out = []
     if c.get("hub"):
-        items = [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}/", "name": APPS[s][0]} for i, s in enumerate(["mvn", "mackro", "stashday", "tabbed", "fantasyqueens", "sitout", "statecount"])]
+        items = [{"@type": "ListItem", "position": i + 1, "url": f"{SITE}/{s}/", "name": APPS[s][0]} for i, s in enumerate(["mvn", "mackro", "stashday", "tabbed", "tabbed-plumber", "fantasyqueens", "sitout", "statecount"])]
         out.append({"@context": "https://schema.org", "@type": "WebSite", "name": "Apps by John Katez", "url": url, "publisher": PUBLISHER})
         out.append({"@context": "https://schema.org", "@type": "ItemList", "name": "iPhone apps by John Katez", "itemListElement": items})
         out.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [

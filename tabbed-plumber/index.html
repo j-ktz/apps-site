@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B1220">
+<title>Tabbed: Journeyman Plumber Exam Prep for iPhone</title>
+<meta name="description" content="Practice questions that cite the UPC or IPC section, timed lookup drills for your tabbed code book, step-by-step plumbing calcs and exams in your state&#x27;s format. Pay once.">
+<link rel="canonical" href="https://apps.johnkatez.com/tabbed-plumber/">
+<meta property="og:title" content="Tabbed Plumber: know the answer, know where it lives">
+<meta property="og:description" content="Practice questions that cite the UPC or IPC section, timed lookup drills for your tabbed code book, step-by-step plumbing calcs and exams in your state&#x27;s format. Pay once.">
+<meta property="og:image" content="https://apps.johnkatez.com/tabbed-plumber/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/icon.png">
+<style>
+:root{
+  --blue:#0B6E8A; --g1:#14869F; --g2:#0B5D75; --yellow:#FFC400; --orange:#FF7A1A; --green:#28CD78; --red:#FF4F4F;
+  --page:#ECE6D6; --card:#F6F4EE; --ink:#14181F; --muted:#59616d; --rule:#D8D0BB; --navy:#0B1220;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media(prefers-color-scheme:dark){:root{--page:#0B1220;--card:#131D31;--ink:#EEF2F8;--muted:#9AA7BB;--rule:#243350}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.6 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--g1),var(--g2));color:#fff;position:relative;overflow:hidden}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850;font-size:1.2rem;letter-spacing:-.02em}
+.brand img{width:36px;height:36px;border-radius:10px}
+.nav a.l{margin-left:24px;color:#dcebff;text-decoration:none;font-weight:600;font-size:.95rem}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:28px 0 96px}
+h1{font-weight:850;font-size:clamp(2.8rem,6.2vw,5.4rem);line-height:.96;letter-spacing:-.045em;margin:0 0 20px}
+h1 span{display:block}
+.lede{font-size:1.22rem;color:#dcebff;max-width:27em;margin:0 0 28px}
+.soon{display:inline-block;background:var(--yellow);color:#14181F;font-weight:800;padding:15px 24px;border-radius:14px}
+.fine{font-size:.92rem}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;background:linear-gradient(90deg,var(--yellow) 0 25%,var(--orange) 25% 50%,var(--green) 50% 75%,var(--red) 75%)}
+
+/* live drill */
+.drill{background:#fff;color:#14181F;border-radius:26px;padding:22px 22px 18px;box-shadow:0 40px 70px -30px rgba(0,25,80,.7);position:relative}
+.dTop{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.9rem;color:#59616d;margin-bottom:12px}
+.dTimer{font:800 1.5rem var(--mono);color:#14181F;font-variant-numeric:tabular-nums}
+.dBar{height:6px;border-radius:9px;background:#E5EAF1;margin-bottom:16px;overflow:hidden}
+.dBar i{display:block;height:100%;width:100%;background:var(--blue);transform-origin:left;transition:background .3s}
+.dQ{font-weight:700;font-size:1.12rem;line-height:1.4;margin:0 0 14px}
+.opts{display:grid;gap:9px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;background:#F1F4F8;border:2px solid transparent;border-radius:14px;padding:12px 14px;font-weight:700;transition:background .15s,border-color .15s,transform .1s}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:.85rem;color:#59616d}
+.opt:hover:not([disabled]){background:#E6EEF9;transform:translateX(3px)}
+.opt:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.opt.ok{background:#E3F6EA;border-color:#28A863}.opt.ok b{background:#28A863;color:#fff}
+.opt.no{background:#FDE9E9;border-color:#E14B4B}.opt.no b{background:#E14B4B;color:#fff}
+.reveal{display:none;margin-top:14px;padding-top:14px;border-top:1.5px solid #E5EAF1;font-size:.96rem}
+.reveal.on{display:block;animation:pop .35s cubic-bezier(.2,1.2,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}}
+.reveal strong{display:block;margin-bottom:4px}
+.chip{display:inline-block;font:700 .9rem var(--mono);background:#D5EEF5;color:#0B5D75;border:1px solid #9FD3E3;border-radius:99px;padding:3px 12px;margin:2px 0 8px}
+.find{color:#59616d;margin:0 0 10px}.find b{color:#14181F}
+.again{all:unset;cursor:pointer;color:var(--blue);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.again:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:5px}
+.dNote{font-size:.78rem;color:#7a8594;margin:10px 0 0}
+
+/* fore-edge tabs */
+.tabs{position:fixed;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:20}
+.tabs a{writing-mode:vertical-rl;text-orientation:mixed;padding:14px 8px;font-weight:800;font-size:.85rem;color:#14181F;text-decoration:none;border-radius:10px 0 0 10px;transform:translateX(10px);transition:transform .25s cubic-bezier(.3,1.4,.4,1),padding .25s;box-shadow:-3px 3px 10px rgba(0,0,0,.18)}
+.tabs a:hover,.tabs a.on{transform:translateX(0);padding-right:12px}
+.t1{background:var(--yellow)}.t2{background:var(--orange)}.t3{background:var(--green)}.t4{background:var(--red);color:#fff!important}
+
+/* chapters */
+.ch{padding:110px 0 30px;position:relative}
+.chTag{display:inline-block;height:12px;width:64px;border-radius:5px;margin-bottom:18px}
+h2{font-weight:850;font-size:clamp(2.2rem,5vw,4rem);line-height:.98;letter-spacing:-.045em;margin:0 0 16px;max-width:12em}
+.sub{font-size:1.18rem;color:var(--muted);max-width:28em;margin:0}
+.dev{position:relative;width:290px;aspect-ratio:1320/2868;border-radius:46px;background:#090d14;padding:9px;box-shadow:0 0 0 2px #1f2b40,0 50px 80px -30px rgba(0,30,90,.55)}
+.dev:before{content:"";position:absolute;left:50%;top:17px;width:80px;height:24px;transform:translateX(-50%);background:#000;border-radius:99px;z-index:2}
+.dev img{width:100%;height:100%;object-fit:cover;border-radius:38px;display:block}
+
+/* chapter 1: annotated */
+.anno{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;margin-top:56px}
+.anno .col{position:relative;height:100%;min-height:600px}
+.call{position:absolute;display:flex;align-items:center;gap:0;font-weight:800;font-size:.98rem;max-width:230px}
+.call p{margin:0;line-height:1.3}
+.call small{display:block;font-weight:600;color:var(--muted);font-size:.86rem;margin-top:2px}
+.call:after{content:"";display:block;height:2px;background:var(--ink);flex:none}
+.cl{right:0;flex-direction:row;text-align:right}.cl:after{width:60px;margin-left:12px}
+.cr{left:0}.cr:before{content:"";display:block;width:60px;height:2px;background:var(--ink);margin-right:12px;flex:none}.cr:after{display:none}
+.call i{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--ink)}
+.cl i{right:-5px}.cr i{left:-5px}
+
+/* chapter 2: the clock */
+.navy{background:var(--navy);color:#EEF2F8;margin-top:110px;padding:110px 0}
+.navy .sub{color:#9fb0c9}
+.clock{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.bigclock{font:850 clamp(5rem,15vw,12rem)/.85 var(--mono);letter-spacing:-.06em;color:var(--orange);font-variant-numeric:tabular-nums;margin:24px 0 8px}
+.navy .dev{box-shadow:0 0 0 2px #2a3a57,0 50px 80px -20px rgba(0,0,0,.7)}
+
+/* chapter 3: calcs */
+.calcgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;margin-top:50px}
+.work{background:var(--card);border-radius:24px;padding:28px 30px;font-family:var(--mono);font-size:1rem;line-height:1.9;box-shadow:0 30px 50px -30px rgba(0,30,90,.35)}
+.work .ln{display:flex;gap:14px;border-bottom:1.5px dashed var(--rule);padding:6px 0}
+.work .ln:last-child{border:0;font-weight:800;color:var(--green)}
+.work .k{flex:none;width:6.2em;color:var(--muted);font-family:var(--font);font-weight:700;font-size:.85rem;padding-top:.2em}
+
+/* chapter 4: exam */
+.exam{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center;margin-top:30px}
+.ex{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:360px;margin-top:26px}
+.ex span{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;font-weight:800;background:var(--card);border:2px solid var(--rule)}
+.ex .a{background:var(--blue);color:#fff;border-color:var(--blue)}.ex .f{box-shadow:inset 0 -5px 0 var(--orange)}.ex .c{outline:3px solid var(--ink);outline-offset:2px}
+
+/* price */
+.pay{background:var(--blue);color:#fff;padding:110px 0;margin-top:120px;position:relative}
+.pay:before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(90deg,var(--yellow) 0 25%,var(--orange) 25% 50%,var(--green) 50% 75%,var(--red) 75%)}
+.pay h2{font-size:clamp(2.6rem,6vw,5.2rem);max-width:10em}
+.nos{display:flex;flex-wrap:wrap;gap:10px 34px;font-weight:800;font-size:1.2rem;color:#d7f1f8;margin-top:22px}
+.pay .progress{margin-top:44px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.disc{color:var(--muted);font-size:.84rem;max-width:760px;margin:44px auto 0;text-align:center;padding:0 28px}
+footer{padding:36px 0 56px;text-align:center;color:var(--muted);font-size:.95rem}
+footer a{margin:0 12px;text-decoration:none;font-weight:700}
+
+@media(max-width:900px){
+  .hgrid,.clock,.calcgrid,.exam{grid-template-columns:1fr}.hgrid{padding-bottom:70px;gap:32px}
+  .nav a.l{display:none}.tabs{display:none}
+  .anno{grid-template-columns:1fr;gap:26px;justify-items:center}.anno .col{min-height:0;display:grid;gap:16px;width:100%}
+  .call{position:static;max-width:none;text-align:left;flex-direction:row}.call:after,.call:before,.call i{display:none}
+  .call{background:var(--card);border-radius:14px;padding:12px 16px}
+  .cl{order:0}.anno>.dev{order:-1}
+  .ch{padding-top:80px}.navy,.pay{padding:80px 0}.navy{margin-top:80px}.pay{margin-top:80px}
+  .exam .dev,.clock .dev{justify-self:center}
+}
+@media(prefers-reduced-motion:reduce){.reveal.on{animation:none}.tabs a,.opt,.dBar i{transition:none}}
+
+/* ---- v3 after-hours hero ---- */
+.hero{background:radial-gradient(70% 70% at 70% 30%,#0e3a52 0,#0B1220 70%);}
+.bp{position:absolute;inset:0;background-image:linear-gradient(rgba(31,162,200,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(31,162,200,.09) 1px,transparent 1px),linear-gradient(rgba(31,162,200,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(31,162,200,.05) 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px;-webkit-mask-image:radial-gradient(80% 80% at 60% 40%,#000 30%,transparent 100%);mask-image:radial-gradient(80% 80% at 60% 40%,#000 30%,transparent 100%)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1 span:last-child{color:#7fd3ea}
+.lede{color:#b9c9e6}
+.fine{display:block;margin:14px 0 0;color:#8ea3c7}
+.deck{position:relative;padding:150px 0 20px}
+.book{position:absolute;right:-60px;top:0;width:300px;height:390px;background:#ECE6D6;border-radius:10px 18px 18px 10px;border-left:30px solid #B87333;transform:rotate(7deg);box-shadow:0 40px 60px -20px rgba(0,0,0,.6),inset -6px 0 0 #d9d1bd;z-index:0}
+.book .bolt{position:absolute;width:96px;left:50%;top:21%;transform:translate(-50%,-50%)}
+.book .tb{position:absolute;right:-26px;width:30px;height:48px;border-radius:0 8px 8px 0;animation:tabOut .7s cubic-bezier(.3,1.5,.4,1) both}
+.tb.y{top:40px;background:#FFC400;animation-delay:.3s}.tb.o{top:100px;background:#FF7A1A;animation-delay:.42s}.tb.g{top:160px;background:#28CD78;animation-delay:.54s}.tb.r{top:220px;background:#FF4F4F;animation-delay:.66s}
+@keyframes tabOut{from{transform:translateX(-30px);opacity:0}}
+.drill{z-index:1;transform:rotate(1.5deg)}
+@media(max-width:900px){.deck{padding:118px 0 0 0}.book{right:-14px;width:220px;height:290px;border-left-width:22px}.book .bolt{width:66px;top:20%}.book .tb{right:-22px;width:24px;height:34px}.tb.y{top:24px}.tb.o{top:64px}.tb.g{top:104px}.tb.r{top:144px}.drill{transform:none}}
+@media(prefers-reduced-motion:reduce){.book .tb{animation:none}}
+</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tabbed Plumber">
+<meta property="og:url" content="https://apps.johnkatez.com/tabbed-plumber/">
+<meta name="twitter:title" content="Tabbed Plumber: know the answer, know where it lives"><meta name="twitter:description" content="Practice questions that cite the UPC or IPC section, timed lookup drills for your tabbed code book, step-by-step plumbing calcs and exams in your state&#x27;s format. Pay once."><!-- lp:head --><link rel="stylesheet" href="/assets/lp.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Tabbed: Journeyman Plumber", "applicationCategory": "EducationalApplication", "operatingSystem": "iOS", "url": "https://apps.johnkatez.com/tabbed-plumber/", "description": "Practice questions that cite the UPC or IPC section, timed lookup drills for your tabbed code book, step-by-step plumbing calcs and exams in your state's format. Pay once.", "image": "https://apps.johnkatez.com/tabbed-plumber/img/icon.png", "publisher": {"@type": "Person", "name": "John Katez", "url": "https://johnkatez.com/"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "applicationSubCategory": "Exam prep"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which codes does Tabbed Plumber cover?", "acceptedAnswer": {"@type": "Answer", "text": "The Uniform Plumbing Code (2021) and the International Plumbing Code (2018), with fuel gas questions from the International Fuel Gas Code. Your licensing board tells you which code and edition your exam uses."}}, {"@type": "Question", "name": "Does it match my exam's format?", "acceptedAnswer": {"@type": "Answer", "text": "You pick the exam you are taking, and practice exams run in that format: the ICC national exams, Kansas, Maryland, Montana, Nebraska, Washington and a UPC exam in the IAPMO format."}}, {"@type": "Question", "name": "How do you know the answers are right?", "acceptedAnswer": {"@type": "Answer", "text": "Every answer cites the code section it comes from and passes a separate blind check before it ships. If you spot a problem, tap Report a problem under the explanation. Fixes ship in updates."}}, {"@type": "Question", "name": "Do I need my own code book?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Most journeyman exams are open book, and Tabbed Plumber's lookup drills train you to find things fast in your own tabbed book. The app cites sections but doesn't reproduce code text or tables."}}, {"@type": "Question", "name": "Does it work offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Everything works without a connection, on the job site or in the truck. Nothing leaves your phone."}}, {"@type": "Question", "name": "How much is it?", "acceptedAnswer": {"@type": "Answer", "text": "Free to start: 10 questions a day with explanations, plus free calc practice. The Exam Pass is $24.99, a one-time purchase that unlocks everything for both codes. No subscription."}}, {"@type": "Question", "name": "Can it guarantee I pass?", "acceptedAnswer": {"@type": "Answer", "text": "No study tool can. Passing depends on your own preparation. Tabbed Plumber shows a readiness estimate so you can see where to focus."}}, {"@type": "Question", "name": "Is it affiliated with IAPMO or ICC?", "acceptedAnswer": {"@type": "Answer", "text": "No. Tabbed Plumber is an independent study aid, not affiliated with or approved by IAPMO, the International Code Council, PSI, Prometric, Pearson VUE or any licensing board."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Apps by John Katez", "item": "https://apps.johnkatez.com/"}, {"@type": "ListItem", "position": 2, "name": "Tabbed Plumber", "item": "https://apps.johnkatez.com/tabbed-plumber/"}]}</script><!-- /lp:head --></head>
+<body>
+<nav class="tabs" aria-label="Sections">
+  <a class="t1" href="#answers">Answers</a><a class="t2" href="#find">Find it</a><a class="t3" href="#calcs">Calcs</a><a class="t4" href="#exam">Exam</a>
+</nav>
+
+<header class="hero">
+  <div class="bp" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="./"><img src="img/icon.png" alt="" width="36" height="36">Tabbed Plumber</a>
+      <div><a class="l" href="support.html">Support</a><a class="l" href="privacy.html">Privacy</a></div>
+    </div>
+    <div class="hgrid">
+      <div>
+        <h1><span>Know the answer.</span><span>Know where it lives.</span></h1>
+        <p class="lede">Journeyman plumber exam prep where every explanation cites the code section. Drill the lookups, work the calcs, sit the timed exam. UPC and IPC. All offline.</p>
+        <span class="soon">Coming soon to the App Store</span>
+        <p class="fine">iPhone. Pay once, no subscription.</p>
+      </div>
+      <div class="deck">
+        <div class="book" aria-hidden="true">
+          <span class="tb y"></span><span class="tb o"></span><span class="tb g"></span><span class="tb r"></span>
+          <svg class="bolt" viewBox="0 0 64 96"><path d="M32 4C32 4 8 42 8 64a24 24 0 0 0 48 0C56 42 32 4 32 4z" fill="#1FA2C8" stroke="#B87333" stroke-width="4" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="drill" id="drill">
+        <div class="dTop"><span>Lookup drill, question 3 of 10</span><span class="dTimer" id="timer">0:00</span></div>
+        <div class="dBar"><i id="bar"></i></div>
+        <p class="dQ">Under the 2018 IPC, what is the minimum diameter of a water service pipe?</p>
+        <div class="opts" id="opts">
+          <button class="opt" type="button" data-k="a"><b>A</b>1/2 inch</button>
+          <button class="opt" type="button" data-k="b"><b>B</b>3/4 inch</button>
+          <button class="opt" type="button" data-k="c"><b>C</b>1 inch</button>
+          <button class="opt" type="button" data-k="d"><b>D</b>1 1/4 inches</button>
+        </div>
+        <div class="reveal" id="reveal" aria-live="polite">
+          <strong id="verdict"></strong>
+          <span class="chip">IPC 603.1</span>
+          <p class="find"><b>Find it:</b> Chapter 6, water service, size of water service pipe.</p>
+          <button class="again" type="button" id="again">Try another look</button>
+        </div>
+        <p class="dNote">A sample question. Tabbed's bank cites the section for every answer.</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="ch" id="answers">
+  <div class="wrap">
+    <span class="chTag" style="background:var(--yellow)"></span>
+    <h2>Answers you can check.</h2>
+    <p class="sub">Every explanation names the section it came from, so you learn where the answer lives instead of memorizing a letter.</p>
+    <div class="anno">
+      <div class="col">
+        <div class="call cl" style="top:11%"><div><p>Your answer, marked</p><small>Right or wrong, you see why</small></div><i></i></div>
+        <div class="call cl" style="top:61%"><div><p>Find it</p><small>Exactly where to look in your book</small></div><i></i></div>
+      </div>
+      <div class="dev"><img src="img/answer.jpg" alt="Practice question with the explanation, the code section it cites and a Find it hint" width="640" height="1391" loading="lazy"></div>
+      <div class="col">
+        <div class="call cr" style="top:50%"><i></i><div><p>The code section</p><small>Cited on every answer</small></div></div>
+        <div class="call cr" style="top:71%"><i></i><div><p>Report a problem</p><small>Flag a question from the answer screen</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="navy ch" id="find" style="padding-top:110px">
+  <div class="wrap clock">
+    <div>
+      <span class="chTag" style="background:var(--orange)"></span>
+      <h2>Find it in the book, fast.</h2>
+      <p class="sub">Most journeyman exams are open book. Timed lookup drills train your own tabbed code book, so the index feels like muscle memory.</p>
+      <div class="bigclock" aria-hidden="true">0:41</div>
+      <p class="sub">That's how long you get. Beat it.</p>
+    </div>
+    <div style="display:flex;justify-content:center"><div class="dev"><img src="img/lookup.jpg" alt="A timed lookup drill with a countdown" width="640" height="1391" loading="lazy"></div></div>
+  </div>
+</section>
+
+<section class="ch" id="calcs">
+  <div class="wrap">
+    <span class="chTag" style="background:var(--green)"></span>
+    <h2>Calcs, one step at a time.</h2>
+    <p class="sub">The full working is shown on every problem, from offsets to pressure and head to water heating. Answers come from tested code, never typed by hand.</p>
+    <div class="calcgrid">
+      <div class="work" aria-label="Worked offset example">
+        <div class="ln"><span class="k">Given</span><span>Two 22½° fittings, 27 in offset</span></div>
+        <div class="ln"><span class="k">Formula</span><span>run = offset × run multiplier</span></div>
+        <div class="ln"><span class="k">Plug in</span><span>27 × 2.414</span></div>
+        <div class="ln"><span class="k">Run</span><span>run ≈ 65.18 in</span></div>
+        <div class="ln"><span class="k">Travel</span><span>27 × 2.613 ≈ 70.55 in</span></div>
+      </div>
+      <div style="display:flex;justify-content:center"><div class="dev"><img src="img/calc.jpg" alt="A calculation question with the full working shown" width="640" height="1391" loading="lazy"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="exam">
+  <div class="wrap">
+    <span class="chTag" style="background:var(--red)"></span>
+    <h2>Your exam, your format.</h2>
+    <p class="sub">Timed full-length practice in the format of the exam you pick: the ICC national exam, Kansas, Maryland, Montana, Nebraska, Washington and more. Flag what you're unsure about, review, then submit, just like test day.</p>
+    <div class="exam">
+      <div>
+        <div class="ex" aria-label="Question navigator with answered, flagged and current questions">
+          <span class="a">1</span><span class="a f">2</span><span class="a">3</span><span class="a">4</span><span class="a f">5</span><span class="a">6</span>
+          <span class="a">7</span><span class="c">8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+          <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+        </div>
+        <p class="sub" style="margin-top:26px;font-size:1rem">Blue is answered. The orange edge is flagged. The outline is where you are.</p>
+        <p class="sub" style="margin-top:30px">A readiness estimate by topic shows your weak spots. It's an estimate from your practice, not a prediction of your result.</p>
+      </div>
+      <div class="dev"><img src="img/exam.jpg" alt="Timed practice exam with a question navigator" width="640" height="1391" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- lp:body --><style>:root{--lp-ink:var(--ink);--lp-muted:var(--muted);--lp-card:var(--card);--lp-line:var(--rule);--lp-accent:var(--blue);--lp-accent-ink:#fff;--lp-font:var(--font);--lp-display:var(--font);--lp-paper:var(--page)}</style><section class="lp"><div class="lp-in"><div style="display:grid;gap:44px"><ul class="lp-trust" aria-label="At a glance"><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg>Every answer cites the code section</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>A separate blind check on every answer</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/><path d="m3 3 18 18"/></svg>Works offline</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7"/></svg>Pay once, no subscription</li></ul></div></div></section><section class="lp"><div class="lp-in"><h2>Who it's for</h2><div class="lp-who"><div><b>Apprentices with a test date</b><p>Plumbing apprentices getting ready for the journeyman exam, studying on breaks and at night.</p></div><div><b>UPC and IPC states</b><p>Choose the Uniform Plumbing Code or the International Plumbing Code, and the edition your board uses.</p></div><div><b>Instructors</b><p>Point your class at questions they can check against the book.</p></div></div></div></section><section class="lp" id="faq"><div class="lp-in"><h2>Questions people ask</h2><div class="lp-faq"><details><summary>Which codes does Tabbed Plumber cover?</summary><div class="a"><p>The Uniform Plumbing Code (2021) and the International Plumbing Code (2018), with fuel gas questions from the International Fuel Gas Code. Your licensing board tells you which code and edition your exam uses.</p></div></details><details><summary>Does it match my exam&#x27;s format?</summary><div class="a"><p>You pick the exam you are taking, and practice exams run in that format: the ICC national exams, Kansas, Maryland, Montana, Nebraska, Washington and a UPC exam in the IAPMO format.</p></div></details><details><summary>How do you know the answers are right?</summary><div class="a"><p>Every answer cites the code section it comes from and passes a separate blind check before it ships. If you spot a problem, tap Report a problem under the explanation. Fixes ship in updates.</p></div></details><details><summary>Do I need my own code book?</summary><div class="a"><p>Yes. Most journeyman exams are open book, and Tabbed Plumber&#x27;s lookup drills train you to find things fast in your own tabbed book. The app cites sections but doesn&#x27;t reproduce code text or tables.</p></div></details><details><summary>Does it work offline?</summary><div class="a"><p>Yes. Everything works without a connection, on the job site or in the truck. Nothing leaves your phone.</p></div></details><details><summary>How much is it?</summary><div class="a"><p>Free to start: 10 questions a day with explanations, plus free calc practice. The Exam Pass is $24.99, a one-time purchase that unlocks everything for both codes. No subscription.</p></div></details><details><summary>Can it guarantee I pass?</summary><div class="a"><p>No study tool can. Passing depends on your own preparation. Tabbed Plumber shows a readiness estimate so you can see where to focus.</p></div></details><details><summary>Is it affiliated with IAPMO or ICC?</summary><div class="a"><p>No. Tabbed Plumber is an independent study aid, not affiliated with or approved by IAPMO, the International Code Council, PSI, Prometric, Pearson VUE or any licensing board.</p></div></details></div></div></section><section class="lp"><div class="lp-in"><h2 style="font-size:24px">More small apps from the same maker</h2><div class="lp-more"><a href="/tabbed/"><img src="/tabbed/img/icon.png" alt="" width="52" height="52" loading="lazy"><div><b>Tabbed</b><span>Journeyman electrician exam prep</span></div></a><a href="/stashday/"><img src="/stashday/img/icon.png" alt="" width="52" height="52" loading="lazy"><div><b>Stashday</b><span>One number to set aside each payday</span></div></a><a href="/sitout/"><img src="/sitout/img/icon.png" alt="" width="52" height="52" loading="lazy"><div><b>Sitout</b><span>Fair pickleball round robins</span></div></a></div><p class="lp-fine"><a href="/">See all the apps</a></p></div></section><!-- /lp:body --><section class="pay">
+  <div class="wrap">
+    <h2>Pay once. Study anywhere.</h2>
+    <div class="nos"><span>No account</span><span>No ads</span><span>No subscription</span><span>No data collected</span></div>
+    <div class="progress"><span class="soon">Coming soon to the App Store</span></div>
+  </div>
+</section>
+
+<p class="disc">Independent study aid. Not affiliated with, endorsed by, or sponsored by IAPMO, the International Code Council (ICC), PSI, Prometric, Pearson VUE, or any state licensing board, and not reviewed or approved by them. Uniform Plumbing Code is a trademark of IAPMO, and International Plumbing Code and International Fuel Gas Code are trademarks of the International Code Council, used here only to describe the codes covered. No code text or tables are reproduced. Passing your exam is not guaranteed.</p>
+<footer>
+  <a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="/">All apps</a>
+  <p>© 2026 Tabbed: Journeyman Plumber · <a href="mailto:support@johnkatez.com" style="margin:0">support@johnkatez.com</a></p>
+</footer>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)},opts=$('opts'),reveal=$('reveal'),verdict=$('verdict'),timer=$('timer'),bar=$('bar');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,t=0,done=false,iv;
+  function fmt(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
+  function run(){clearInterval(iv);t=0;timer.textContent='0:00';bar.style.transition='none';bar.style.transform='scaleX(1)';
+    if(!reduce){void bar.offsetWidth;bar.style.transition='transform 41s linear';bar.style.transform='scaleX(0)';}
+    iv=setInterval(function(){if(!done){t++;timer.textContent=fmt(t);if(t>=41)clearInterval(iv)}},1000);}
+  function reset(){done=false;reveal.classList.remove('on');[].forEach.call(opts.children,function(b){b.disabled=false;b.classList.remove('ok','no')});run();}
+  opts.addEventListener('click',function(e){
+    var b=e.target.closest('.opt');if(!b||done)return;done=true;clearInterval(iv);
+    var good=b.dataset.k==='b',ok=opts.querySelector('[data-k="b"]');
+    [].forEach.call(opts.children,function(x){x.disabled=true});
+    ok.classList.add('ok');if(!good)b.classList.add('no');
+    bar.style.transition='none';
+    verdict.textContent=good?'Correct. Three-quarters of an inch, in '+fmt(t)+'.':"Not quite. It's 3/4 inch. The water service pipe is never smaller than that.";
+    reveal.classList.add('on');
+  });
+  $('again').addEventListener('click',reset);
+  run();
+  /* fore-edge tabs follow the chapter in view */
+  var links=[].slice.call(document.querySelectorAll('.tabs a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+    ['answers','find','calcs','exam'].forEach(function(id){io.observe($(id))});
+  }
+})();
+</script>
+<!-- lp:legal --><div class="lp-legal"><p>Small apps that each do one job well. No ads, fair prices, and only the data the app needs.</p><p>Apple, the Apple logo and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.</p></div><!-- /lp:legal --></body>
+</html>
